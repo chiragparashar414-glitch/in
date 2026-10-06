@@ -6,7 +6,7 @@
 <body>
 <h1>Welcome</h1>
 <p>Details</p>
-<button id="loginBtn">LoginwithGoogle</button\>
+<button id='loginBtn'>LoginwithGoogle</button>
 </body>
 </html>
 <script type="module">
@@ -36,6 +36,7 @@
   const provider = new GoogleAuthProvider();
   const handleLogin = async() =\> {\
   try {;
+  console.log('Button click');
   const result = await signInWithPopup(auth,provider);
   console.log('User,signed,in:',result.user);
   catch (error) {
