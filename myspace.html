@@ -37,7 +37,6 @@
     </div>
 </body>
 </html>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -107,4 +106,41 @@
 
         /* Bada Login Button */
         .login-btn {
-            width
+            width: 100%;
+            padding: 16px;
+            background-color: #007bff;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-box">
+        <h2>Welcome Back</h2>
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+    </div>
+
+</body>
+</html>
