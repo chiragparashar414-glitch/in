@@ -38,114 +38,73 @@
 </body>
 </html>
 
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;VYAHOTSTAR&lt;/title&gt;
-    &lt;style&gt;
-        .sidebar {
-            height: 100%;
-            width: 200px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding-top: 20px;
-        }
-        .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #818181;
-            display: block;
-        }
-        .sidebar a:hover {
-            color: #f1f1f1;
-        }
-        body {
-            margin-left: 200px;
-            padding: 20px;
-            font-family: Arial, sans-serif;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Login Form</title>
+    <style>
+        /* Basic Reset */
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Screen ke center mein laane ke liye Flexbox ka use */
+        body {
+            background-color: #e9ecef;
             display: flex;
-            align-items: center;
             justify-content: center;
-            height: 100vh;
-            background-color: #f5e6a3; /* आपकी थीम के अनुसार */
+            align-items: center;
+            min-height: 100vh;
         }
-        .login-container {
+
+        /* Bada Login Box */
+        .login-box {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 500px; /* Box ki width badi karne ke liye */
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-box h2 {
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
-            margin-bottom: 20px;
-            color: #333;
-        }
-        p {
             margin-bottom: 30px;
-            color: #666;
+            font-size: 32px;
+            color: #333333;
         }
-        #loginBtn {
-            padding: 15px 30px;
-            font-size: 20px;
-            background-color: #007bff;
-            color: white; /* या #111 जैसा आपका लुक है */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+
+        .input-group {
+            margin-bottom: 25px;
         }
-        #loginBtn:hover {
-            background-color: #0056b3;
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: #555555;
+            font-weight: 500;
         }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
 
-    &lt;div class="sidebar"&gt;
-        &lt;a href="index.html"&gt;Home&lt;/a&gt;
-        &lt;a href="TV.html"&gt;TV&lt;/a&gt;
-        &lt;a href="Movie.html"&gt;Movies&lt;/a&gt;
-    &lt;/div&gt;
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border: 1px solid #cccccc;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
 
-    &lt;div class="login-container"&gt;
-        &lt;h1&gt;Welcome to VYAHOTSTAR&lt;/h1&gt;
-        &lt;p&gt;Please log in to continue&lt;/p&gt;
-        &lt;button id="loginBtn"&gt;LoginWithGoogle&lt;/button&gt;
-    &lt;/div&gt;
+        .input-group input:focus {
+            border-color: #007bff;
+        }
 
-    &lt;script type="module"&gt;
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyA7-r3jHQTHc6PsaEViIgLzw_fm_MLyd3U",
-            authDomain: "login-vya.firebaseapp.com",
-            projectId: "login-vya",
-            storageBucket: "login-vya.firebasestorage.app",
-            messagingSenderId: "626063213210",
-            appId: "1:626063213210:web:9f9a42426ee1c3989d9523",
-            measurementId: "G-6W016S225F"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
-
-        const handleLogin = async () =&gt; {
-            try {
-                const result = await signInWithPopup(auth, provider);
-                console.log("User signed in:", result.user);
-            } catch (error) {
-                console.error("Error signing in:", error);
-            }
-        };
-
-        document.getElementById('loginBtn').addEventListener('click', handleLogin);
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+        /* Bada Login Button */
+        .login-btn {
+            width
