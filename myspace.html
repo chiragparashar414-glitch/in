@@ -439,106 +439,154 @@
         </nav>
 
     </aside>
+    
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Login to JioHotstar&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: radial-gradient(circle at center, #260a11 0%, #030303 100%);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
+        .login-container {
+            background-color: rgba(10, 10, 10, 0.85);
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            width: 380px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================= -->
+        .graphic {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #e50914 0%, #7d0006 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.5);
+        }
 
-    <main class="content">
+        .graphic svg {
+            width: 50px;
+            height: 50px;
+            fill: white;
+        }
 
-    </main>
+        h2 {
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: bold;
+        }
 
+        p {
+            color: #8c8c8c;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
 
-</body>
+        input {
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+            border: 1px solid #333;
+            background-color: #1a1a1a;
+            color: white;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
 
-</html>
+        input:focus {
+            border-color: #e50914;
+            outline: none;
+        }
 
-    <!-- Page Content -->
-    <main class="main-content">
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: 4px;
+            border: none;
+            background-color: #e50914;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 30px;
+            transition: background-color 0.3s, transform 0.1s;
+        }
 
-    </main>
+        .login-btn:hover {
+            background-color: #b8070e;
+        }
 
-</body>
-</html>
+        .login-btn:active {
+            transform: scale(0.98);
+        }
 
-    <div class="main-content">
+        .google-btn {
+            width: 100%;
+            padding: 16px;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background-color: transparent;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
 
-        <div class="profile">
-            <h1>My Space</h1>
+        .google-btn:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
 
-            <p>Logged in as:</p>
+        .google-icon {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-            <strong id="userEmail">Loading...</strong>
+&lt;div class="login-container"&gt;
+    &lt;div class="graphic"&gt;
+        &lt;svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"&gt;
+            &lt;path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.74.1-1.46.28-2.14L10 14v1c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-1l7.39-2.91C20.35 13.9 20.37 14.18 20.37 14c0 3.75-2.73 6.84-6.37 7.72V19zM19.61 7.2L14 9.5V11c0 .55-.45 1-1 1h-2c-.55 0-1-.45-1-1V9.5L5.39 7.2C4.54 8.27 4.02 9.61 4 11c0 3.86 3.14 7 7 7h1c3.86 0 7-3.14 7-7 0-1.39-.52-2.73-1.39-3.8z"/&gt;
+        &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;h2&gt;Login to JioHotstar&lt;/h2&gt;
+    &lt;p&gt;Start watching from where you left off, personalise for kids and more&lt;/p&gt;
+    &lt;form id="login-form"&gt;
+        &lt;input type="email" id="email" placeholder="Email address" required&gt;
+        &lt;input type="password" id="password" placeholder="Password" required&gt;
+        &lt;button type="submit" class="login-btn"&gt;Log In&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;button class="google-btn"&gt;
+        &lt;img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo" class="google-icon"&gt;
+        Login with Google
+    &lt;/button&gt;
+&lt;/div&gt;
 
-            <br><br>
-
-            <button id="logoutBtn">Logout</button>
-        </div>
-
-    </div>
-
-    <script type="module">
-
-        import {
-            initializeApp
-        } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-
-        import {
-            getAuth,
-            onAuthStateChanged,
-            signOut
-        } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyA7-r3JHQTHC6PsaEv1iglZw_fm_MLYdJU",
-            authDomain: "login-vya.firebaseapp.com",
-            projectId: "login-vya",
-            storageBucket: "login-vya.appspot.com",
-            messagingSenderId: "626063213210",
-            appId: "1:626063213210:web:9f9a42426ee1c3989d9523",
-            measurementId: "G-6W8IG5ZZ5F"
-        };
-
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-
-        onAuthStateChanged(auth, (user) => {
-
-                    user.email;
-
-            } else {
-
-                // User is not logged in
-                window.location.href = "index.html";
-
-            }
-
-        });
-
-
-        document.getElementById("logoutBtn").addEventListener("click", () => {
-
-            signOut(auth)
-                .then(() => {
-
-                    localStorage.removeItem("userEmail");
-
-                    window.location.href = "index.html";
-
-                })
-                .catch((error) => {
-
-                    alert(error.message);
-
-                });
-
-        });
-
-    </script>
-
-</body>
-</html>
+&lt;/body&gt;
+&lt;/html&gt;
