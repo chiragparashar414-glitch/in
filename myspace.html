@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VyaHotstar Sidebar</title>
+    <title>VyaHotstar - Login</title>
     <link rel="icon" type="image/x-icon" href="Subject.png">
-    <style>
 
-        /* =========================
+    <style>
+        /* =====================================================
            RESET
-        ========================= */
+        ===================================================== */
 
         * {
             margin: 0;
@@ -21,20 +21,26 @@
         }
 
 
-        /* =========================
+        /* =====================================================
            BODY
-        ========================= */
+        ===================================================== */
 
         body {
             min-height: 100vh;
-            background: #0b0c10;
+            background:
+                radial-gradient(
+                    circle at center,
+                    #260a11 0%,
+                    #0b0c10 45%,
+                    #030303 100%
+                );
             color: white;
         }
 
 
-        /* =========================
+        /* =====================================================
            SIDEBAR
-        ========================= */
+        ===================================================== */
 
         .sidebar {
             position: fixed;
@@ -47,13 +53,13 @@
 
             background: #17181d;
 
+            border: 1px solid #282930;
             border-radius: 18px;
 
             padding: 22px 10px;
 
-            border: 1px solid #282930;
-
-            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45);
+            box-shadow:
+                0 10px 35px rgba(0, 0, 0, 0.45);
 
             overflow: hidden;
 
@@ -63,35 +69,34 @@
         }
 
 
-        /* Expand sidebar when mouse is over it */
+        /* Expand sidebar */
 
         .sidebar:hover {
             width: 230px;
         }
 
 
-        /* =========================
+        /* =====================================================
            LOGO
-        ========================= */
+        ===================================================== */
 
         .logo {
             height: 48px;
 
             display: flex;
             align-items: center;
-
             justify-content: center;
 
             margin-bottom: 35px;
 
             white-space: nowrap;
-
             overflow: hidden;
         }
 
 
         .logo-icon {
             min-width: 42px;
+            width: 42px;
             height: 42px;
 
             display: flex;
@@ -133,28 +138,21 @@
         }
 
 
-        /* =========================
+        /* =====================================================
            NAVIGATION
-        ========================= */
+        ===================================================== */
 
         .nav {
             display: flex;
-
             flex-direction: column;
-
             gap: 8px;
         }
 
-
-        /* =========================
-           NAV LINK
-        ========================= */
 
         .nav a {
             height: 52px;
 
             display: flex;
-
             align-items: center;
 
             text-decoration: none;
@@ -164,7 +162,6 @@
             border-radius: 12px;
 
             overflow: hidden;
-
             white-space: nowrap;
 
             transition:
@@ -173,40 +170,31 @@
         }
 
 
-        /* =========================
-           ICON CONTAINER
-        ========================= */
+        /* Icon container */
 
         .icon {
             min-width: 52px;
-
+            width: 52px;
             height: 52px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
         }
 
 
-        /* SVG ICON */
-
         .icon svg {
-            width: 21px;
-            height: 21px;
+            width: 22px;
+            height: 22px;
 
             fill: currentColor;
         }
 
 
-        /* =========================
-           LABEL
-        ========================= */
+        /* Navigation text */
 
         .label {
             font-size: 15px;
-
             font-weight: 600;
 
             margin-left: 5px;
@@ -222,27 +210,22 @@
         }
 
 
-        /* =========================
-           HOVER
-        ========================= */
+        /* Navigation hover */
 
         .nav a:hover {
             background: #292a30;
-
             color: white;
         }
 
 
-        /* =========================
-           ACTIVE
-        ========================= */
+        /* Active link */
 
         .nav a.active {
             background: #e50914;
-
             color: white;
 
-            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.25);
+            box-shadow:
+                0 5px 15px rgba(229, 9, 20, 0.25);
         }
 
 
@@ -251,43 +234,369 @@
         }
 
 
-        /* =========================
+        /* =====================================================
            MAIN CONTENT
-        ========================= */
+        ===================================================== */
 
-        .content {
-            margin-left: 250px;
+        .main-content {
+            min-height: 100vh;
+
+            margin-left: 110px;
 
             padding: 50px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             transition: margin-left 0.3s ease;
         }
 
 
-        .sidebar:hover ~ .content {
+        /* Move content when sidebar expands */
+
+        .sidebar:hover ~ .main-content {
             margin-left: 260px;
         }
 
 
-        .content h1 {
-            font-size: 32px;
+        /* =====================================================
+           AUTH CONTAINER
+        ===================================================== */
 
-            margin-bottom: 12px;
+        .auth-container {
+            width: 390px;
+
+            background: rgba(10, 10, 10, 0.88);
+
+            padding: 40px;
+
+            border-radius: 16px;
+
+            border: 1px solid rgba(255, 255, 255, 0.1);
+
+            box-shadow:
+                0 20px 50px rgba(0, 0, 0, 0.75);
+
+            backdrop-filter: blur(15px);
+
+            text-align: center;
         }
 
 
-        .content p {
-            color: #999;
+        /* =====================================================
+           VYAHOTSTAR GRAPHIC
+        ===================================================== */
+
+        .graphic {
+            width: 85px;
+            height: 85px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #e50914,
+                    #7d0006
+                );
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 5px 25px rgba(229, 9, 20, 0.4);
+        }
+
+
+        .graphic svg {
+            width: 43px;
+            height: 43px;
+
+            fill: white;
+        }
+
+
+        /* =====================================================
+           AUTH TITLE
+        ===================================================== */
+
+        .auth-container h1 {
+            margin-bottom: 8px;
+
+            font-size: 27px;
+        }
+
+
+        .subtitle {
+            margin-bottom: 28px;
+
+            color: #8c8c8c;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           FORMS
+        ===================================================== */
+
+        .auth-form {
+            display: none;
+        }
+
+
+        .auth-form.active {
+            display: block;
+        }
+
+
+        .input-group {
+            position: relative;
+
+            margin-bottom: 15px;
+        }
+
+
+        .input-group input {
+            width: 100%;
+
+            padding: 15px;
+
+            border-radius: 7px;
+
+            border: 1px solid #333;
+
+            background: #1a1a1a;
+
+            color: white;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition:
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+
+        .input-group input::placeholder {
+            color: #777;
+        }
+
+
+        .input-group input:focus {
+            border-color: #e50914;
+
+            box-shadow:
+                0 0 0 2px rgba(229, 9, 20, 0.12);
+        }
+
+
+        /* Password eye */
+
+        .password-toggle {
+            position: absolute;
+
+            right: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+
+            background: transparent;
+
+            color: #888;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+
+        .password-toggle:hover {
+            color: white;
+        }
+
+
+        /* =====================================================
+           PRIMARY BUTTON
+        ===================================================== */
+
+        .auth-btn {
+            width: 100%;
+
+            padding: 15px;
+
+            margin-top: 5px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #e50914;
+
+            color: white;
 
             font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                background 0.25s ease,
+                transform 0.1s ease;
         }
 
 
-        /* =========================
-           MOBILE
-        ========================= */
+        .auth-btn:hover {
+            background: #b8070e;
+        }
 
-        @media (max-width: 600px) {
+
+        .auth-btn:active {
+            transform: scale(0.98);
+        }
+
+
+        .auth-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+
+        /* =====================================================
+           GOOGLE BUTTON
+        ===================================================== */
+
+        .google-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 10px;
+
+            border-radius: 7px;
+
+            border: 1px solid #444;
+
+            background: transparent;
+
+            color: white;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            transition:
+                background 0.25s ease;
+        }
+
+
+        .google-btn:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+
+        .google-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+
+        /* =====================================================
+           SWITCH LOGIN / REGISTER
+        ===================================================== */
+
+        .switch-text {
+            margin-top: 22px;
+
+            color: #888;
+
+            font-size: 14px;
+        }
+
+
+        .switch-btn {
+            border: none;
+
+            background: none;
+
+            color: #e50914;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            font-size: 14px;
+        }
+
+
+        .switch-btn:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =====================================================
+           MESSAGE
+        ===================================================== */
+
+        .message {
+            display: none;
+
+            margin-bottom: 18px;
+
+            padding: 11px;
+
+            border-radius: 6px;
+
+            font-size: 13px;
+        }
+
+
+        .message.show {
+            display: block;
+        }
+
+
+        .message.error {
+            background: rgba(229, 9, 20, 0.12);
+
+            border: 1px solid rgba(229, 9, 20, 0.35);
+
+            color: #ff6b72;
+        }
+
+
+        .message.success {
+            background: rgba(30, 180, 90, 0.12);
+
+            border: 1px solid rgba(30, 180, 90, 0.35);
+
+            color: #6ee7a1;
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
 
             .sidebar {
                 left: 10px;
@@ -296,38 +605,78 @@
                 height: calc(100vh - 20px);
             }
 
-            .content {
-                margin-left: 100px;
 
-                padding: 30px 20px;
+            .main-content {
+                margin-left: 95px;
+
+                padding: 25px 15px;
             }
 
-            .sidebar:hover ~ .content {
-                margin-left: 100px;
+
+            .sidebar:hover ~ .main-content {
+                margin-left: 95px;
+            }
+
+
+            .auth-container {
+                width: 100%;
+
+                max-width: 390px;
+
+                padding: 32px 25px;
             }
         }
 
-    </style>
 
+        @media (max-width: 450px) {
+
+            .main-content {
+                margin-left: 82px;
+
+                padding: 20px 10px;
+            }
+
+
+            .sidebar:hover ~ .main-content {
+                margin-left: 82px;
+            }
+
+
+            .auth-container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 
 
 <body>
 
 
-    <!-- =========================
+    <!-- =====================================================
          SIDEBAR
-    ========================= -->
+    ====================================================== -->
 
     <aside class="sidebar">
+
+        <!-- Logo -->
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                V
+            </div>
+
+            <div class="logo-text">
+                Vya<span>Hotstar</span>
+            </div>
 
         </div>
 
 
-        <!-- NAVIGATION -->
+        <!-- Navigation -->
 
         <nav class="nav">
-
 
             <!-- HOME -->
 
@@ -336,12 +685,10 @@
                 <div class="icon">
 
                     <svg viewBox="0 0 24 24">
-
                         <path d="
                             M10 20v-6h4v6h5v-8h3L12 3
                             2 12h3v8z
                         " />
-
                     </svg>
 
                 </div>
@@ -390,10 +737,11 @@
                     <svg viewBox="0 0 24 24">
 
                         <path d="
-                            M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2
-                            4H7L5 4H3c-1.1 0-2 .9-2 2v12
-                            c0 1.1.9 2 2 2h18c1.1 0
-                            2-.9 2-2V6c0-1.1-.9-2-2-2h-3z
+                            M18 4l2 4h-3l-2-4h-2l2
+                            4h-3l-2-4H8l2 4H7L5 4H3
+                            c-1.1 0-2 .9-2 2v12
+                            c0 1.1.9 2 2 2h18c1.1
+                            0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3z
                             M21 18H3V9h18v9z
                         " />
 
@@ -435,264 +783,755 @@
 
             </a>
 
-    <title>Login to VyaHotstar</title>
+        </nav>
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+    </aside>
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background: radial-gradient(
-                circle at center,
-                #260a11 0%,
-                #030303 100%
-            );
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
 
-        .login-container {
-            background: rgba(10, 10, 10, 0.85);
-            padding: 50px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-            width: 380px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-        }
 
-        .graphic {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
 
-            background: linear-gradient(
-                135deg,
-                #e50914 0%,
-                #7d0006 100%
-            );
+    <main class="main-content">
 
-            border-radius: 50%;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        <!-- =================================================
+             AUTH CONTAINER
+        ================================================== -->
 
-            box-shadow: 0 4px 15px rgba(229, 9, 20, 0.5);
-        }
+        <section class="auth-container">
 
-        .graphic svg {
-            width: 50px;
-            height: 50px;
-            fill: white;
-        }
 
-        h2 {
-            margin: 0 0 10px;
-            font-size: 28px;
-            font-weight: bold;
-        }
+            <!-- VyaHotstar Graphic -->
 
-        p {
-            color: #8c8c8c;
-            margin: 0 0 40px;
-            font-size: 14px;
-            line-height: 1.5;
-        }
+            <div class="graphic">
 
-        input {
-            width: 100%;
-            padding: 16px;
-            margin-bottom: 20px;
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                >
 
-            border-radius: 6px;
-            border: 1px solid #333;
+                    <path d="
+                        M12 2
+                        C6.48 2 2 6.48 2 12
+                        s4.48 10 10 10
+                        10-4.48 10-10
+                        S17.52 2 12 2z
 
-            background: #1a1a1a;
-            color: white;
+                        m-1 17.93
+                        c-3.95-.49-7-3.85-7-7.93
+                        0-.74.1-1.46.28-2.14
+                        L10 14v1
+                        c0 1.1.9 2 2 2
+                        h2
+                        c1.1 0 2-.9 2-2v-1
+                        l7.39-2.91
+                        C20.35 13.9 20.37 14.18 20.37 14
+                        c0 3.75-2.73 6.84-6.37 7.72
+                        V19z
 
-            font-size: 16px;
+                        M19.61 7.2
+                        L14 9.5V11
+                        c0 .55-.45 1-1 1
+                        h-2
+                        c-.55 0-1-.45-1-1
+                        V9.5
+                        L5.39 7.2
+                        C4.54 8.27 4.02 9.61 4 11
+                        c0 3.86 3.14 7 7 7
+                        h1
+                        c3.86 0 7-3.14 7-7
+                        0-1.39-.52-2.73-1.39-3.8z
+                    " />
 
-            transition: border-color 0.3s, box-shadow 0.3s;
-        }
+                </svg>
 
-        input::placeholder {
-            color: #777;
-        }
+            </div>
 
-        input:focus {
-            border-color: #e50914;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.15);
-        }
 
-        .login-btn {
-            width: 100%;
-            padding: 16px;
+            <!-- Title -->
 
-            border: none;
-            border-radius: 6px;
+            <h1 id="auth-title">
+                Login to VyaHotstar
+            </h1>
 
-            background: #e50914;
-            color: white;
 
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 16px;
+            <p class="subtitle" id="auth-subtitle">
+                Start watching from where you left off,
+                personalise for kids and more.
+            </p>
 
-            margin-bottom: 20px;
 
-            transition:
-                background-color 0.3s,
-                transform 0.1s;
-        }
+            <!-- Firebase message -->
 
-        .login-btn:hover {
-            background: #b8070e;
-        }
+            <div
+                id="message"
+                class="message"
+            ></div>
 
-        .login-btn:active {
-            transform: scale(0.98);
-        }
 
-        .google-btn {
-            width: 100%;
-            padding: 16px;
 
-            border-radius: 6px;
-            border: 1px solid #444;
+            <!-- =================================================
+                 LOGIN FORM
+            ================================================== -->
 
-            background: transparent;
-            color: white;
-
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 16px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            transition: background-color 0.3s;
-        }
-
-        .google-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .google-icon {
-            margin-right: 12px;
-            width: 20px;
-            height: 20px;
-        }
-
-        @media (max-width: 500px) {
-            .login-container {
-                width: calc(100% - 30px);
-                padding: 35px 25px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="login-container">
-
-        <!-- Logo -->
-        <div class="graphic">
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-            >
-                <path d="
-                    M12 2
-                    C6.48 2 2 6.48 2 12
-                    s4.48 10 10 10
-                    10-4.48 10-10
-                    S17.52 2 12 2z
-
-                    m-1 17.93
-                    c-3.95-.49-7-3.85-7-7.93
-                    0-.74.1-1.46.28-2.14
-                    L10 14v1
-                    c0 1.1.9 2 2 2
-                    h2
-                    c1.1 0 2-.9 2-2v-1
-                    l7.39-2.91
-                    C20.35 13.9 20.37 14.18 20.37 14
-                    c0 3.75-2.73 6.84-6.37 7.72
-                    V19z
-
-                    M19.61 7.2
-                    L14 9.5V11
-                    c0 .55-.45 1-1 1
-                    h-2
-                    c-.55 0-1-.45-1-1
-                    V9.5
-                    L5.39 7.2
-                    C4.54 8.27 4.02 9.61 4 11
-                    c0 3.86 3.14 7 7 7
-                    h1
-                    c3.86 0 7-3.14 7-7
-                    0-1.39-.52-2.73-1.39-3.8z
-                "/>
-            </svg>
-        </div>
-
-        <h2>Login to VyaHotstar</h2>
-
-        <p>
-            Start watching from where you left off,
-            personalise for kids and more
-        </p>
-
-        <!-- Login Form -->
-        <form id="login-form">
-
-            <input
-                type="email"
-                id="email"
-                placeholder="Email address"
-                required
+            <form
+                id="login-form"
+                class="auth-form active"
             >
 
-            <input
-                type="password"
-                id="password"
-                placeholder="Password"
-                required
+                <div class="input-group">
+
+                    <input
+                        type="email"
+                        id="login-email"
+                        placeholder="Email address"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <input
+                        type="password"
+                        id="login-password"
+                        placeholder="Password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        onclick="togglePassword('login-password', this)"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-btn"
+                >
+                    Log In
+                </button>
+
+            </form>
+
+
+
+            <!-- =================================================
+                 REGISTER / CREATE ACCOUNT FORM
+            ================================================== -->
+
+            <form
+                id="register-form"
+                class="auth-form"
             >
+
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        id="register-name"
+                        placeholder="Full name"
+                        autocomplete="name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <input
+                        type="email"
+                        id="register-email"
+                        placeholder="Email address"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <input
+                        type="password"
+                        id="register-password"
+                        placeholder="Create password"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        onclick="togglePassword('register-password', this)"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <input
+                        type="password"
+                        id="confirm-password"
+                        placeholder="Confirm password"
+                        autocomplete="new-password"
+                        minlength="6"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        onclick="togglePassword('confirm-password', this)"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-btn"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+
+            <!-- =================================================
+                 GOOGLE LOGIN
+            ================================================== -->
 
             <button
-                type="submit"
-                class="login-btn"
+                type="button"
+                class="google-btn"
+                id="google-login"
             >
-                Log In
+
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                    alt="Google"
+                    class="google-icon"
+                >
+
+                Continue with Google
+
             </button>
 
-        </form>
 
-        <!-- Google Login -->
-        <button class="google-btn">
-            <img
-                src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                alt="Google Logo"
-                class="google-icon"
-            >
-            Login with Google
-        </button>
 
-    </div>
+            <!-- =================================================
+                 SWITCH LOGIN / REGISTER
+            ================================================== -->
+
+            <div class="switch-text">
+
+                <span id="switch-question">
+                    Don't have an account?
+                </span>
+
+                <button
+                    type="button"
+                    class="switch-btn"
+                    id="switch-auth"
+                >
+                    Create Account
+                </button>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         FIREBASE AUTHENTICATION
+    ====================================================== -->
+
+    <script type="module">
+
+        import {
+            initializeApp
+        } from
+        "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+
+
+        import {
+            getAuth,
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            GoogleAuthProvider,
+            signInWithPopup
+        } from
+        "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+
+
+        /* =====================================================
+           FIREBASE CONFIG
+        ===================================================== */
+
+        const firebaseConfig = {
+
+            apiKey:
+                "AIzaSyA7-r3JHQTHC6PsaEv1iglZw_fm_MLYdJU",
+
+            authDomain:
+                "login-vya.firebaseapp.com",
+
+            projectId:
+                "login-vya",
+
+            storageBucket:
+                "login-vya.appspot.com",
+
+            messagingSenderId:
+                "626063213210",
+
+            appId:
+                "1:626063213210:web:9f9a42426ee1c3989d9523",
+
+            measurementId:
+                "G-6W8IG5ZZ5F"
+        };
+
+
+        /* =====================================================
+           INITIALIZE FIREBASE
+        ===================================================== */
+
+        const app = initializeApp(firebaseConfig);
+
+        const auth = getAuth(app);
+
+
+        /* =====================================================
+           ELEMENTS
+        ===================================================== */
+
+        const loginForm =
+            document.getElementById("login-form");
+
+        const registerForm =
+            document.getElementById("register-form");
+
+        const switchAuth =
+            document.getElementById("switch-auth");
+
+        const authTitle =
+            document.getElementById("auth-title");
+
+        const authSubtitle =
+            document.getElementById("auth-subtitle");
+
+        const switchQuestion =
+            document.getElementById("switch-question");
+
+        const message =
+            document.getElementById("message");
+
+        const googleLogin =
+            document.getElementById("google-login");
+
+
+        /* =====================================================
+           SHOW MESSAGE
+        ===================================================== */
+
+        function showMessage(text, type = "error") {
+
+            message.textContent = text;
+
+            message.className =
+                "message show " + type;
+
+        }
+
+
+        function clearMessage() {
+
+            message.textContent = "";
+
+            message.className =
+                "message";
+
+        }
+
+
+        /* =====================================================
+           LOGIN / REGISTER SWITCH
+        ===================================================== */
+
+        switchAuth.addEventListener("click", () => {
+
+            clearMessage();
+
+
+            const loginVisible =
+                loginForm.classList.contains("active");
+
+
+            if (loginVisible) {
+
+                loginForm.classList.remove("active");
+
+                registerForm.classList.add("active");
+
+
+                authTitle.textContent =
+                    "Create your account";
+
+
+                authSubtitle.textContent =
+                    "Join VyaHotstar and start watching your favourite content.";
+
+
+                switchQuestion.textContent =
+                    "Already have an account?";
+
+
+                switchAuth.textContent =
+                    "Log In";
+
+            } else {
+
+                registerForm.classList.remove("active");
+
+                loginForm.classList.add("active");
+
+
+                authTitle.textContent =
+                    "Login to VyaHotstar";
+
+
+                authSubtitle.textContent =
+                    "Start watching from where you left off, personalise for kids and more.";
+
+
+                switchQuestion.textContent =
+                    "Don't have an account?";
+
+
+                switchAuth.textContent =
+                    "Create Account";
+            }
+
+        });
+
+
+
+        /* =====================================================
+           LOGIN
+        ===================================================== */
+
+        loginForm.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+                clearMessage();
+
+
+                const email =
+                    document.getElementById(
+                        "login-email"
+                    ).value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "login-password"
+                    ).value;
+
+
+                try {
+
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                    showMessage(
+                        "Login successful! Redirecting...",
+                        "success"
+                    );
+
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "index.html";
+
+                    }, 1000);
+
+
+                } catch (error) {
+
+                    showMessage(
+                        getFirebaseError(error.code)
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           REGISTER
+        ===================================================== */
+
+        registerForm.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+                clearMessage();
+
+
+                const name =
+                    document.getElementById(
+                        "register-name"
+                    ).value.trim();
+
+
+                const email =
+                    document.getElementById(
+                        "register-email"
+                    ).value.trim();
+
+
+                const password =
+                    document.getElementById(
+                        "register-password"
+                    ).value;
+
+
+                const confirmPassword =
+                    document.getElementById(
+                        "confirm-password"
+                    ).value;
+
+
+                /* Check password */
+
+                if (password !== confirmPassword) {
+
+                    showMessage(
+                        "Passwords do not match."
+                    );
+
+                    return;
+                }
+
+
+                if (password.length < 6) {
+
+                    showMessage(
+                        "Password must be at least 6 characters."
+                    );
+
+                    return;
+                }
+
+
+                try {
+
+                    const userCredential =
+                        await createUserWithEmailAndPassword(
+                            auth,
+                            email,
+                            password
+                        );
+
+
+                    /*
+                     * You can later save "name"
+                     * in Firestore if needed.
+                     */
+
+                    console.log(
+                        "Created user:",
+                        name,
+                        userCredential.user.uid
+                    );
+
+
+                    showMessage(
+                        "Account created successfully! Redirecting...",
+                        "success"
+                    );
+
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "index.html";
+
+                    }, 1000);
+
+
+                } catch (error) {
+
+                    showMessage(
+                        getFirebaseError(error.code)
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           GOOGLE LOGIN
+        ===================================================== */
+
+        googleLogin.addEventListener(
+            "click",
+            async () => {
+
+                clearMessage();
+
+
+                try {
+
+                    const provider =
+                        new GoogleAuthProvider();
+
+
+                    await signInWithPopup(
+                        auth,
+                        provider
+                    );
+
+
+                    showMessage(
+                        "Google login successful! Redirecting...",
+                        "success"
+                    );
+
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "index.html";
+
+                    }, 1000);
+
+
+                } catch (error) {
+
+                    showMessage(
+                        getFirebaseError(error.code)
+                    );
+
+                }
+
+            }
+        );
+
+
+
+        /* =====================================================
+           FIREBASE ERROR HANDLER
+        ===================================================== */
+
+        function getFirebaseError(code) {
+
+            switch (code) {
+
+                case "auth/invalid-email":
+                    return "Please enter a valid email address.";
+
+                case "auth/user-not-found":
+                    return "No account exists with this email.";
+
+                case "auth/wrong-password":
+                    return "Incorrect password.";
+
+                case "auth/invalid-credential":
+                    return "Incorrect email or password.";
+
+                case "auth/email-already-in-use":
+                    return "An account already exists with this email.";
+
+                case "auth/weak-password":
+                    return "Password must be at least 6 characters.";
+
+                case "auth/popup-closed-by-user":
+                    return "Google login was cancelled.";
+
+                case "auth/network-request-failed":
+                    return "Network error. Please check your internet connection.";
+
+                default:
+                    return "Something went wrong. Please try again.";
+            }
+        }
+
+    </script>
+
+
+
+    <!-- =====================================================
+         PASSWORD SHOW / HIDE
+    ====================================================== -->
+
+    <script>
+
+        function togglePassword(
+            inputId,
+            button
+        ) {
+
+            const input =
+                document.getElementById(inputId);
+
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                button.textContent = "Hide";
+
+            } else {
+
+                input.type = "password";
+
+                button.textContent = "Show";
+
+            }
+
+        }
+
+    </script>
 
 </body>
 </html>
-
