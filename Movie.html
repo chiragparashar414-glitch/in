@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>VyaHotstar Sidebar</title>
-
+    <link rel="icon" type="image/x-icon" href="Subject.png">
     <style>
 
         /* =========================
@@ -27,8 +27,8 @@
 
         body {
             min-height: 100vh;
+            background: #0b0c10;
             color: white;
-            background: #17181d;
         }
 
 
@@ -45,7 +45,7 @@
             width: 72px;
             height: calc(100vh - 30px);
 
-
+            background: #17181d;
 
             border-radius: 18px;
 
@@ -321,19 +321,6 @@
 
     <aside class="sidebar">
 
-
-        <!-- LOGO -->
-
-        <div class="logo">
-
-            <div class="logo-icon">
-                V
-            </div>
-
-            <div class="logo-text">
-                VYA<span>+</span>
-            </div>
-
         </div>
 
 
@@ -344,7 +331,7 @@
 
             <!-- HOME -->
 
-            <a href="index.html">
+            <a href="index.html" class="active">
 
                 <div class="icon">
 
@@ -396,7 +383,7 @@
 
             <!-- MOVIES -->
 
-            <a href="Movie.html" class="active">
+            <a href="Movie.html">
 
                 <div class="icon">
 
@@ -452,6 +439,28 @@
         </nav>
 
     </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================= -->
+
+    <main class="content">
+
+        <h1>
+            Welcome to VyaHotstar
+        </h1>
+
+        <p>
+            Hover over the sidebar to expand it.
+        </p>
+
+    </main>
+
+
+</body>
+
+</html>
 
 
 </body>
