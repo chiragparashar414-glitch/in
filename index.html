@@ -4,50 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VyaHotstar</title>
+    <title>Hotstar Sidebar</title>
 
     <style>
-        /* =========================
-           RESET
-        ========================= */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
-
-
-        /* =========================
-           BODY
-        ========================= */
 
         body {
-            background: #111;
-            color: white;
             min-height: 100vh;
+            background: #0f1014;
+            color: white;
         }
 
-
         /* =========================
-           FIXED SIDEBAR
+           SIDEBAR
         ========================= */
 
         .sidebar {
             position: fixed;
-
             top: 0;
             left: 0;
 
-            width: 240px;
+            width: 230px;
             height: 100vh;
 
-            background: #181818;
+            background: #111217;
 
-            border-right: 1px solid #292929;
+            display: flex;
+            flex-direction: column;
 
-            padding: 25px 15px;
+            padding: 28px 14px;
+
+            border-right: 1px solid #202127;
 
             z-index: 1000;
         }
@@ -62,12 +54,10 @@
 
             margin-bottom: 45px;
 
-            font-size: 28px;
-            font-weight: 800;
+            font-size: 27px;
+            font-weight: 700;
 
-            letter-spacing: 1px;
-
-            color: white;
+            color: #ffffff;
         }
 
         .logo span {
@@ -79,39 +69,38 @@
            NAVIGATION
         ========================= */
 
-        .nav-menu {
+        .nav {
             display: flex;
-
             flex-direction: column;
-
             gap: 8px;
         }
 
 
         /* =========================
-           NAV LINKS
+           NAVIGATION LINK
         ========================= */
 
-        .nav-link {
-            display: flex;
+        .nav a {
+            height: 52px;
 
+            display: flex;
             align-items: center;
 
-            gap: 16px;
+            gap: 17px;
 
-            padding: 14px 16px;
+            padding: 0 18px;
 
-            color: #aaa;
+            color: #9b9ca2;
 
             text-decoration: none;
 
             border-radius: 8px;
 
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 15px;
+            font-weight: 500;
 
             transition:
-                background 0.25s ease,
+                background-color 0.25s ease,
                 color 0.25s ease,
                 transform 0.25s ease;
         }
@@ -121,9 +110,9 @@
            ICON
         ========================= */
 
-        .nav-icon {
-            width: 22px;
-            height: 22px;
+        .nav svg {
+            width: 21px;
+            height: 21px;
 
             fill: currentColor;
 
@@ -135,29 +124,29 @@
            HOVER
         ========================= */
 
-        .nav-link:hover {
-            background: #292929;
+        .nav a:hover {
+            background: #202126;
 
-            color: white;
+            color: #ffffff;
 
             transform: translateX(3px);
         }
 
 
         /* =========================
-           ACTIVE PAGE
+           ACTIVE
         ========================= */
 
-        .nav-link.active {
+        .nav a.active {
             background: #e50914;
 
-            color: white;
+            color: #ffffff;
 
-            box-shadow: 0 4px 12px rgba(229, 9, 20, 0.25);
+            box-shadow: 0 5px 15px rgba(229, 9, 20, 0.25);
         }
 
-        .nav-link.active:hover {
-            background: #f40612;
+        .nav a.active:hover {
+            background: #f20d18;
 
             transform: none;
         }
@@ -167,23 +156,31 @@
            MAIN CONTENT
         ========================= */
 
-        .main-content {
-            margin-left: 240px;
+        .content {
+            margin-left: 230px;
 
             min-height: 100vh;
 
-            padding: 40px;
+            padding: 50px;
+        }
+
+        .content h1 {
+            margin-bottom: 10px;
+        }
+
+        .content p {
+            color: #999;
         }
 
 
         /* =========================
-           MOBILE
+           MOBILE SIDEBAR
         ========================= */
 
-        @media (max-width: 700px) {
+        @media (max-width: 650px) {
 
             .sidebar {
-                width: 75px;
+                width: 72px;
 
                 padding: 25px 8px;
             }
@@ -198,25 +195,27 @@
                 display: none;
             }
 
-            .nav-link {
+            .nav a {
                 justify-content: center;
 
-                padding: 14px 8px;
+                padding: 0;
+
+                gap: 0;
             }
 
-            .nav-link span {
+            .nav a span {
                 display: none;
             }
 
-            .nav-icon {
-                width: 24px;
-                height: 24px;
+            .nav svg {
+                width: 23px;
+                height: 23px;
             }
 
-            .main-content {
-                margin-left: 75px;
+            .content {
+                margin-left: 72px;
 
-                padding: 25px;
+                padding: 30px;
             }
         }
     </style>
@@ -227,35 +226,29 @@
 
 
     <!-- =========================
-         SIDEBAR
+         FIXED SIDEBAR
     ========================== -->
 
     <aside class="sidebar">
 
-
-        <!-- LOGO -->
-
+        <!-- Logo -->
         <div class="logo">
             Vya<span>Hotstar</span>
         </div>
 
 
-        <!-- NAVIGATION -->
-
-        <nav class="nav-menu">
+        <!-- Navigation -->
+        <nav class="nav">
 
 
             <!-- HOME -->
+            <a href="home.html" class="active">
 
-            <a href="home.html" class="nav-link active">
-
-                <svg class="nav-icon" viewBox="0 0 24 24">
-
+                <svg viewBox="0 0 24 24">
                     <path d="
                         M10 20v-6h4v6h5v-8h3L12 3
                         2 12h3v8z
                     "/>
-
                 </svg>
 
                 <span>Home</span>
@@ -264,11 +257,9 @@
 
 
             <!-- TV -->
+            <a href="tv.html">
 
-            <a href="tv.html" class="nav-link">
-
-                <svg class="nav-icon" viewBox="0 0 24 24">
-
+                <svg viewBox="0 0 24 24">
                     <path d="
                         M21 3H3c-1.1 0-2 .9-2 2v14
                         c0 1.1.9 2 2 2h18c1.1 0
@@ -277,7 +268,6 @@
                         M8 7H6v2h2V7zm4 0h-2v2h2V7zm4
                         0h-2v2h2V7z
                     "/>
-
                 </svg>
 
                 <span>TV</span>
@@ -286,11 +276,9 @@
 
 
             <!-- MOVIES -->
+            <a href="movies.html">
 
-            <a href="movies.html" class="nav-link">
-
-                <svg class="nav-icon" viewBox="0 0 24 24">
-
+                <svg viewBox="0 0 24 24">
                     <path d="
                         M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2
                         4H7L5 4H3c-1.1 0-2 .9-2 2v12
@@ -298,7 +286,6 @@
                         2-.9 2-2V6c0-1.1-.9-2-2-2h-3z
                         M21 18H3V9h18v9z
                     "/>
-
                 </svg>
 
                 <span>Movies</span>
@@ -307,11 +294,9 @@
 
 
             <!-- MY SPACE -->
+            <a href="my-space.html">
 
-            <a href="my-space.html" class="nav-link">
-
-                <svg class="nav-icon" viewBox="0 0 24 24">
-
+                <svg viewBox="0 0 24 24">
                     <path d="
                         M12 12c2.21 0 4-1.79
                         4-4s-1.79-4-4-4-4
@@ -320,7 +305,6 @@
                         1.34-8 4v2h16v-2
                         c0-2.66-5.33-4-8-4z
                     "/>
-
                 </svg>
 
                 <span>My Space</span>
@@ -333,17 +317,14 @@
     </aside>
 
 
+    <!-- PAGE CONTENT -->
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
-
-    <main class="main-content">
+    <main class="content">
 
         <h1>Welcome to VyaHotstar</h1>
 
         <p>
-            Your favorite movies and TV shows in one place.
+            Select a category from the sidebar.
         </p>
 
     </main>
@@ -351,4 +332,3 @@
 
 </body>
 </html>
-```
