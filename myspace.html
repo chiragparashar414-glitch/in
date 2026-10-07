@@ -1,137 +1,258 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VYAHOTSTAR - Login/Register</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-    body { background-color: #f9f9f9; display: flex; min-height: 100vh; }
-    .sidebar { height: 100%; width: 200px; position: fixed; top: 0; left: 0; padding-top: 20px; background-color: #ffffff; box-shadow: 2px 0 5px rgba(0,0,0,0.05); }
-    .sidebar a { padding: 15px 20px; text-decoration: none; font-size: 18px; color: #555; display: block; transition: 0.3s; }
-    .sidebar a:hover { color: #007bff; background-color: #f0f7ff; }
-    .main-content { margin-left: 200px; display: flex; justify-content: center; align-items: center; width: calc(100% - 200px); padding: 20px; }
-    .form-container { background-color: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
-    h2 { margin-bottom: 25px; font-size: 28px; color: #333; }
-    .input-group { margin-bottom: 20px; text-align: left; }
-    .input-group label { display: block; margin-bottom: 8px; font-size: 14px; color: #666; font-weight: 500; }
-    .input-group input { width: 100%; padding: 14px; font-size: 16px; border: 1px solid #ddd; border-radius: 8px; outline: none; transition: 0.3s; }
-    .input-group input:focus { border-color: #007bff; box-shadow: 0 0 5px rgba(0,123,255,0.2); }
-    button { width: 100%; padding: 16px; font-size: 16px; font-weight: bold; background-color: #007bff; color: #ffffff; border: none; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-    button:hover { background-color: #0056b3; }
-    p { margin-top: 20px; font-size: 14px; color: #666; }
-    a { color: #007bff; text-decoration: none; font-weight: bold; }
-    a:hover { text-decoration: underline; }
-  </style>
-</head>
-<body>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Login &amp; Register&lt;/title&gt;
+    &lt;style&gt;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f8e8b0;
+            min-height: 100vh;
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .sidebar a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .form-container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: #666;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #0056b3;
+        }
+        .switch-form {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+        }
+        .switch-form a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
 
-  <div class="sidebar">
-    <a href="index.html">Home</a>
-    <a href="TV.html">TV</a>
-    <a href="Movie.html">Movies</a>
-    <a href="myspace.html">My Space</a>
-  </div>
+    &lt;div class="sidebar"&gt;
+        &lt;a href="#"&gt;Home&lt;/a&gt;
+        &lt;a href="#"&gt;TV&lt;/a&gt;
+        &lt;a href="#"&gt;Movies&lt;/a&gt;
+        &lt;a href="#"&gt;My Space&lt;/a&gt;
+    &lt;/div&gt;
 
-  <div class="main-content">
-    <div class="form-container">
-      <!-- Login Section -->
-      <div id="login-section">
-        <h2>Welcome Back</h2>
-        <form id="loginForm">
-          <div class="input-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="Enter your email" required>
-          </div>
-          <div class="input-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter your password" required>
-          </div>
-          <button type="submit">Login</button>
-        </form>
-        <p>Don't have an account? <a href="#" id="showRegister">Create Account</a></p>
-      </div>
+    &lt;div class="main-content"&gt;
+        &lt;!-- Login Section --&gt;
+        &lt;div class="form-container" id="login-section"&gt;
+            &lt;h2&gt;Welcome Back&lt;/h2&gt;
+            &lt;form id="loginForm"&gt;
+                &lt;div class="input-group"&gt;
+                    &lt;label&gt;Email Address&lt;/label&gt;
+                    &lt;input type="email" id="email" required placeholder="parasher65@gmail.com"&gt;
+                &lt;/div&gt;
+                &lt;div class="input-group"&gt;
+                    &lt;label&gt;Password&lt;/label&gt;
+                    &lt;input type="password" id="password" required placeholder="••••••••"&gt;
+                &lt;/div&gt;
+                &lt;button type="submit" class="submit-btn"&gt;Login&lt;/button&gt;
+            &lt;/form&gt;
+            &lt;div class="switch-form"&gt;
+                Don't have an account? &lt;a href="#" id="showRegister"&gt;Create Account&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
 
-      <!-- Register Section -->
-      <div id="register-section" style="display: none;">
-        <h2>Create Account</h2>
-        <form id="registerForm">
-          <div class="input-group">
-            <label for="reg-email">Email Address</label>
-            <input type="email" id="reg-email" placeholder="Enter your email" required>
-          </div>
-          <div class="input-group">
-            <label for="reg-password">Password</label>
-            <input type="password" id="reg-password" placeholder="Enter your password" required>
-          </div>
-          <button type="submit">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
-      </div>
-    </div>
-  </div>
-  
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyA7-r3JHQTHC6PsaEv1iglZw_fm_MLYdJU",
-    authDomain: "login-vya.firebaseapp.com",
-    projectId: "login-vya",
-    storageBucket: "login-vya.appspot.com",
-    messagingSenderId: "626063213210",
-    appId: "1:626063213210:web:9f9a42426ee1c3989d9523",
-    measurementId: "G-6W8IG5ZZ5F"
-  };
+        &lt;!-- Register Section --&gt;
+        &lt;div class="form-container" id="register-section" style="display: none;"&gt;
+            &lt;h2&gt;Create Account&lt;/h2&gt;
+            &lt;form id="registerForm"&gt;
+                &lt;div class="input-group"&gt;
+                    &lt;label&gt;Email Address&lt;/label&gt;
+                    &lt;input type="email" id="reg-email" required placeholder="parasher65@gmail.com"&gt;
+                &lt;/div&gt;
+                &lt;div class="input-group"&gt;
+                    &lt;label&gt;Password&lt;/label&gt;
+                    &lt;input type="password" id="reg-password" required placeholder="••••••••"&gt;
+                &lt;/div&gt;
+                &lt;button type="submit" class="submit-btn"&gt;Register&lt;/button&gt;
+            &lt;/form&gt;
+            &lt;div class="switch-form"&gt;
+                Already have an account? &lt;a href="#" id="showLogin"&gt;Login&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
+    &lt;!-- Firebase Script --&gt;
+    &lt;script type="module"&gt;
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
-  const showRegister = document.getElementById('showRegister');
-  const showLogin = document.getElementById('showLogin');
-  const loginSection = document.getElementById('login-section');
-  const registerSection = document.getElementById('register-section');
+        const firebaseConfig = {
+            apiKey: "AIzaSyA7-r3JHQTHC6PsaEv1iglZw_fm_MLYdJU",
+            authDomain: "login-vya.firebaseapp.com",
+            projectId: "login-vya",
+            storageBucket: "login-vya.appspot.com",
+            messagingSenderId: "626063213210",
+            appId: "1:626063213210:web:9f9a42426ee1c3989d9523",
+            measurementId: "G-6W8IG5ZZ5F"
+        };
 
-  showRegister.addEventListener('click', (e) =&gt; {
-    e.preventDefault();
-    loginSection.style.display = 'none';
-    registerSection.style.display = 'block';
-  });
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
 
-  showLogin.addEventListener('click', (e) =&gt; {
-    e.preventDefault();
-    registerSection.style.display = 'none';
-    loginSection.style.display = 'block';
-  });
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+        const loginSection = document.getElementById('login-section');
+        const registerSection = document.getElementById('register-section');
+        const mainContent = document.querySelector('.main-content');
 
-  document.getElementById('registerForm').addEventListener('submit', (e) =&gt; {
-    e.preventDefault();
-    const email = document.getElementById('reg-email').value;
-    const password = document.getElementById('reg-password').value;
+        let profileSection = document.getElementById('profile-section');
+        if (!profileSection &amp;&amp; mainContent) {
+            profileSection = document.createElement('div');
+            profileSection.id = 'profile-section';
+            profileSection.className = 'form-container';
+            profileSection.style.display = 'none';
+            profileSection.style.textAlign = 'center';
+            profileSection.innerHTML = `
+                &lt;h2 style="margin-bottom: 15px;"&gt;Account Details&lt;/h2&gt;
+                &lt;p style="font-size: 14px; color: #666; margin-bottom: 5px;"&gt;Logged in as:&lt;/p&gt;
+                &lt;p id="user-email-display" style="font-size: 16px; margin-bottom: 20px; font-weight: bold; color: #000;"&gt;&lt;/p&gt;
+                &lt;button id="logoutBtn" class="submit-btn"&gt;Logout&lt;/button&gt;
+            `;
+            mainContent.appendChild(profileSection);
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) =&gt; {
-        localStorage.setItem('userEmail', userCredential.user.email);
-        window.location.href = "index.html";
-      })
-      .catch((error) =&gt; {
-        alert(error.message);
-      });
-  });
+            document.getElementById('logoutBtn').addEventListener('click', () =&gt; {
+                signOut(auth).then(() =&gt; {
+                    localStorage.removeItem('userEmail');
+                    window.location.reload();
+                });
+            });
+        }
 
-  document.getElementById('loginForm').addEventListener('submit', (e) =&gt; {
-    e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+        onAuthStateChanged(auth, (user) =&gt; {
+            if (user) {
+                if (loginSection) loginSection.style.display = 'none';
+                if (registerSection) registerSection.style.display = 'none';
+                if (profileSection) {
+                    profileSection.style.display = 'block';
+                    document.getElementById('user-email-display').innerText = user.email;
+                }
+            } else {
+                if (profileSection) profileSection.style.display = 'none';
+                if (loginSection) loginSection.style.display = 'block';
+            }
+        });
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) =&gt; {
-        localStorage.setItem('userEmail', userCredential.user.email);
-        window.location.href = "index.html";
-      })
-      .catch((error) =&gt; {
-        alert(error.message);
-      });
-  });
-&lt;/script&gt;
+        if (showRegister) {
+            showRegister.addEventListener('click', (e) =&gt; {
+                e.preventDefault();
+                if(loginSection) loginSection.style.display = 'none';
+                if(registerSection) registerSection.style.display = 'block';
+            });
+        }
+
+        if (showLogin) {
+            showLogin.addEventListener('click', (e) =&gt; {
+                e.preventDefault();
+                if(registerSection) registerSection.style.display = 'none';
+                if(loginSection) loginSection.style.display = 'block';
+            });
+        }
+
+        const registerForm = document.getElementById('registerForm');
+        if (registerForm) {
+            registerForm.addEventListener('submit', (e) =&gt; {
+                e.preventDefault();
+                const email = document.getElementById('reg-email').value;
+                const password = document.getElementById('reg-password').value;
+
+                createUserWithEmailAndPassword(auth, email, password)
+                    .then(() =&gt; {
+                        localStorage.setItem('userEmail', email);
+                        window.location.reload();
+                    })
+                    .catch((error) =&gt; {
+                        alert(error.message);
+                    });
+            });
+        }
+
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) =&gt; {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                signInWithEmailAndPassword(auth, email, password)
+                    .then(() =&gt; {
+                        localStorage.setItem('userEmail', email);
+                        window.location.reload();
+                    })
+                    .catch((error) =&gt; {
+                        alert(error.message);
+                    });
+            });
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
