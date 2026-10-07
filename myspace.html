@@ -70,70 +70,68 @@
       </div>
     </div>
   </div>
+  
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
+  
+  const firebaseConfig = {
+    apiKey: "AIzaSyA7-r3JHQTHC6PsaEv1iglZw_fm_MLYdJU",
+    authDomain: "login-vya.firebaseapp.com",
+    projectId: "login-vya",
+    storageBucket: "login-vya.appspot.com",
+    messagingSenderId: "626063213210",
+    appId: "1:626063213210:web:9f9a42426ee1c3989d9523",
+    measurementId: "G-6W8IG5ZZ5F"
+  };
 
-  <script type="module">
-    import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyA7-r3jHQTHc6PsAEv1IgLZw_fm_MLydJU",
-      authDomain: "login-vya.firebaseapp.com",
-      projectId: "login-vya",
-      storageBucket: "login-vya.appspot.com",
-      messagingSenderId: "626063213210",
-      appId: "1:626063213210:web:9f9a42426ee1c3989d9523",
-      measurementId: "G-6W01GSZ2SF"
-    };
+  const showRegister = document.getElementById('showRegister');
+  const showLogin = document.getElementById('showLogin');
+  const loginSection = document.getElementById('login-section');
+  const registerSection = document.getElementById('register-section');
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  showRegister.addEventListener('click', (e) =&gt; {
+    e.preventDefault();
+    loginSection.style.display = 'none';
+    registerSection.style.display = 'block';
+  });
 
-    const showRegister = document.getElementById('showRegister');
-    const showLogin = document.getElementById('showLogin');
-    const loginSection = document.getElementById('login-section');
-    const registerSection = document.getElementById('register-section');
+  showLogin.addEventListener('click', (e) =&gt; {
+    e.preventDefault();
+    registerSection.style.display = 'none';
+    loginSection.style.display = 'block';
+  });
 
-    showRegister.addEventListener('click', (e) => {
-      e.preventDefault();
-      loginSection.style.display = 'none';
-      registerSection.style.display = 'block';
-    });
+  document.getElementById('registerForm').addEventListener('submit', (e) =&gt; {
+    e.preventDefault();
+    const email = document.getElementById('reg-email').value;
+    const password = document.getElementById('reg-password').value;
 
-    showLogin.addEventListener('click', (e) => {
-      e.preventDefault();
-      registerSection.style.display = 'none';
-      loginSection.style.display = 'block';
-    });
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) =&gt; {
+        localStorage.setItem('userEmail', userCredential.user.email);
+        window.location.href = "index.html";
+      })
+      .catch((error) =&gt; {
+        alert(error.message);
+      });
+  });
 
-    document.getElementById('registerForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('reg-email').value;
-      const password = document.getElementById('reg-password').value;
+  document.getElementById('loginForm').addEventListener('submit', (e) =&gt; {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          alert("Hello! Account created successfully.");
-          window.location.href = "index.html"; // Redirects to Home after Register
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
-    });
-
-    document.getElementById('loginForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
-
-      signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          alert("Welcome back!");
-          window.location.href = "index.html"; // Redirects to Home after Login
-        })
-        .catch((error) => {
-          alert(error.message);
-        });
-    });
-  </script>
-</body>
-</html>
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) =&gt; {
+        localStorage.setItem('userEmail', userCredential.user.email);
+        window.location.href = "index.html";
+      })
+      .catch((error) =&gt; {
+        alert(error.message);
+      });
+  });
+&lt;/script&gt;
