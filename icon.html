@@ -1,1 +1,53 @@
+<div class="sidebar">⁠ ⁠<h1>VyaHostar</h1>⁠ ⁠<nav>⁠ ⁠<ul>⁠ ⁠<li><a href="index.html">Home</a></li>⁠ ⁠<li><a href="TV.html">TV</a></li>⁠ ⁠<li><a href="Movie.html">Movies</a></li>⁠ ⁠<li><a href="myspace.html">My Space</a></li>⁠ ⁠</ul>⁠ ⁠</nav>⁠ ⁠</div>
+<style>
+  /* Sidebar Fixed Left Layout */
+  .sidebar {
+    width: 220px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #0f1014;
+    color: #ffffff;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    z-index: 1000;
+  }
 
+  .sidebar h1 {
+    font-size: 20px;
+    color: #e50914;
+    margin-bottom: 30px;
+    font-family: sans-serif;
+  }
+
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar nav ul li {
+    margin-bottom: 20px;
+  }
+
+  .sidebar nav ul li a {
+    color: #8f98b0;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    font-family: sans-serif;
+    transition: color 0.2s ease;
+  }
+
+  .sidebar nav ul li a:hover {
+    color: #ffffff;
+  }
+
+  /* Main content shift so it doesn't hide behind sidebar */
+  body {
+    margin: 0;
+    padding-left: 220px;
+    background-color: #0f1014;
+  }
+</style>
