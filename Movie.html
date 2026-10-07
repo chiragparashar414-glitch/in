@@ -1,39 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>VYAHOTSTAR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Streaming Sidebar</title>
+
     <style>
-        .sidebar {
-            height: 100%;
-            width: 200px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding-top: 20px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
-        .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #818181;
-            display: block;
-        }
-        .sidebar a:hover {
-            color: #f1f1f1;
-        }
+
         body {
-            margin-left: 200px; /* ताकि कंटेंट साइडबार के पीछे न छुपे */
-            padding: 20px;
+            min-height: 100vh;
+            background: #141414;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            padding: 30px 20px;
+
+            display: flex;
+            flex-direction: column;
+
+            position: fixed;
+            left: 0;
+            top: 0;
+
+            border-right: 1px solid #333;
+        }
+
+        /* Logo */
+        .logo {
+            color: #ffffff;
+            font-size: 26px;
+            font-weight: bold;
+            text-align: center;
+
+            margin-bottom: 40px;
+        }
+
+        .logo span {
+            color: #e50914;
+        }
+
+        /* Navigation */
+        .nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 14px 15px;
+
+            color: #b3b3b3;
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+            font-weight: 500;
+
+            transition: all 0.3s ease;
+        }
+
+        /* Icons */
+        .nav-links svg {
+            width: 22px;
+            height: 22px;
+
+            fill: currentColor;
+
+            flex-shrink: 0;
+        }
+
+        /* Hover */
+        .nav-links a:hover {
+            background: #2b2b2b;
+            color: #ffffff;
+        }
+
+        /* Active link */
+        .nav-links a.active {
+            background: #e50914;
+            color: #ffffff;
+        }
+
+        .nav-links a.active:hover {
+            background: #f40612;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 240px;
+            width: calc(100% - 240px);
+
+            padding: 50px;
+
+            color: white;
+        }
+
+        .main-content h1 {
+            margin-bottom: 15px;
+        }
+
+        .main-content p {
+            color: #aaa;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            .sidebar {
+                width: 75px;
+                padding: 25px 10px;
+            }
+
+            .logo {
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .logo span {
+                display: none;
+            }
+
+            .nav-links a {
+                justify-content: center;
+                padding: 14px 10px;
+            }
+
+            .nav-links a span {
+                display: none;
+            }
+
+            .main-content {
+                margin-left: 75px;
+                width: calc(100% - 75px);
+                padding: 30px;
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="sidebar">
-        <a href="index.html">Home</a>
-        <a href="TV.html">TV</a>
-        <a href="Movie.html">Movies</a>
-        <a href="myspace.html">My Space</a>
-    </div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <!-- Logo -->
+        <div class="logo">
+            VYA<span>+</span>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="nav-links">
+
+            <!-- Home -->
+            <a href="index.html" class="active">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+                </svg>
+
+                <span>Home</span>
+
+            </a>
+
+
+            <!-- TV -->
+            <a href="TV.html">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM8 7H6v2h2V7zm4 0h-2v2h2V7zm4 0h-2v2h2V7z"/>
+                </svg>
+
+                <span>TV</span>
+
+            </a>
+
+
+            <!-- Movies -->
+            <a href="Movie.html">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3zm3 14H3V9h18v9z"/>
+                </svg>
+
+                <span>Movies</span>
+
+            </a>
+
+
+            <!-- My Space -->
+            <a href="myspace.html">
+
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+
+                <span>My Space</span>
+
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- Page Content -->
+    <main class="main-content">
+
+        <h1>Welcome to VYA+</h1>
+
+        <p>
+            Browse your favorite movies and TV shows.
+        </p>
+
+    </main>
+
 </body>
 </html>
