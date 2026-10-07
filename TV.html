@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>VyaHostar - TV</title>
+<div id="sidebar-container"></div>
 
+<script>
+  fetch('icon.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('sidebar-container').innerHTML = data;
+    });
+</script>
     <style>
         * {
             margin: 0;
