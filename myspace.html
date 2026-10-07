@@ -1,132 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VYAHOTSTAR - Login</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
-        
-        body { 
-            background-color: #f9f9f9; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh; 
-            padding: 20px; 
-            margin-left: 200px; /* Sidebar space */
-        }
-
-        /* Sidebar Styling */
-        .sidebar {
-            height: 100%;
-            width: 200px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding-top: 20px;
-        }
-        .sidebar a {
-            padding: 10px 15px;
-            text-decoration: none;
-            font-size: 20px;
-            color: #818181;
-            display: block;
-        }
-        .sidebar a:hover {
-            color: #f1f1f1;
-        }
-
-        /* Login Box Styling */
-        .login-box { 
-            background-color: #ffffff; 
-            width: 100%; 
-            max-width: 500px; 
-            padding: 50px 40px; 
-            border-radius: 16px; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05); 
-            text-align: center; 
-        }
-        .login-box h2 { margin-bottom: 30px; font-size: 32px; color: #333; }
-        .input-group { margin-bottom: 25px; text-align: left; }
-        .input-group label { display: block; margin-bottom: 8px; font-size: 16px; color: #666; font-weight: 500; }
-        .input-group input { width: 100%; padding: 16px; font-size: 16px; border: 1px solid #ddd; border-radius: 8px; outline: none; transition: border-color 0.3s; }
-        .input-group input:focus { border-color: #007bff; }
-        .login-btn { width: 100%; padding: 18px; background-color: #007bff; color: white; font-size: 18px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; transition: background-color 0.3s; }
-        .login-btn:hover { background-color: #0056b3; }
-    </style>
-
-    <!-- Firebase SDKs -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-        import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyA7-r3jHQTHc6PsAEv1IgLZw_fm_MLydJU",
-            authDomain: "login-vya.firebaseapp.com",
-            projectId: "login-vya",
-            storageBucket: "login-vya.firebasestorage.app",
-            messagingSenderId: "626063213210",
-            appId: "1:626063213210:web:9f9a42426ee1c3989d9523",
-            measurementId: "G-6W01GSZ2SF"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-
-        // Handle form submission
-        window.addEventListener('DOMContentLoaded', () => {
-            const loginForm = document.getElementById('loginForm');
-            if (loginForm) {
-                loginForm.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    const email = document.getElementById('email').value;
-                    const password = document.getElementById('password').value;
-
-                    signInWithEmailAndPassword(auth, email, password)
-                        .then((userCredential) => {
-                            alert("Login successful!");
-                            window.location.href = 'index.html';
-                        })
-                        .catch((error) => {
-                            alert(error.message);
-                        });
-                });
-            }
-        });
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VYAHOTSTAR - Login</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+body { background-color: #f9f9f9; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; margin-left: 200px; }
+.sidebar { height: 100%; width: 200px; position: fixed; top: 0; left: 0; padding-top: 20px; background-color: #ffffff; }
+.sidebar a { padding: 10px 15px; text-decoration: none; font-size: 20px; color: #818181; display: block; }
+.sidebar a:hover { color: #f1f1f1; }
+.login-box, .register-box { background-color: #ffffff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+h2 { margin-bottom: 25px; font-size: 32px; color: #333; }
+.input-group { margin-bottom: 20px; text-align: left; }
+.input-group label { display: block; margin-bottom: 8px; font-size: 16px; color: #666; }
+.input-group input { width: 100%; padding: 16px; font-size: 16px; border: 1px solid #ddd; border-radius: 8px; }
+.login-btn, .register-btn { width: 100%; padding: 18px; font-size: 18px; font-weight: bold; background-color: #007bff; color: #ffffff; border: none; border-radius: 8px; cursor: pointer; }
+.login-btn:hover, .register-btn:hover { background-color: #0056b3; }
+p { margin-top: 15px; font-size: 16px; color: #666; }
+a { color: #007bff; text-decoration: none; }
+</style>
+<script type="module" src="[https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js](https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js)"></script>
+<script type="module" src="[https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js](https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js)"></script>
 </head>
 <body>
-
-    <!-- Sidebar Navigation -->
-    <div class="sidebar">
-        <a href="index.html">Home</a>
-        <a href="TV.html">TV</a>
-        <a href="Movie.html">Movies</a>
-        <a href="myspace.html">My Space</a>
-    </div>
-
-    <!-- Login Box -->
-    <div class="login-box">
-        <h2>Welcome Back</h2>
-        <form id="loginForm">
-            <div class="input-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="Enter your email" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter your password" required>
-            </div>
-            <button type="submit" class="login-btn">Login</button>
-        </form>
-    </div>
-
-</body>
-</html>
-<div class="register-box">
+<div class="sidebar">
+<a href="index.html">Home</a>
+<a href="TV.html">TV</a>
+<a href="Movie.html">Movies</a>
+<a href="myspace.html">My Space</a>
+</div>
+<div class="form-container" style="display: flex; justify-content: center; width: 100%;">
+<!-- Login Form -->
+<div id="login-section" class="login-box">
+<h2>Welcome Back</h2>
+<form id="loginForm">
+<div class="input-group">
+<label for="email">Email Address</label>
+<input type="email" id="email" placeholder="Enter your email" required>
+</div>
+<div class="input-group">
+<label for="password">Password</label>
+<input type="password" id="password" placeholder="Enter your password" required>
+</div>
+<button type="submit" class="login-btn">Login</button>
+</form>
+<p>Don't have an account? <a href="#" id="showRegister">Create Account</a></p>
+</div>
+<!-- Register Form -->
+<div id="register-section" class="register-box" style="display: none;">
 <h2>Create Account</h2>
 <form id="registerForm">
 <div class="input-group">
@@ -139,8 +61,36 @@
 </div>
 <button type="submit" class="register-btn">Sign Up</button>
 </form>
+<p>Already have an account? <a href="#" id="showLogin">Login</a></p>
 </div>
-<script>
+</div>
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+const firebaseConfig = {
+apiKey: "AIzaSyA7-rJ3HQTHCGpsAElVlgLzw_fm_MLYdJU",
+authDomain: "login-vya.firebaseapp.com",
+projectId: "login-vya",
+storageBucket: "login-vya.appspot.com",
+messagingSenderId: "626063213210",
+appId: "1:626063213210:web:9f9a42426ee1c3989d9523"
+};
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const showRegister = document.getElementById('showRegister');
+const showLogin = document.getElementById('showLogin');
+const loginSection = document.getElementById('login-section');
+const registerSection = document.getElementById('register-section');
+showRegister.addEventListener('click', (e) => {
+e.preventDefault();
+loginSection.style.display = 'none';
+registerSection.style.display = 'block';
+});
+showLogin.addEventListener('click', (e) => {
+e.preventDefault();
+registerSection.style.display = 'none';
+loginSection.style.display = 'block';
+});
 document.getElementById('registerForm').addEventListener('submit', (e) => {
 e.preventDefault();
 const email = document.getElementById('reg-email').value;
@@ -154,4 +104,19 @@ window.location.href = "index.html";
 alert(error.message);
 });
 });
+document.getElementById('loginForm').addEventListener('submit', (e) => {
+e.preventDefault();
+const email = document.getElementById('email').value;
+const password = document.getElementById('password').value;
+signInWithEmailAndPassword(auth, email, password)
+.then((userCredential) => {
+alert("Login successful!");
+window.location.href = "index.html";
+})
+.catch((error) => {
+alert(error.message);
+});
+});
 </script>
+</body>
+</html>
