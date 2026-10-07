@@ -126,3 +126,32 @@
 
 </body>
 </html>
+
+<div class="register-box">
+<h2>Create Account</h2>
+<form id="registerForm">
+<div class="input-group">
+<label for="reg-email">Email Address</label>
+<input type="email" id="reg-email" placeholder="Enter your email" required>
+</div>
+<div class="input-group">
+<label for="reg-password">Password</label>
+<input type="password" id="reg-password" placeholder="Enter your password" required>
+</div>
+<button type="submit" class="register-btn">Sign Up</button>
+</form>
+</div>
+JavaScript code ke liye:
+document.getElementById('registerForm').addEventListener('submit', (e) => {
+e.preventDefault();
+const email = document.getElementById('reg-email').value;
+const password = document.getElementById('reg-password').value;
+createUserWithEmailAndPassword(auth, email, password)
+.then((userCredential) => {
+alert("Account created successfully!");
+window.location.href = "index.html";
+})
+.catch((error) => {
+alert(error.message);
+});
+});
