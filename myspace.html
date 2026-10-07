@@ -126,7 +126,6 @@
 
 </body>
 </html>
-
 <div class="register-box">
 <h2>Create Account</h2>
 <form id="registerForm">
@@ -141,15 +140,14 @@
 <button type="submit" class="register-btn">Sign Up</button>
 </form>
 </div>
-JavaScript code ke liye:
-document.getElementById('registerForm').addEventListener('submit', (e) => {
-e.preventDefault();
-const email = document.getElementById('reg-email').value;
-const password = document.getElementById('reg-password').value;
-createUserWithEmailAndPassword(auth, email, password)
-.then((userCredential) => {
-alert("Account created successfully!");
-window.location.href = "index.html";
+   document.getElementById('registerForm').addEventListener('submit', (e) => {
+   e.preventDefault();
+   const email = document.getElementById('reg-email').value;
+   const password = document.getElementById('reg-password').value;
+   createUserWithEmailAndPassword(auth, email, password)
+   .then((userCredential) => {
+   alert("Account created successfully!");
+   window.location.href = "index.html";
 })
 .catch((error) => {
 alert(error.message);
