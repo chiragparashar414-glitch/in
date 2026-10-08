@@ -5,21 +5,18 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta
         name="description"
-        content="VyaHotstar Movies - Discover and watch movies, TV shows and entertainment.">
+        content="VyaHotstar Movies - Watch Kurukshetra and discover movies, TV shows and entertainment.">
 
-    <title>Movies - VyaHotstar</title>
+    <title>Kurukshetra - Movies | VyaHotstar</title>
 
     <link
         rel="icon"
         type="image/x-icon"
         href="Subject.png">
-
 
     <style>
 
@@ -33,51 +30,35 @@
             box-sizing: border-box;
         }
 
-
         html {
             scroll-behavior: smooth;
         }
 
-
         body {
-
             min-height: 100vh;
-
-            background:
-                #08090d;
-
+            background: #08090d;
             color: #fff;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
+            font-family: Arial, Helvetica, sans-serif;
             overflow-x: hidden;
         }
 
 
         /* =========================================
-           BACKGROUND
+           PAGE BACKGROUND
         ========================================= */
 
         body::before {
-
             content: "";
-
             position: fixed;
-
             inset: 0;
-
             pointer-events: none;
-
             z-index: -1;
 
             background:
                 radial-gradient(
-                    circle at 70% 10%,
-                    rgba(30, 70, 110, 0.12),
-                    transparent 35%
+                    circle at 75% 8%,
+                    rgba(20, 75, 115, 0.13),
+                    transparent 32%
                 );
         }
 
@@ -87,114 +68,83 @@
         ========================================= */
 
         .sidebar {
-
             position: fixed;
 
             left: 18px;
             top: 18px;
 
-            width: 72px;
-
-            height:
-                calc(100vh - 36px);
+            width: 70px;
+            height: calc(100vh - 36px);
 
             z-index: 1000;
 
             display: flex;
-
             flex-direction: column;
-
             align-items: center;
 
-            padding: 18px 9px;
+            padding: 16px 8px;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.09);
-
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 20px;
 
-            background:
-                rgba(18, 19, 25, 0.58);
+            background: rgba(15,17,23,0.56);
 
-            backdrop-filter:
-                blur(18px);
-
-            -webkit-backdrop-filter:
-                blur(18px);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
 
             box-shadow:
-                0 15px 45px
-                rgba(0,0,0,0.35);
+                0 20px 55px rgba(0,0,0,0.4);
 
             transition:
                 width 0.3s ease;
-
-            overflow: hidden;
         }
 
-
-        /* Expand on hover */
-
         .sidebar:hover {
-
-            width: 210px;
-
+            width: 205px;
             align-items: stretch;
         }
 
 
         /* =========================================
-           SIDEBAR LOGO
+           LOGO
         ========================================= */
 
         .sidebar-logo {
-
             height: 45px;
 
             display: flex;
-
             align-items: center;
 
-            margin-bottom: 28px;
+            margin-bottom: 30px;
 
             overflow: hidden;
-
             white-space: nowrap;
         }
 
-
         .logo-icon {
-
             min-width: 44px;
-
             width: 44px;
-
             height: 44px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             border-radius: 12px;
 
-            background:
-                #e50914;
+            background: #e50914;
 
             font-size: 18px;
+            font-weight: 800;
 
-            font-weight: 700;
+            box-shadow:
+                0 8px 25px rgba(229,9,20,0.25);
         }
 
-
         .logo-text {
-
             margin-left: 12px;
 
-            font-size: 19px;
-
+            font-size: 18px;
             font-weight: 700;
 
             opacity: 0;
@@ -203,16 +153,11 @@
                 opacity 0.2s ease;
         }
 
-
         .logo-text span {
-
             color: #e50914;
         }
 
-
-        .sidebar:hover
-        .logo-text {
-
+        .sidebar:hover .logo-text {
             opacity: 1;
         }
 
@@ -222,89 +167,69 @@
         ========================================= */
 
         .sidebar-nav {
-
             display: flex;
-
             flex-direction: column;
-
             gap: 7px;
         }
 
-
         .sidebar-nav a {
-
             min-height: 48px;
 
             display: flex;
-
             align-items: center;
 
             text-decoration: none;
 
-            color: #9699a2;
+            color: #9a9da6;
 
             border-radius: 12px;
 
             white-space: nowrap;
 
             transition:
+                color 0.25s ease,
                 background 0.25s ease,
-                color 0.25s ease;
+                transform 0.25s ease;
         }
 
-
         .sidebar-nav a:hover {
-
             color: #fff;
 
             background:
                 rgba(255,255,255,0.08);
+
+            transform: translateX(2px);
         }
 
-
         .sidebar-nav a.active {
-
             color: #fff;
 
             background:
-                rgba(229,9,20,0.88);
+                rgba(229,9,20,0.9);
 
             box-shadow:
-                0 7px 20px
-                rgba(229,9,20,0.2);
+                0 8px 22px rgba(229,9,20,0.2);
         }
 
-
         .sidebar-icon {
-
             min-width: 52px;
-
             width: 52px;
-
             height: 48px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
         }
 
-
         .sidebar-icon svg {
-
             width: 20px;
-
             height: 20px;
 
             fill: currentColor;
         }
 
-
         .sidebar-label {
-
             font-size: 14px;
-
             font-weight: 600;
 
             opacity: 0;
@@ -313,74 +238,72 @@
                 opacity 0.2s ease;
         }
 
-
-        .sidebar:hover
-        .sidebar-label {
-
+        .sidebar:hover .sidebar-label {
             opacity: 1;
         }
 
 
         /* =========================================
-           MAIN CONTENT
+           MAIN
         ========================================= */
 
         .main {
-
             margin-left: 105px;
-
-            padding-right: 35px;
+            padding-right: 30px;
 
             transition:
                 margin-left 0.3s ease;
         }
 
-
         .sidebar:hover ~ .main {
-
-            margin-left: 235px;
+            margin-left: 230px;
         }
 
 
         /* =========================================
-           HERO
+           HERO SECTION
         ========================================= */
 
         .hero {
-
             position: relative;
 
-            min-height: 580px;
+            min-height: 620px;
 
             display: flex;
-
             align-items: center;
 
             overflow: hidden;
 
-            border-radius: 0 0 22px 22px;
-
             padding:
-                60px 5%;
+                70px 6% 80px;
 
             background:
+
                 linear-gradient(
                     90deg,
                     #08090d 0%,
-                    rgba(8,9,13,0.94) 32%,
-                    rgba(8,9,13,0.55) 62%,
-                    rgba(8,9,13,0.15) 100%
+                    rgba(8,9,13,0.96) 25%,
+                    rgba(8,9,13,0.72) 48%,
+                    rgba(8,9,13,0.25) 78%,
+                    rgba(8,9,13,0.05) 100%
                 ),
-                url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1800&q=85");
+
+                linear-gradient(
+                    0deg,
+                    #08090d 0%,
+                    transparent 35%
+                ),
+
+                url("https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=2000&q=90");
 
             background-size: cover;
-
             background-position: center;
         }
 
 
-        .hero::after {
+        /* Bottom fade */
 
+        .hero::after {
             content: "";
 
             position: absolute;
@@ -389,7 +312,7 @@
             right: 0;
             bottom: 0;
 
-            height: 180px;
+            height: 190px;
 
             background:
                 linear-gradient(
@@ -402,58 +325,59 @@
         }
 
 
-        .hero-content {
+        /* =========================================
+           HERO CONTENT
+        ========================================= */
 
+        .hero-content {
             position: relative;
 
             z-index: 2;
 
-            max-width: 600px;
+            max-width: 590px;
+
+            padding-top: 40px;
         }
 
-
         .hero-small-title {
-
             color: #00d9ff;
 
             font-size: 12px;
 
             font-weight: 700;
 
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
 
             text-transform: uppercase;
 
             margin-bottom: 12px;
         }
 
-
         .hero h1 {
-
             font-size:
-                clamp(38px, 5vw, 70px);
+                clamp(45px, 6vw, 78px);
 
             line-height: 0.95;
 
-            margin-bottom: 18px;
-
             font-weight: 800;
+
+            margin-bottom: 20px;
+
+            letter-spacing: -2px;
         }
 
 
         /* =========================================
-           MOVIE META
+           MOVIE INFORMATION
         ========================================= */
 
         .movie-meta {
-
             display: flex;
 
+            align-items: center;
             flex-wrap: wrap;
 
-            align-items: center;
-
-            gap: 9px;
+            gap: 10px;
 
             margin-bottom: 18px;
 
@@ -462,48 +386,29 @@
             font-size: 14px;
         }
 
-
-        .meta-item {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 5px;
-        }
-
-
         .meta-divider {
-
-            color: #666;
+            color: #777;
         }
-
 
         .rating {
-
             color: #ffd54a;
-
             font-weight: 700;
         }
 
-
         .language {
-
             color: #fff;
         }
 
-
         .description {
+            max-width: 560px;
 
-            color: #c9c9c9;
+            color: #c7c7c7;
 
             font-size: 15px;
 
-            line-height: 1.65;
+            line-height: 1.7;
 
-            margin-bottom: 25px;
-
-            max-width: 570px;
+            margin-bottom: 28px;
         }
 
 
@@ -512,7 +417,6 @@
         ========================================= */
 
         .hero-buttons {
-
             display: flex;
 
             align-items: center;
@@ -520,19 +424,18 @@
             gap: 12px;
         }
 
-
         .watch-now {
+            min-height: 46px;
 
             display: inline-flex;
 
             align-items: center;
-
             justify-content: center;
 
             gap: 9px;
 
             padding:
-                13px 23px;
+                0 23px;
 
             border-radius: 6px;
 
@@ -551,35 +454,30 @@
                 background 0.25s ease;
         }
 
-
         .watch-now:hover {
-
             background: #00d9ff;
 
             transform:
                 translateY(-2px);
         }
 
-
         .plus-btn {
-
-            width: 45px;
-
-            height: 45px;
+            width: 46px;
+            height: 46px;
 
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
-            border: 1px solid
+            border:
+                1px solid
                 rgba(255,255,255,0.25);
 
             border-radius: 6px;
 
             background:
-                rgba(255,255,255,0.1);
+                rgba(255,255,255,0.12);
 
             color: #fff;
 
@@ -588,15 +486,13 @@
             cursor: pointer;
 
             transition:
-                background 0.25s ease,
-                transform 0.25s ease;
+                transform 0.25s ease,
+                background 0.25s ease;
         }
 
-
         .plus-btn:hover {
-
             background:
-                rgba(255,255,255,0.2);
+                rgba(255,255,255,0.22);
 
             transform:
                 scale(1.06);
@@ -608,48 +504,40 @@
         ========================================= */
 
         .movies-section {
-
             position: relative;
 
             z-index: 5;
 
             padding:
-                10px 4% 55px;
+                5px 4% 55px;
         }
 
-
         .section-heading {
-
             display: flex;
 
             align-items: center;
-
             justify-content: space-between;
 
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
-
         .section-heading h2 {
-
-            font-size: 22px;
-
+            font-size: 21px;
             font-weight: 700;
         }
 
-
         .view-all {
-
-            color: #aaa;
+            color: #999;
 
             text-decoration: none;
 
             font-size: 13px;
+
+            transition:
+                color 0.2s ease;
         }
 
-
         .view-all:hover {
-
             color: #00d9ff;
         }
 
@@ -659,16 +547,15 @@
         ========================================= */
 
         .movie-grid {
-
             display: grid;
 
             grid-template-columns:
                 repeat(
                     auto-fill,
-                    minmax(180px, 1fr)
+                    minmax(160px, 1fr)
                 );
 
-            gap: 20px;
+            gap: 18px;
 
             align-items: start;
         }
@@ -679,14 +566,13 @@
         ========================================= */
 
         .movie-card {
-
             position: relative;
 
-            height: 270px;
+            height: 245px;
 
             overflow: hidden;
 
-            border-radius: 8px;
+            border-radius: 7px;
 
             background: #15161c;
 
@@ -700,24 +586,19 @@
                 box-shadow 0.3s ease;
         }
 
-
         .movie-card:hover {
-
             transform:
-                scale(1.045);
+                scale(1.06);
 
             z-index: 20;
 
             box-shadow:
-                0 18px 40px
-                rgba(0,0,0,0.7);
+                0 18px 45px
+                rgba(0,0,0,0.75);
         }
 
-
         .movie-card img {
-
             width: 100%;
-
             height: 100%;
 
             display: block;
@@ -725,23 +606,20 @@
             object-fit: cover;
 
             transition:
-                transform 0.4s ease;
+                transform 0.45s ease;
         }
 
-
         .movie-card:hover img {
-
             transform:
-                scale(1.07);
+                scale(1.08);
         }
 
 
         /* =========================================
-           CARD GRADIENT
+           CARD DARK GRADIENT
         ========================================= */
 
         .movie-card::after {
-
             content: "";
 
             position: absolute;
@@ -751,9 +629,9 @@
             background:
                 linear-gradient(
                     to top,
-                    rgba(0,0,0,0.96),
-                    rgba(0,0,0,0.2) 65%,
-                    transparent
+                    rgba(0,0,0,0.98),
+                    rgba(0,0,0,0.35) 55%,
+                    transparent 100%
                 );
 
             pointer-events: none;
@@ -765,60 +643,50 @@
         ========================================= */
 
         .movie-overlay {
-
             position: absolute;
 
             left: 0;
             right: 0;
             bottom: 0;
 
-            z-index: 2;
+            z-index: 3;
 
-            padding: 17px;
+            padding: 14px;
 
             opacity: 0;
 
             transform:
-                translateY(12px);
+                translateY(15px);
 
             transition:
                 opacity 0.3s ease,
                 transform 0.3s ease;
         }
 
-
-        .movie-card:hover
-        .movie-overlay {
-
+        .movie-card:hover .movie-overlay {
             opacity: 1;
 
             transform:
                 translateY(0);
         }
 
-
         .movie-overlay h3 {
+            font-size: 16px;
 
-            font-size: 17px;
-
-            margin-bottom: 7px;
+            margin-bottom: 6px;
         }
 
-
         .movie-overlay p {
-
             color: #ccc;
 
-            font-size: 11px;
+            font-size: 10px;
 
             line-height: 1.45;
 
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
-
         .card-watch {
-
             display: inline-flex;
 
             align-items: center;
@@ -826,17 +694,17 @@
             gap: 6px;
 
             padding:
-                8px 12px;
+                7px 11px;
+
+            border-radius: 4px;
 
             background: #fff;
 
             color: #000;
 
-            border-radius: 4px;
-
             text-decoration: none;
 
-            font-size: 11px;
+            font-size: 10px;
 
             font-weight: 700;
 
@@ -844,9 +712,7 @@
                 background 0.2s ease;
         }
 
-
         .card-watch:hover {
-
             background: #00d9ff;
         }
 
@@ -856,9 +722,7 @@
         ========================================= */
 
         .footer {
-
-            padding:
-                25px;
+            padding: 25px;
 
             text-align: center;
 
@@ -876,56 +740,39 @@
            TABLET
         ========================================= */
 
-        @media (max-width: 900px) {
+        @media (max-width: 1000px) {
 
             .sidebar {
-
                 width: 62px;
-
                 left: 10px;
             }
 
-
             .sidebar:hover {
-
                 width: 190px;
             }
 
-
             .main {
-
-                margin-left: 85px;
-
+                margin-left: 88px;
                 padding-right: 15px;
             }
 
-
             .sidebar:hover ~ .main {
-
                 margin-left: 210px;
             }
 
-
             .hero {
-
-                min-height: 520px;
-
-                padding-left: 5%;
+                min-height: 560px;
             }
 
-
             .movie-grid {
-
                 grid-template-columns:
                     repeat(4, 1fr);
 
                 gap: 15px;
             }
 
-
             .movie-card {
-
-                height: 240px;
+                height: 230px;
             }
         }
 
@@ -937,7 +784,6 @@
         @media (max-width: 650px) {
 
             .sidebar {
-
                 position: fixed;
 
                 left: 8px;
@@ -958,24 +804,18 @@
                 justify-content: center;
 
                 background:
-                    rgba(18,19,25,0.88);
+                    rgba(15,17,23,0.92);
             }
 
-
             .sidebar:hover {
-
                 width: auto;
             }
 
-
             .sidebar-logo {
-
                 display: none;
             }
 
-
             .sidebar-nav {
-
                 width: 100%;
 
                 flex-direction: row;
@@ -986,107 +826,87 @@
                 gap: 0;
             }
 
-
             .sidebar-nav a {
-
                 min-height: 52px;
 
                 justify-content: center;
             }
 
-
             .sidebar-icon {
-
                 min-width: 48px;
-
                 width: 48px;
             }
 
-
             .sidebar-label {
-
                 display: none;
             }
 
-
             .main,
             .sidebar:hover ~ .main {
-
                 margin-left: 0;
 
                 padding-right: 0;
 
-                padding-bottom: 70px;
+                padding-bottom: 75px;
             }
-
 
             .hero {
-
-                min-height: 560px;
+                min-height: 610px;
 
                 padding:
-                    230px 25px 45px;
+                    260px 24px 50px;
 
                 border-radius: 0;
+
+                background-position:
+                    center top;
             }
 
+            .hero-content {
+                padding-top: 0;
+            }
 
             .hero h1 {
+                font-size: 43px;
 
-                font-size: 42px;
+                letter-spacing: -1px;
             }
 
-
             .description {
-
                 font-size: 13px;
 
                 line-height: 1.55;
             }
 
-
             .movies-section {
-
                 padding:
-                    25px 18px 50px;
+                    25px 16px 50px;
             }
 
-
             .movie-grid {
-
                 grid-template-columns:
                     repeat(2, 1fr);
 
-                gap: 14px;
+                gap: 13px;
             }
-
 
             .movie-card {
-
-                height: 245px;
+                height: 230px;
             }
-
 
             .movie-overlay {
-
-                padding: 13px;
+                padding: 12px;
             }
 
-
             .movie-overlay h3 {
-
                 font-size: 14px;
             }
 
-
             .movie-overlay p {
-
-                font-size: 10px;
+                font-size: 9px;
             }
 
-
             .section-heading h2 {
-
                 font-size: 19px;
             }
         }
@@ -1105,9 +925,6 @@
 
     <aside class="sidebar">
 
-
-        <!-- Logo -->
-
         <div class="sidebar-logo">
 
             <div class="logo-icon">
@@ -1121,23 +938,22 @@
         </div>
 
 
-        <!-- Navigation -->
-
         <nav class="sidebar-nav">
 
 
-            <!-- Home -->
+            <!-- HOME -->
 
-            <a
-                href="index.html">
+            <a href="index.html">
 
                 <span class="sidebar-icon">
 
                     <svg viewBox="0 0 24 24">
+
                         <path d="
                             M10 20v-6h4v6h5v-8h3L12 3
                             2 12h3v8z
                         "/>
+
                     </svg>
 
                 </span>
@@ -1149,7 +965,7 @@
             </a>
 
 
-            <!-- Search -->
+            <!-- SEARCH -->
 
             <a href="search.html">
 
@@ -1160,8 +976,8 @@
                         <path d="
                             M9.5 3a6.5 6.5 0 1 0
                             4.03 11.6l4.44 4.44
-                            1.41-1.41-4.44-4.44A6.5
-                            6.5 0 0 0 9.5 3zm0
+                            1.41-1.41-4.44-4.44
+                            A6.5 6.5 0 0 0 9.5 3zm0
                             2a4.5 4.5 0 1 1 0
                             9 4.5 4.5 0 0 1 0-9z
                         "/>
@@ -1206,7 +1022,7 @@
             </a>
 
 
-            <!-- Movies -->
+            <!-- MOVIES -->
 
             <a
                 href="Movie.html"
@@ -1236,34 +1052,6 @@
             </a>
 
 
-            <!-- My Space -->
-
-            <a href="myspace.html">
-
-                <span class="sidebar-icon">
-
-                    <svg viewBox="0 0 24 24">
-
-                        <path d="
-                            M12 12c2.21 0 4-1.79
-                            4-4s-1.79-4-4-4-4
-                            1.79-4 4 1.79 4
-                            4 4zm0 2c-2.67 0-8
-                            1.34-8 4v2h16v-2
-                            c0-2.66-5.33-4-8-4z
-                        "/>
-
-                    </svg>
-
-                </span>
-
-                <span class="sidebar-label">
-                    My Space
-                </span>
-
-            </a>
-
-
         </nav>
 
     </aside>
@@ -1278,14 +1066,12 @@
 
 
         <!-- =====================================
-             FEATURED MOVIE
+             KURUKSHETRA HERO
         ====================================== -->
 
         <section class="hero">
 
-
             <div class="hero-content">
-
 
                 <div class="hero-small-title">
                     Featured Movie
@@ -1293,11 +1079,9 @@
 
 
                 <h1>
-                    Featured Movie
+                    Kurukshetra
                 </h1>
 
-
-                <!-- Movie Details -->
 
                 <div class="movie-meta">
 
@@ -1310,7 +1094,7 @@
                     </span>
 
                     <span class="meta-item rating">
-                        ★ 8.5
+                        ★ 8.7
                     </span>
 
                     <span class="meta-divider">
@@ -1318,7 +1102,7 @@
                     </span>
 
                     <span class="meta-item">
-                        2h 15m
+                        2h 18m
                     </span>
 
                     <span class="meta-divider">
@@ -1332,27 +1116,24 @@
                 </div>
 
 
-                <!-- Description -->
-
                 <p class="description">
 
-                    Experience an exciting story filled with
-                    action, adventure and unforgettable
-                    moments. Discover a world of characters,
-                    challenges and unexpected twists.
+                    Kurukshetra is an epic tale of courage,
+                    duty and destiny. Witness a powerful
+                    battle between ambition and righteousness
+                    as unforgettable characters face choices
+                    that will change their world forever.
 
                 </p>
 
 
-                <!-- Buttons -->
-
                 <div class="hero-buttons">
 
 
-                    <!-- Watch Now -->
+                    <!-- WATCH NOW -->
 
                     <a
-                        href="player.html?title=Featured%20Movie&video=G-3JSyi_Ss0"
+                        href="player.html?title=Kurukshetra&video=G-3JSyi_Ss0"
                         class="watch-now">
 
                         ▶
@@ -1361,7 +1142,7 @@
                     </a>
 
 
-                    <!-- Add -->
+                    <!-- ADD BUTTON -->
 
                     <button
                         class="plus-btn"
@@ -1372,8 +1153,8 @@
 
                     </button>
 
-                </div>
 
+                </div>
 
             </div>
 
@@ -1408,28 +1189,27 @@
             <div class="movie-grid">
 
 
-                <!-- Movie 1 -->
+                <!-- KURUKSHETRA -->
 
                 <div class="movie-card">
 
                     <img
-                        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80"
-                        alt="Featured Movie">
-
+                        src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=85"
+                        alt="Kurukshetra">
 
                     <div class="movie-overlay">
 
                         <h3>
-                            Featured Movie
+                            Kurukshetra
                         </h3>
 
                         <p>
-                            An exciting movie packed
-                            with adventure and action.
+                            An epic story of courage,
+                            duty and destiny.
                         </p>
 
                         <a
-                            href="player.html?title=Featured%20Movie&video=G-3JSyi_Ss0"
+                            href="player.html?title=Kurukshetra&video=G-3JSyi_Ss0"
                             class="card-watch">
 
                             ▶ Watch Now
@@ -1442,14 +1222,13 @@
 
 
 
-                <!-- Movie 2 -->
+                <!-- DARK NIGHT -->
 
                 <div class="movie-card">
 
                     <img
-                        src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=80"
+                        src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=85"
                         alt="Dark Night">
-
 
                     <div class="movie-overlay">
 
@@ -1476,14 +1255,13 @@
 
 
 
-                <!-- Movie 3 -->
+                <!-- FUTURE WORLD -->
 
                 <div class="movie-card">
 
                     <img
-                        src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                        src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=85"
                         alt="Future World">
-
 
                     <div class="movie-overlay">
 
@@ -1510,14 +1288,13 @@
 
 
 
-                <!-- Movie 4 -->
+                <!-- LOST JOURNEY -->
 
                 <div class="movie-card">
 
                     <img
-                        src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80"
+                        src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=85"
                         alt="Lost Journey">
-
 
                     <div class="movie-overlay">
 
@@ -1544,14 +1321,13 @@
 
 
 
-                <!-- Movie 5 -->
+                <!-- ACTION ZONE -->
 
                 <div class="movie-card">
 
                     <img
-                        src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=80"
-                        alt="Action Movie">
-
+                        src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=85"
+                        alt="Action Zone">
 
                     <div class="movie-overlay">
 
@@ -1578,14 +1354,13 @@
 
 
 
-                <!-- Movie 6 -->
+                <!-- THE ADVENTURE -->
 
                 <div class="movie-card">
 
                     <img
-                        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80"
-                        alt="Adventure Movie">
-
+                        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=85"
+                        alt="The Adventure">
 
                     <div class="movie-overlay">
 
@@ -1616,14 +1391,14 @@
         </section>
 
 
-        <!-- Footer -->
+
+        <!-- FOOTER -->
 
         <footer class="footer">
 
             © 2026 VyaHotstar. All Rights Reserved.
 
         </footer>
-
 
     </main>
 
@@ -1639,19 +1414,20 @@
 
             button.textContent = "✓";
 
-            button.style.background =
-                "#00d9ff";
+            button.style.background = "#00d9ff";
 
-            button.style.color =
-                "#000";
+            button.style.color = "#000";
 
-            button.title =
-                "Added to My Space";
+            button.title = "Added to My Space";
 
         }
 
     </script>
 
+
+</body>
+
+</html>
 
 </body>
 
