@@ -1605,49 +1605,6 @@
   </main>
 
 
-  <!-- FOOTER -->
-
-  <footer>
-    © 2026 VyaHotstar. All Rights Reserved.
-  </footer>
-
-
-  <script>
-
-    function addMovie(button) {
-
-      if (button.dataset.added === "true") {
-
-        button.dataset.added = "false";
-
-        button.innerHTML =
-          button.classList.contains("whitelist-btn")
-            ? '<span class="plus">+</span><span class="whitelist-text">Whitelist</span>'
-            : "+";
-
-        button.title = "Add to Whitelist";
-
-        return;
-      }
-
-      button.dataset.added = "true";
-
-      if (button.classList.contains("whitelist-btn")) {
-
-        button.innerHTML =
-          '<span class="plus">✓</span><span class="whitelist-text">Whitelisted</span>';
-
-        button.title = "Remove from Whitelist";
-
-      } else {
-
-        button.innerHTML = "✓";
-        button.title = "Remove from Whitelist";
-
-      }
-
-    }
-
 <!-- =========================================================
      VYAHOTSTAR FOOTER
 ========================================================= -->
