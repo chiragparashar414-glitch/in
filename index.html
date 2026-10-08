@@ -679,27 +679,543 @@
 
         <div class="movie-grid">
 
+```html
+<!DOCTYPE html>
+<html lang="en">
 
-            <!-- Movie 1 -->
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Movies</title>
+
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            background: #08090d;
+            color: #ffffff;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            overflow-x: hidden;
+        }
+
+
+        /* =================================
+           TOP BAR
+        ================================= */
+
+        .top-bar {
+
+            height: 60px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 4%;
+
+            background: #08090d;
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.06);
+
+        }
+
+
+        .top-title {
+
+            font-size: 14px;
+
+            font-weight: 500;
+
+            letter-spacing: 0.5px;
+
+            color: #d9d9d9;
+
+        }
+
+
+        /* =================================
+           MOVIE SECTION
+        ================================= */
+
+        .movies-section {
+
+            padding:
+                35px 4% 60px;
+
+        }
+
+
+        .section-heading {
+
+            margin-bottom: 22px;
+
+        }
+
+
+        .section-heading h1 {
+
+            font-size: 25px;
+
+            font-weight: 600;
+
+            margin-bottom: 6px;
+
+        }
+
+
+        .section-heading p {
+
+            color: #888;
+
+            font-size: 13px;
+
+        }
+
+
+        /* =================================
+           MOVIE GRID
+        ================================= */
+
+        .movie-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fill,
+                    minmax(190px, 1fr)
+                );
+
+            gap: 22px;
+
+            align-items: start;
+
+        }
+
+
+        /* =================================
+           MOVIE CARD
+        ================================= */
+
+        .movie-card {
+
+            position: relative;
+
+            height: 280px;
+
+            overflow: hidden;
+
+            border-radius: 7px;
+
+            background: #14151a;
+
+            cursor: pointer;
+
+            transform:
+                scale(1);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+
+        }
+
+
+        /*
+           Slightly enlarge card
+           when user interacts
+        */
+
+        .movie-card:hover {
+
+            transform:
+                scale(1.045);
+
+            z-index: 5;
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,0.65);
+
+        }
+
+
+        .movie-card img {
+
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition:
+                transform 0.45s ease;
+
+        }
+
+
+        .movie-card:hover img {
+
+            transform:
+                scale(1.06);
+
+        }
+
+
+        /* =================================
+           DARK GRADIENT
+        ================================= */
+
+        .movie-card::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,0.95),
+                    rgba(0,0,0,0.35) 50%,
+                    transparent 80%
+                );
+
+        }
+
+
+        /* =================================
+           MOVIE OVERLAY
+        ================================= */
+
+        .movie-overlay {
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+            bottom: 0;
+
+            z-index: 2;
+
+            padding: 20px;
+
+            transform:
+                translateY(12px);
+
+            opacity: 0;
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
+
+        }
+
+
+        .movie-card:hover
+        .movie-overlay {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+
+        }
+
+
+        .movie-overlay h2 {
+
+            font-size: 18px;
+
+            margin-bottom: 7px;
+
+        }
+
+
+        .movie-overlay p {
+
+            color: #d0d0d0;
+
+            font-size: 12px;
+
+            line-height: 1.45;
+
+            margin-bottom: 13px;
+
+        }
+
+
+        /* =================================
+           WATCH BUTTON
+        ================================= */
+
+        .watch-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding:
+                9px 17px;
+
+            border-radius: 4px;
+
+            background: #ffffff;
+
+            color: #000000;
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition:
+                background 0.25s ease,
+                transform 0.25s ease;
+
+        }
+
+
+        .watch-btn::before {
+
+            content: "▶";
+
+            margin-right: 7px;
+
+            font-size: 9px;
+
+        }
+
+
+        .watch-btn:hover {
+
+            background: #00d9ff;
+
+            transform:
+                translateY(-2px);
+
+        }
+
+
+        /* =================================
+           FOOTER
+        ================================= */
+
+        .footer {
+
+            padding: 25px;
+
+            text-align: center;
+
+            color: #555;
+
+            font-size: 12px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,0.05);
+
+        }
+
+
+        /* =================================
+           TABLET
+        ================================= */
+
+        @media (max-width: 900px) {
+
+            .movie-grid {
+
+                grid-template-columns:
+                    repeat(4, 1fr);
+
+                gap: 16px;
+
+            }
+
+            .movie-card {
+
+                height: 250px;
+
+            }
+
+        }
+
+
+        /* =================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 650px) {
+
+            .top-bar {
+
+                height: 52px;
+
+                padding:
+                    0 20px;
+
+            }
+
+
+            .movies-section {
+
+                padding:
+                    25px 20px 45px;
+
+            }
+
+
+            .section-heading h1 {
+
+                font-size: 21px;
+
+            }
+
+
+            .movie-grid {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 14px;
+
+            }
+
+
+            .movie-card {
+
+                height: 245px;
+
+            }
+
+
+            .movie-overlay {
+
+                padding: 14px;
+
+            }
+
+
+            .movie-overlay h2 {
+
+                font-size: 15px;
+
+            }
+
+
+            .movie-overlay p {
+
+                font-size: 11px;
+
+            }
+
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!--
+        Simple top bar.
+        No login.
+        No sidebar.
+        No extra navigation.
+    -->
+
+    <header class="top-bar">
+
+        <span class="top-title">
+            Movies
+        </span>
+
+    </header>
+
+
+
+    <!-- =================================
+         MOVIES
+    ================================= -->
+
+    <section class="movies-section">
+
+
+        <div class="section-heading">
+
+            <h1>
+                Movies
+            </h1>
+
+            <p>
+                Watch your favourite movies
+            </p>
+
+        </div>
+
+
+        <div class="movie-grid">
+
+
+            <!-- =========================
+                 MOVIE 1
+            ========================== -->
+
             <div class="movie-card">
 
                 <img
                     src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80"
-                    alt="Movie poster">
+                    alt="Featured Movie">
+
 
                 <div class="movie-overlay">
 
-                    <h2>Featured Movie</h2>
+                    <h2>
+                        Featured Movie
+                    </h2>
 
                     <p>
-                        Watch this exciting movie packed with
-                        entertainment and unforgettable moments.
+                        Watch this exciting movie packed
+                        with entertainment and unforgettable
+                        moments.
                     </p>
+
 
                     <a
                         href="player.html?title=Featured%20Movie&video=G-3JSyi_Ss0"
                         class="watch-btn">
+
                         Watch Now
+
                     </a>
 
                 </div>
@@ -707,26 +1223,36 @@
             </div>
 
 
-            <!-- Movie 2 -->
+
+            <!-- =========================
+                 MOVIE 2
+            ========================== -->
+
             <div class="movie-card">
 
                 <img
                     src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=80"
-                    alt="Movie poster">
+                    alt="Dark Night">
+
 
                 <div class="movie-overlay">
 
-                    <h2>Dark Night</h2>
+                    <h2>
+                        Dark Night
+                    </h2>
 
                     <p>
-                        A mysterious story filled with suspense,
-                        action and unexpected twists.
+                        A mysterious story filled with
+                        suspense, action and unexpected twists.
                     </p>
+
 
                     <a
                         href="player.html?title=Dark%20Night&video=G-3JSyi_Ss0"
                         class="watch-btn">
+
                         Watch Now
+
                     </a>
 
                 </div>
@@ -734,26 +1260,36 @@
             </div>
 
 
-            <!-- Movie 3 -->
+
+            <!-- =========================
+                 MOVIE 3
+            ========================== -->
+
             <div class="movie-card">
 
                 <img
                     src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
-                    alt="Movie poster">
+                    alt="Future World">
+
 
                 <div class="movie-overlay">
 
-                    <h2>Future World</h2>
+                    <h2>
+                        Future World
+                    </h2>
 
                     <p>
-                        Enter a futuristic world where technology
-                        changes everything.
+                        Enter a futuristic world where
+                        technology changes everything.
                     </p>
+
 
                     <a
                         href="player.html?title=Future%20World&video=G-3JSyi_Ss0"
                         class="watch-btn">
+
                         Watch Now
+
                     </a>
 
                 </div>
@@ -761,26 +1297,36 @@
             </div>
 
 
-            <!-- Movie 4 -->
+
+            <!-- =========================
+                 MOVIE 4
+            ========================== -->
+
             <div class="movie-card">
 
                 <img
                     src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80"
-                    alt="Movie poster">
+                    alt="Lost Journey">
+
 
                 <div class="movie-overlay">
 
-                    <h2>Lost Journey</h2>
+                    <h2>
+                        Lost Journey
+                    </h2>
 
                     <p>
-                        An incredible journey full of adventure,
-                        friendship and discovery.
+                        An incredible journey full of
+                        adventure, friendship and discovery.
                     </p>
+
 
                     <a
                         href="player.html?title=Lost%20Journey&video=G-3JSyi_Ss0"
                         class="watch-btn">
+
                         Watch Now
+
                     </a>
 
                 </div>
@@ -793,11 +1339,18 @@
     </section>
 
 
+
+    <!-- Footer -->
+
     <footer class="footer">
-        © 2026 VyaHotstar. All Rights Reserved.
+
+        © 2026 Movies
+
     </footer>
 
+
 </body>
+
 </html>
 
 </body>
