@@ -13,16 +13,9 @@
 
     <title>Kurukshetra - Movies | VyaHotstar</title>
 
-    <link
-        rel="icon"
-        type="image/x-icon"
-        href="Subject.png">
+    <link rel="icon" type="image/x-icon" href="Subject.png">
 
     <style>
-
-        /* =========================================
-           RESET
-        ========================================= */
 
         * {
             margin: 0;
@@ -42,40 +35,16 @@
             overflow-x: hidden;
         }
 
-
-        /* =========================================
-           PAGE BACKGROUND
-        ========================================= */
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: -1;
-
-            background:
-                radial-gradient(
-                    circle at 75% 8%,
-                    rgba(20, 75, 115, 0.13),
-                    transparent 32%
-                );
-        }
-
-
-        /* =========================================
-           TRANSPARENT SIDEBAR
-        ========================================= */
+        /* =========================
+           SIDEBAR
+        ========================= */
 
         .sidebar {
             position: fixed;
-
             left: 18px;
             top: 18px;
-
             width: 70px;
             height: calc(100vh - 36px);
-
             z-index: 1000;
 
             display: flex;
@@ -84,19 +53,16 @@
 
             padding: 16px 8px;
 
-            border: 1px solid rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,.08);
             border-radius: 20px;
 
-            background: rgba(15,17,23,0.56);
-
+            background: rgba(15,17,23,.56);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
 
-            box-shadow:
-                0 20px 55px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 55px rgba(0,0,0,.4);
 
-            transition:
-                width 0.3s ease;
+            transition: width .3s ease;
         }
 
         .sidebar:hover {
@@ -104,19 +70,11 @@
             align-items: stretch;
         }
 
-
-        /* =========================================
-           LOGO
-        ========================================= */
-
         .sidebar-logo {
             height: 45px;
-
             display: flex;
             align-items: center;
-
             margin-bottom: 30px;
-
             overflow: hidden;
             white-space: nowrap;
         }
@@ -131,26 +89,18 @@
             justify-content: center;
 
             border-radius: 12px;
-
             background: #e50914;
 
             font-size: 18px;
             font-weight: 800;
-
-            box-shadow:
-                0 8px 25px rgba(229,9,20,0.25);
         }
 
         .logo-text {
             margin-left: 12px;
-
             font-size: 18px;
             font-weight: 700;
-
             opacity: 0;
-
-            transition:
-                opacity 0.2s ease;
+            transition: opacity .2s ease;
         }
 
         .logo-text span {
@@ -160,11 +110,6 @@
         .sidebar:hover .logo-text {
             opacity: 1;
         }
-
-
-        /* =========================================
-           NAVIGATION
-        ========================================= */
 
         .sidebar-nav {
             display: flex;
@@ -179,36 +124,27 @@
             align-items: center;
 
             text-decoration: none;
-
-            color: #9a9da6;
+            color: #999ca5;
 
             border-radius: 12px;
 
             white-space: nowrap;
 
             transition:
-                color 0.25s ease,
-                background 0.25s ease,
-                transform 0.25s ease;
+                background .25s ease,
+                color .25s ease,
+                transform .25s ease;
         }
 
         .sidebar-nav a:hover {
             color: #fff;
-
-            background:
-                rgba(255,255,255,0.08);
-
+            background: rgba(255,255,255,.08);
             transform: translateX(2px);
         }
 
         .sidebar-nav a.active {
             color: #fff;
-
-            background:
-                rgba(229,9,20,0.9);
-
-            box-shadow:
-                0 8px 22px rgba(229,9,20,0.2);
+            background: rgba(229,9,20,.9);
         }
 
         .sidebar-icon {
@@ -224,18 +160,14 @@
         .sidebar-icon svg {
             width: 20px;
             height: 20px;
-
             fill: currentColor;
         }
 
         .sidebar-label {
             font-size: 14px;
             font-weight: 600;
-
             opacity: 0;
-
-            transition:
-                opacity 0.2s ease;
+            transition: opacity .2s ease;
         }
 
         .sidebar:hover .sidebar-label {
@@ -243,16 +175,14 @@
         }
 
 
-        /* =========================================
+        /* =========================
            MAIN
-        ========================================= */
+        ========================= */
 
         .main {
             margin-left: 105px;
             padding-right: 30px;
-
-            transition:
-                margin-left 0.3s ease;
+            transition: margin-left .3s ease;
         }
 
         .sidebar:hover ~ .main {
@@ -260,38 +190,37 @@
         }
 
 
-        /* =========================================
-           HERO SECTION
-        ========================================= */
+        /* =========================
+           HERO BANNER
+        ========================= */
 
         .hero {
             position: relative;
 
-            min-height: 620px;
+            min-height: 610px;
 
             display: flex;
             align-items: center;
 
             overflow: hidden;
 
-            padding:
-                70px 6% 80px;
+            padding: 70px 6% 90px;
 
             background:
 
                 linear-gradient(
                     90deg,
                     #08090d 0%,
-                    rgba(8,9,13,0.96) 25%,
-                    rgba(8,9,13,0.72) 48%,
-                    rgba(8,9,13,0.25) 78%,
-                    rgba(8,9,13,0.05) 100%
+                    rgba(8,9,13,.97) 23%,
+                    rgba(8,9,13,.72) 48%,
+                    rgba(8,9,13,.28) 76%,
+                    rgba(8,9,13,.04) 100%
                 ),
 
                 linear-gradient(
                     0deg,
                     #08090d 0%,
-                    transparent 35%
+                    transparent 38%
                 ),
 
                 url("https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=2000&q=90");
@@ -300,14 +229,10 @@
             background-position: center;
         }
 
-
-        /* Bottom fade */
-
         .hero::after {
             content: "";
 
             position: absolute;
-
             left: 0;
             right: 0;
             bottom: 0;
@@ -324,56 +249,110 @@
             pointer-events: none;
         }
 
-
-        /* =========================================
-           HERO CONTENT
-        ========================================= */
-
         .hero-content {
             position: relative;
-
             z-index: 2;
 
-            max-width: 590px;
-
-            padding-top: 40px;
+            max-width: 620px;
+            padding-top: 45px;
         }
 
         .hero-small-title {
-            color: #00d9ff;
+            color: #ff5a1f;
 
-            font-size: 12px;
+            font-size: 11px;
+            font-weight: 800;
 
-            font-weight: 700;
-
-            letter-spacing: 2.5px;
-
+            letter-spacing: 3px;
             text-transform: uppercase;
 
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
-        .hero h1 {
-            font-size:
-                clamp(45px, 6vw, 78px);
 
-            line-height: 0.95;
+        /* =========================
+           KURUKSHETRA LOGO
+        ========================= */
 
-            font-weight: 800;
+        .movie-logo {
+            position: relative;
+
+            display: inline-block;
 
             margin-bottom: 20px;
 
-            letter-spacing: -2px;
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size:
+                clamp(48px, 7vw, 88px);
+
+            line-height: .85;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: #fff;
+
+            text-shadow:
+                0 3px 0 #35100a,
+                0 7px 18px rgba(0,0,0,.85);
+
+            transform: skewX(-4deg);
+        }
+
+        .movie-logo::before {
+            content: "";
+
+            position: absolute;
+
+            left: 3px;
+            right: -8px;
+            bottom: -10px;
+
+            height: 4px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff3d00,
+                    #ff8a00,
+                    transparent
+                );
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 2px 10px rgba(255,69,0,.4);
+        }
+
+        .movie-logo::after {
+            content: "KURUKSHETRA";
+
+            position: absolute;
+
+            left: 4px;
+            top: 3px;
+
+            z-index: -1;
+
+            color: rgba(255,69,0,.25);
+
+            filter: blur(5px);
         }
 
 
-        /* =========================================
-           MOVIE INFORMATION
-        ========================================= */
+        /* =========================
+           MOVIE META
+        ========================= */
 
         .movie-meta {
             display: flex;
-
             align-items: center;
             flex-wrap: wrap;
 
@@ -382,7 +361,6 @@
             margin-bottom: 18px;
 
             color: #ddd;
-
             font-size: 14px;
         }
 
@@ -399,85 +377,91 @@
             color: #fff;
         }
 
-        .description {
-            max-width: 560px;
 
-            color: #c7c7c7;
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .description {
+            max-width: 570px;
+
+            color: #c8c8c8;
 
             font-size: 15px;
-
             line-height: 1.7;
 
             margin-bottom: 28px;
         }
 
 
-        /* =========================================
+        /* =========================
            HERO BUTTONS
-        ========================================= */
+        ========================= */
 
         .hero-buttons {
             display: flex;
-
             align-items: center;
-
             gap: 12px;
         }
 
         .watch-now {
-            min-height: 46px;
+            min-height: 48px;
 
             display: inline-flex;
-
             align-items: center;
             justify-content: center;
 
             gap: 9px;
 
-            padding:
-                0 23px;
+            padding: 0 25px;
 
+            border: none;
             border-radius: 6px;
 
-            background: #fff;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff2d00,
+                    #ff6500
+                );
 
-            color: #000;
+            color: #fff;
 
             text-decoration: none;
 
             font-size: 14px;
+            font-weight: 800;
 
-            font-weight: 700;
+            box-shadow:
+                0 8px 25px rgba(255,65,0,.28);
 
             transition:
-                transform 0.25s ease,
-                background 0.25s ease;
+                transform .25s ease,
+                box-shadow .25s ease,
+                filter .25s ease;
         }
 
         .watch-now:hover {
-            background: #00d9ff;
+            transform: translateY(-2px);
 
-            transform:
-                translateY(-2px);
+            filter: brightness(1.08);
+
+            box-shadow:
+                0 12px 32px rgba(255,65,0,.42);
         }
 
         .plus-btn {
-            width: 46px;
-            height: 46px;
+            width: 48px;
+            height: 48px;
 
             display: flex;
-
             align-items: center;
             justify-content: center;
 
-            border:
-                1px solid
-                rgba(255,255,255,0.25);
-
+            border: 1px solid rgba(255,255,255,.25);
             border-radius: 6px;
 
-            background:
-                rgba(255,255,255,0.12);
+            background: rgba(255,255,255,.11);
 
             color: #fff;
 
@@ -486,26 +470,22 @@
             cursor: pointer;
 
             transition:
-                transform 0.25s ease,
-                background 0.25s ease;
+                transform .25s ease,
+                background .25s ease;
         }
 
         .plus-btn:hover {
-            background:
-                rgba(255,255,255,0.22);
-
-            transform:
-                scale(1.06);
+            background: rgba(255,255,255,.2);
+            transform: scale(1.06);
         }
 
 
-        /* =========================================
-           MOVIES SECTION
-        ========================================= */
+        /* =========================
+           MOVIES
+        ========================= */
 
         .movies-section {
             position: relative;
-
             z-index: 5;
 
             padding:
@@ -514,7 +494,6 @@
 
         .section-heading {
             display: flex;
-
             align-items: center;
             justify-content: space-between;
 
@@ -528,23 +507,18 @@
 
         .view-all {
             color: #999;
-
             text-decoration: none;
-
             font-size: 13px;
-
-            transition:
-                color 0.2s ease;
         }
 
         .view-all:hover {
-            color: #00d9ff;
+            color: #ff5a1f;
         }
 
 
-        /* =========================================
-           MOVIE GRID
-        ========================================= */
+        /* =========================
+           SMALLER MOVIE GRID
+        ========================= */
 
         .movie-grid {
             display: grid;
@@ -552,23 +526,23 @@
             grid-template-columns:
                 repeat(
                     auto-fill,
-                    minmax(160px, 1fr)
+                    minmax(145px, 1fr)
                 );
 
-            gap: 18px;
+            gap: 17px;
 
             align-items: start;
         }
 
 
-        /* =========================================
+        /* =========================
            MOVIE CARD
-        ========================================= */
+        ========================= */
 
         .movie-card {
             position: relative;
 
-            height: 245px;
+            height: 225px;
 
             overflow: hidden;
 
@@ -578,23 +552,20 @@
 
             cursor: pointer;
 
-            transform:
-                scale(1);
+            transform: scale(1);
 
             transition:
-                transform 0.3s ease,
-                box-shadow 0.3s ease;
+                transform .3s ease,
+                box-shadow .3s ease;
         }
 
         .movie-card:hover {
-            transform:
-                scale(1.06);
+            transform: scale(1.065);
 
             z-index: 20;
 
             box-shadow:
-                0 18px 45px
-                rgba(0,0,0,0.75);
+                0 18px 42px rgba(0,0,0,.75);
         }
 
         .movie-card img {
@@ -606,41 +577,34 @@
             object-fit: cover;
 
             transition:
-                transform 0.45s ease;
+                transform .4s ease;
         }
 
         .movie-card:hover img {
-            transform:
-                scale(1.08);
+            transform: scale(1.08);
         }
-
-
-        /* =========================================
-           CARD DARK GRADIENT
-        ========================================= */
 
         .movie-card::after {
             content: "";
 
             position: absolute;
-
             inset: 0;
 
             background:
                 linear-gradient(
                     to top,
-                    rgba(0,0,0,0.98),
-                    rgba(0,0,0,0.35) 55%,
-                    transparent 100%
+                    rgba(0,0,0,.97),
+                    rgba(0,0,0,.35) 58%,
+                    transparent
                 );
 
             pointer-events: none;
         }
 
 
-        /* =========================================
+        /* =========================
            CARD OVERLAY
-        ========================================= */
+        ========================= */
 
         .movie-overlay {
             position: absolute;
@@ -651,75 +615,64 @@
 
             z-index: 3;
 
-            padding: 14px;
+            padding: 13px;
 
             opacity: 0;
 
-            transform:
-                translateY(15px);
+            transform: translateY(14px);
 
             transition:
-                opacity 0.3s ease,
-                transform 0.3s ease;
+                opacity .3s ease,
+                transform .3s ease;
         }
 
         .movie-card:hover .movie-overlay {
             opacity: 1;
-
-            transform:
-                translateY(0);
+            transform: translateY(0);
         }
 
         .movie-overlay h3 {
-            font-size: 16px;
-
-            margin-bottom: 6px;
+            font-size: 15px;
+            margin-bottom: 5px;
         }
 
         .movie-overlay p {
             color: #ccc;
 
             font-size: 10px;
-
             line-height: 1.45;
 
-            margin-bottom: 10px;
+            margin-bottom: 9px;
         }
 
         .card-watch {
             display: inline-flex;
-
             align-items: center;
 
-            gap: 6px;
+            gap: 5px;
 
-            padding:
-                7px 11px;
+            padding: 7px 10px;
 
             border-radius: 4px;
 
             background: #fff;
-
             color: #000;
 
             text-decoration: none;
 
             font-size: 10px;
-
             font-weight: 700;
-
-            transition:
-                background 0.2s ease;
         }
 
         .card-watch:hover {
-            background: #00d9ff;
+            background: #ff5a1f;
+            color: #fff;
         }
 
 
-        /* =========================================
+        /* =========================
            FOOTER
-        ========================================= */
+        ========================= */
 
         .footer {
             padding: 25px;
@@ -731,14 +684,13 @@
             font-size: 12px;
 
             border-top:
-                1px solid
-                rgba(255,255,255,0.05);
+                1px solid rgba(255,255,255,.05);
         }
 
 
-        /* =========================================
+        /* =========================
            TABLET
-        ========================================= */
+        ========================= */
 
         @media (max-width: 1000px) {
 
@@ -768,18 +720,18 @@
                 grid-template-columns:
                     repeat(4, 1fr);
 
-                gap: 15px;
+                gap: 14px;
             }
 
             .movie-card {
-                height: 230px;
+                height: 215px;
             }
         }
 
 
-        /* =========================================
+        /* =========================
            MOBILE
-        ========================================= */
+        ========================= */
 
         @media (max-width: 650px) {
 
@@ -792,7 +744,6 @@
                 top: auto;
 
                 width: auto;
-
                 height: 62px;
 
                 padding: 5px 8px;
@@ -800,11 +751,9 @@
                 border-radius: 16px;
 
                 flex-direction: row;
-
                 justify-content: center;
 
-                background:
-                    rgba(15,17,23,0.92);
+                background: rgba(15,17,23,.94);
             }
 
             .sidebar:hover {
@@ -820,15 +769,13 @@
 
                 flex-direction: row;
 
-                justify-content:
-                    space-around;
+                justify-content: space-around;
 
                 gap: 0;
             }
 
             .sidebar-nav a {
                 min-height: 52px;
-
                 justify-content: center;
             }
 
@@ -844,17 +791,15 @@
             .main,
             .sidebar:hover ~ .main {
                 margin-left: 0;
-
                 padding-right: 0;
-
                 padding-bottom: 75px;
             }
 
             .hero {
-                min-height: 610px;
+                min-height: 620px;
 
                 padding:
-                    260px 24px 50px;
+                    270px 24px 50px;
 
                 border-radius: 0;
 
@@ -866,15 +811,17 @@
                 padding-top: 0;
             }
 
-            .hero h1 {
-                font-size: 43px;
+            .movie-logo {
+                font-size: 47px;
+            }
 
-                letter-spacing: -1px;
+            .movie-meta {
+                font-size: 12px;
+                gap: 7px;
             }
 
             .description {
                 font-size: 13px;
-
                 line-height: 1.55;
             }
 
@@ -887,19 +834,19 @@
                 grid-template-columns:
                     repeat(2, 1fr);
 
-                gap: 13px;
+                gap: 12px;
             }
 
             .movie-card {
-                height: 230px;
+                height: 220px;
             }
 
             .movie-overlay {
-                padding: 12px;
+                padding: 11px;
             }
 
             .movie-overlay h3 {
-                font-size: 14px;
+                font-size: 13px;
             }
 
             .movie-overlay p {
@@ -919,9 +866,9 @@
 <body>
 
 
-    <!-- =========================================
-         TRANSPARENT SIDEBAR
-    ========================================== -->
+    <!-- =========================
+         SIDEBAR
+    ========================= -->
 
     <aside class="sidebar">
 
@@ -1024,9 +971,7 @@
 
             <!-- MOVIES -->
 
-            <a
-                href="Movie.html"
-                class="active">
+            <a href="Movie.html" class="active">
 
                 <span class="sidebar-icon">
 
@@ -1058,16 +1003,16 @@
 
 
 
-    <!-- =========================================
-         MAIN CONTENT
-    ========================================== -->
+    <!-- =========================
+         MAIN
+    ========================= -->
 
     <main class="main">
 
 
-        <!-- =====================================
+        <!-- =========================
              KURUKSHETRA HERO
-        ====================================== -->
+        ========================= -->
 
         <section class="hero">
 
@@ -1078,14 +1023,18 @@
                 </div>
 
 
-                <h1>
-                    Kurukshetra
-                </h1>
+                <!-- PROFESSIONAL TITLE LOGO -->
 
+                <div class="movie-logo">
+                    Kurukshetra
+                </div>
+
+
+                <!-- MOVIE DETAILS -->
 
                 <div class="movie-meta">
 
-                    <span class="meta-item">
+                    <span>
                         2026
                     </span>
 
@@ -1093,7 +1042,7 @@
                         •
                     </span>
 
-                    <span class="meta-item rating">
+                    <span class="rating">
                         ★ 8.7
                     </span>
 
@@ -1101,7 +1050,7 @@
                         •
                     </span>
 
-                    <span class="meta-item">
+                    <span>
                         2h 18m
                     </span>
 
@@ -1109,12 +1058,14 @@
                         •
                     </span>
 
-                    <span class="meta-item language">
+                    <span class="language">
                         Hindi
                     </span>
 
                 </div>
 
+
+                <!-- DESCRIPTION -->
 
                 <p class="description">
 
@@ -1127,10 +1078,9 @@
                 </p>
 
 
+                <!-- ACTION BUTTONS -->
+
                 <div class="hero-buttons">
-
-
-                    <!-- WATCH NOW -->
 
                     <a
                         href="player.html?title=Kurukshetra&video=G-3JSyi_Ss0"
@@ -1142,8 +1092,6 @@
                     </a>
 
 
-                    <!-- ADD BUTTON -->
-
                     <button
                         class="plus-btn"
                         title="Add to My Space"
@@ -1153,7 +1101,6 @@
 
                     </button>
 
-
                 </div>
 
             </div>
@@ -1162,12 +1109,11 @@
 
 
 
-        <!-- =====================================
+        <!-- =========================
              MOVIE GRID
-        ====================================== -->
+        ========================= -->
 
         <section class="movies-section">
-
 
             <div class="section-heading">
 
@@ -1189,7 +1135,7 @@
             <div class="movie-grid">
 
 
-                <!-- KURUKSHETRA -->
+                <!-- MOVIE 1 -->
 
                 <div class="movie-card">
 
@@ -1221,8 +1167,7 @@
                 </div>
 
 
-
-                <!-- DARK NIGHT -->
+                <!-- MOVIE 2 -->
 
                 <div class="movie-card">
 
@@ -1254,8 +1199,7 @@
                 </div>
 
 
-
-                <!-- FUTURE WORLD -->
+                <!-- MOVIE 3 -->
 
                 <div class="movie-card">
 
@@ -1287,8 +1231,7 @@
                 </div>
 
 
-
-                <!-- LOST JOURNEY -->
+                <!-- MOVIE 4 -->
 
                 <div class="movie-card">
 
@@ -1320,8 +1263,7 @@
                 </div>
 
 
-
-                <!-- ACTION ZONE -->
+                <!-- MOVIE 5 -->
 
                 <div class="movie-card">
 
@@ -1353,8 +1295,7 @@
                 </div>
 
 
-
-                <!-- THE ADVENTURE -->
+                <!-- MOVIE 6 -->
 
                 <div class="movie-card">
 
@@ -1391,9 +1332,6 @@
         </section>
 
 
-
-        <!-- FOOTER -->
-
         <footer class="footer">
 
             © 2026 VyaHotstar. All Rights Reserved.
@@ -1404,30 +1342,24 @@
 
 
 
-    <!-- =========================================
-         JAVASCRIPT
-    ========================================== -->
-
     <script>
 
         function addMovie(button) {
 
             button.textContent = "✓";
 
-            button.style.background = "#00d9ff";
+            button.style.background =
+                "#ff5a1f";
 
-            button.style.color = "#000";
+            button.style.color =
+                "#fff";
 
-            button.title = "Added to My Space";
+            button.title =
+                "Added to My Space";
 
         }
 
     </script>
-
-
-</body>
-
-</html>
 
 </body>
 
