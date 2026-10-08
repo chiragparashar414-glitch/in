@@ -1,1369 +1,1620 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description"
-        content="VyaHotstar Movies - Watch Kurukshetra: Season 1 and discover movies, TV shows and entertainment.">
-
-    <title>Kurukshetra: Season 1 | VyaHotstar</title>
-
-    <link rel="icon" type="image/x-icon" href="Subject.png">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            min-height: 100vh;
-            background: #08090d;
-            color: #fff;
-            font-family: Arial, Helvetica, sans-serif;
-            overflow-x: hidden;
-        }
-
-        /* =========================
-           SIDEBAR
-        ========================= */
-
-        .sidebar {
-            position: fixed;
-            left: 18px;
-            top: 18px;
-            width: 70px;
-            height: calc(100vh - 36px);
-            z-index: 1000;
-
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            padding: 16px 8px;
-
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 20px;
-
-            background: rgba(15,17,23,.56);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-
-            box-shadow: 0 20px 55px rgba(0,0,0,.4);
-
-            transition: width .3s ease;
-        }
-
-        .sidebar:hover {
-            width: 205px;
-            align-items: stretch;
-        }
-
-        .sidebar-logo {
-            height: 45px;
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            overflow: hidden;
-            white-space: nowrap;
-        }
-
-        .logo-icon {
-            min-width: 44px;
-            width: 44px;
-            height: 44px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 12px;
-            background: #e50914;
-
-            font-size: 18px;
-            font-weight: 800;
-        }
-
-        .logo-text {
-            margin-left: 12px;
-            font-size: 18px;
-            font-weight: 700;
-            opacity: 0;
-            transition: opacity .2s ease;
-        }
-
-        .logo-text span {
-            color: #e50914;
-        }
-
-        .sidebar:hover .logo-text {
-            opacity: 1;
-        }
-
-        .sidebar-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-        }
-
-        .sidebar-nav a {
-            min-height: 48px;
-
-            display: flex;
-            align-items: center;
-
-            text-decoration: none;
-            color: #999ca5;
-
-            border-radius: 12px;
-
-            white-space: nowrap;
-
-            transition:
-                background .25s ease,
-                color .25s ease,
-                transform .25s ease;
-        }
-
-        .sidebar-nav a:hover {
-            color: #fff;
-            background: rgba(255,255,255,.08);
-            transform: translateX(2px);
-        }
-
-        .sidebar-nav a.active {
-            color: #fff;
-            background: rgba(229,9,20,.9);
-        }
-
-        .sidebar-icon {
-            min-width: 52px;
-            width: 52px;
-            height: 48px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .sidebar-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        .sidebar-label {
-            font-size: 14px;
-            font-weight: 600;
-            opacity: 0;
-            transition: opacity .2s ease;
-        }
-
-        .sidebar:hover .sidebar-label {
-            opacity: 1;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="VyaHotstar - Watch Kurukshetra and discover movies, TV shows and entertainment.">
+
+  <title>Kurukshetra - VyaHotstar</title>
+
+  <link rel="icon" href="Subject.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #08090d;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      border: 0;
+      cursor: pointer;
+    }
+
+    /* =========================================================
+       SIDEBAR
+    ========================================================= */
+
+    .sidebar {
+      position: fixed;
+      z-index: 1000;
+      left: 18px;
+      top: 18px;
+      width: 70px;
+      height: calc(100vh - 36px);
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 18px 10px;
+
+      background: rgba(15, 17, 23, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 20px;
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+      transition:
+        width 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .sidebar:hover {
+      width: 210px;
+      background: rgba(12, 14, 20, 0.72);
+    }
+
+    /* Brand */
+
+    .brand {
+      height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 8px;
+      margin-bottom: 28px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .brand-star {
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      background: linear-gradient(145deg, #ff2100, #ff6a00);
+      color: #fff;
+
+      font-size: 22px;
+      font-weight: 900;
 
-        /* =========================
-           MAIN
-        ========================= */
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 56%,
+        79% 92%,
+        50% 70%,
+        21% 92%,
+        32% 56%,
+        2% 35%,
+        39% 35%
+      );
 
-        .main {
-            margin-left: 105px;
-            padding-right: 30px;
-            transition: margin-left .3s ease;
-        }
+      filter: drop-shadow(0 5px 12px rgba(255, 58, 0, 0.35));
 
-        .sidebar:hover ~ .main {
-            margin-left: 230px;
-        }
+      transition: transform 0.3s ease;
+    }
 
-        /* =========================
-           HERO BANNER
-        ========================= */
+    .sidebar:hover .brand-star {
+      transform: rotate(12deg) scale(1.04);
+    }
 
-        .hero {
-            position: relative;
+    .brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
 
-            min-height: 650px;
+      opacity: 0;
+      transform: translateX(-8px);
 
-            display: flex;
-            align-items: center;
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+    }
 
-            overflow: hidden;
+    .sidebar:hover .brand-name {
+      opacity: 1;
+      transform: translateX(0);
+    }
 
-            padding: 70px 6% 100px;
+    /* Navigation */
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #08090d 0%,
-                    rgba(8,9,13,.98) 20%,
-                    rgba(8,9,13,.82) 43%,
-                    rgba(8,9,13,.38) 72%,
-                    rgba(8,9,13,.08) 100%
-                ),
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
 
-                linear-gradient(
-                    0deg,
-                    #08090d 0%,
-                    transparent 45%
-                ),
+    .nav-link {
+      position: relative;
 
-                url("https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=2200&q=90");
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+
+      padding: 0 11px;
+      border-radius: 13px;
+
+      color: rgba(255, 255, 255, 0.65);
+
+      transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-link.active::before {
+      content: "";
+
+      position: absolute;
+      left: -10px;
+      width: 3px;
+      height: 22px;
+
+      background: #ff3b12;
+      border-radius: 5px;
+
+      box-shadow: 0 0 12px rgba(255, 59, 18, 0.65);
+    }
+
+    .nav-icon {
+      flex: 0 0 26px;
+
+      width: 26px;
+      display: grid;
+      place-items: center;
+
+      font-size: 19px;
+    }
+
+    .nav-label {
+      margin-left: 14px;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      opacity: 0;
+      transform: translateX(-8px);
+
+      white-space: nowrap;
+
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .sidebar:hover .nav-label {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* =========================================================
+       MAIN CONTENT
+    ========================================================= */
+
+    main {
+      margin-left: 105px;
+      padding-right: 25px;
+
+      transition: margin-left 0.3s ease;
+    }
 
-            background-size: cover;
-            background-position: center;
-        }
+    .sidebar:hover ~ main {
+      margin-left: 235px;
+    }
 
-        .hero::after {
-            content: "";
+    /* =========================================================
+       HERO
+    ========================================================= */
 
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
+    .hero {
+      position: relative;
+      min-height: 650px;
 
-            height: 220px;
+      display: flex;
+      align-items: center;
 
-            background:
-                linear-gradient(
-                    to bottom,
-                    transparent,
-                    #08090d
-                );
+      overflow: hidden;
 
-            pointer-events: none;
-        }
+      background:
+        linear-gradient(
+          90deg,
+          #08090d 0%,
+          rgba(8, 9, 13, 0.88) 25%,
+          rgba(8, 9, 13, 0.36) 62%,
+          rgba(8, 9, 13, 0.72) 100%
+        ),
+        linear-gradient(
+          0deg,
+          #08090d 0%,
+          transparent 28%,
+          rgba(0, 0, 0, 0.12) 100%
+        ),
+        url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=2000&q=90")
+        center / cover no-repeat;
+    }
 
-        .hero-content {
-            position: relative;
-            z-index: 2;
+    .hero::after {
+      content: "";
 
-            max-width: 680px;
-            padding-top: 45px;
-        }
+      position: absolute;
+      inset: 0;
 
-        .hero-small-title {
-            color: #ff6328;
+      background:
+        radial-gradient(
+          circle at 70% 45%,
+          rgba(255, 69, 20, 0.12),
+          transparent 32%
+        );
 
-            font-size: 11px;
-            font-weight: 800;
+      pointer-events: none;
+    }
 
-            letter-spacing: 3px;
-            text-transform: uppercase;
+    .hero-content {
+      position: relative;
+      z-index: 2;
 
-            margin-bottom: 15px;
-        }
+      max-width: 680px;
+      padding: 100px 30px 90px 25px;
+    }
 
-        /* =========================
-           KURUKSHETRA LOGO
-        ========================= */
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
 
-        .movie-logo {
-            position: relative;
+      margin-bottom: 15px;
 
-            display: inline-block;
+      color: #ff7a45;
+      font-size: 12px;
+      font-weight: 800;
 
-            margin-bottom: 22px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
 
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
+    .hero-kicker::before {
+      content: "";
+      width: 28px;
+      height: 2px;
 
-            font-size:
-                clamp(55px, 8vw, 105px);
+      background: #ff4a1a;
+      box-shadow: 0 0 10px rgba(255, 74, 26, 0.8);
+    }
 
-            line-height: .85;
+    /* Professional movie logo */
 
-            font-weight: 900;
+    .movie-logo {
+      position: relative;
 
-            letter-spacing: 3px;
+      width: fit-content;
 
-            text-transform: uppercase;
+      margin-bottom: 8px;
 
-            color: #fff;
+      font-family: Georgia, "Times New Roman", serif;
 
-            text-shadow:
-                0 3px 0 #3a1007,
-                0 6px 0 #1b0904,
-                0 12px 28px rgba(0,0,0,.9);
+      font-size: clamp(54px, 8vw, 100px);
+      line-height: 0.9;
 
-            transform: skewX(-4deg);
-        }
+      font-weight: 900;
+      letter-spacing: -4px;
+      text-transform: uppercase;
 
-        .movie-logo::before {
-            content: "";
+      color: #fff;
 
-            position: absolute;
+      text-shadow:
+        0 3px 0 #b3260b,
+        0 8px 25px rgba(0, 0, 0, 0.75),
+        0 0 30px rgba(255, 70, 20, 0.18);
 
-            left: 4px;
-            right: -15px;
-            bottom: -13px;
+      transform: skewX(-5deg);
+    }
 
-            height: 5px;
+    .movie-logo::after {
+      content: "";
 
-            background:
-                linear-gradient(
-                    90deg,
-                    #ff2d00,
-                    #ff8a00,
-                    transparent
-                );
+      position: absolute;
+      left: 4px;
+      bottom: -13px;
 
-            border-radius: 10px;
+      width: 72%;
+      height: 4px;
 
-            box-shadow:
-                0 2px 15px rgba(255,69,0,.5);
-        }
+      background: linear-gradient(
+        90deg,
+        #ff2600,
+        #ff751f,
+        transparent
+      );
 
-        .movie-logo::after {
-            content: "KURUKSHETRA";
+      box-shadow: 0 0 15px rgba(255, 65, 15, 0.6);
 
-            position: absolute;
+      transform: skewX(5deg);
+    }
 
-            left: 5px;
-            top: 4px;
+    .season-title {
+      margin-top: 22px;
+      margin-bottom: 22px;
 
-            z-index: -1;
+      font-size: 13px;
+      font-weight: 700;
 
-            color: rgba(255,69,0,.28);
+      letter-spacing: 4px;
+      color: rgba(255, 255, 255, 0.75);
 
-            filter: blur(6px);
-        }
+      text-transform: uppercase;
+    }
 
-        .season-title {
-            display: block;
+    .metadata {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
 
-            margin-top: 12px;
+      margin-bottom: 20px;
 
-            color: #ddd;
+      color: rgba(255, 255, 255, 0.82);
 
-            font-size: 17px;
-            font-weight: 700;
+      font-size: 14px;
+      font-weight: 600;
+    }
 
-            letter-spacing: 5px;
+    .metadata span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
 
-            text-transform: uppercase;
-        }
+    .metadata .rating {
+      color: #ffc247;
+    }
 
-        /* =========================
-           MOVIE META
-        ========================= */
+    .meta-dot {
+      opacity: 0.35;
+    }
 
-        .movie-meta {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
+    .description {
+      max-width: 600px;
 
-            gap: 10px;
+      color: rgba(255, 255, 255, 0.72);
 
-            margin-bottom: 19px;
+      font-size: 15px;
+      line-height: 1.75;
 
-            color: #ddd;
-            font-size: 14px;
-        }
+      margin-bottom: 28px;
+    }
 
-        .meta-divider {
-            color: #777;
-        }
+    /* Hero buttons */
 
-        .rating {
-            color: #ffd54a;
-            font-weight: 700;
-        }
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
 
-        .language {
-            color: #fff;
-        }
+    .watch-btn {
+      min-height: 50px;
 
-        /* =========================
-           DESCRIPTION
-        ========================= */
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
 
-        .description {
-            max-width: 590px;
+      padding: 0 27px;
 
-            color: #c8c8c8;
+      border-radius: 7px;
 
-            font-size: 15px;
-            line-height: 1.75;
+      background: linear-gradient(
+        135deg,
+        #ff2500,
+        #ff6517
+      );
 
-            margin-bottom: 30px;
-        }
+      color: #fff;
 
-        /* =========================
-           HERO BUTTONS
-        ========================= */
+      font-size: 14px;
+      font-weight: 800;
 
-        .hero-buttons {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+      box-shadow:
+        0 10px 30px rgba(255, 53, 13, 0.25);
 
-        .watch-now {
-            min-height: 50px;
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+    }
 
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+    .watch-btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.1);
 
-            gap: 9px;
+      box-shadow:
+        0 14px 35px rgba(255, 53, 13, 0.4);
+    }
 
-            padding: 0 28px;
+    .whitelist-btn {
+      min-height: 50px;
+      min-width: 50px;
 
-            border: none;
-            border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #ff2b00,
-                    #ff6200
-                );
+      padding: 0 17px;
 
-            color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 7px;
 
-            text-decoration: none;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
 
-            font-size: 14px;
-            font-weight: 800;
+      backdrop-filter: blur(10px);
 
-            box-shadow:
-                0 8px 28px rgba(255,65,0,.35);
+      font-size: 14px;
+      font-weight: 700;
 
-            transition:
-                transform .25s ease,
-                box-shadow .25s ease,
-                filter .25s ease;
-        }
+      transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease;
+    }
 
-        .watch-now:hover {
-            transform: translateY(-3px) scale(1.02);
+    .whitelist-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
 
-            filter: brightness(1.08);
+    .plus {
+      width: 22px;
+      height: 22px;
 
-            box-shadow:
-                0 13px 38px rgba(255,65,0,.5);
-        }
+      display: grid;
+      place-items: center;
 
-        .plus-btn {
-            width: 50px;
-            height: 50px;
+      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      border-radius: 50%;
 
-            display: flex;
-            align-items: center;
-            justify-content: center;
+      font-size: 17px;
+      line-height: 1;
+    }
 
-            border: 1px solid rgba(255,255,255,.25);
-            border-radius: 6px;
+    /* =========================================================
+       MOVIE ROWS
+    ========================================================= */
 
-            background: rgba(255,255,255,.11);
+    .movie-section {
+      position: relative;
+      z-index: 5;
 
-            color: #fff;
+      margin-top: -15px;
+      padding-bottom: 38px;
+    }
 
-            font-size: 25px;
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-            cursor: pointer;
+      margin-bottom: 16px;
+    }
 
-            transition:
-                transform .25s ease,
-                background .25s ease;
-        }
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
 
-        .plus-btn:hover {
-            background: rgba(255,255,255,.2);
-            transform: scale(1.06);
-        }
+    .see-all {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
 
-        /* =========================
-           MOVIES SECTION
-        ========================= */
+    .see-all:hover {
+      color: #ff5a22;
+    }
 
-        .movies-section {
-            position: relative;
-            z-index: 5;
+    .movie-row {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(145px, 1fr)
+      );
 
-            padding:
-                5px 4% 55px;
-        }
+      gap: 15px;
 
-        .section-heading {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+      padding: 7px 5px 25px;
 
-            margin-bottom: 18px;
-        }
+      overflow: visible;
+    }
 
-        .section-heading h2 {
-            font-size: 21px;
-            font-weight: 700;
-        }
+    /* Movie card */
 
-        .view-all {
-            color: #999;
-            text-decoration: none;
-            font-size: 13px;
-        }
+    .movie-card {
+      position: relative;
 
-        .view-all:hover {
-            color: #ff5a1f;
-        }
+      height: 215px;
 
-        /* =========================
-           SMALLER MOVIE GRID
-        ========================= */
+      overflow: hidden;
 
-        .movie-grid {
-            display: grid;
+      border-radius: 9px;
 
-            grid-template-columns:
-                repeat(
-                    auto-fill,
-                    minmax(135px, 1fr)
-                );
+      background: #12141b;
 
-            gap: 17px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
 
-            align-items: start;
-        }
+      box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25);
 
-        /* =========================
-           MOVIE CARD
-        ========================= */
+      transform: translateY(0) scale(1);
 
-        .movie-card {
-            position: relative;
+      transition:
+        transform 0.3s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 
-            height: 205px;
+      will-change: transform;
+    }
 
-            overflow: hidden;
+    .movie-card:hover {
+      z-index: 20;
 
-            border-radius: 7px;
+      transform:
+        translateY(-7px)
+        scale(1.065);
 
-            background: #15161c;
+      border-color: rgba(255, 77, 25, 0.35);
 
-            cursor: pointer;
+      box-shadow:
+        0 20px 42px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(255, 75, 25, 0.08);
+    }
 
-            transform: scale(1);
+    .movie-poster {
+      width: 100%;
+      height: 100%;
 
-            transition:
-                transform .3s ease,
-                box-shadow .3s ease;
-        }
+      object-fit: cover;
 
-        .movie-card:hover {
-            transform: scale(1.08);
+      transition:
+        transform 0.45s cubic-bezier(.2,.8,.2,1),
+        filter 0.35s ease;
+    }
 
-            z-index: 20;
+    .movie-card:hover .movie-poster {
+      transform: scale(1.08);
+      filter: brightness(0.65);
+    }
 
-            box-shadow:
-                0 18px 42px rgba(0,0,0,.78);
-        }
+    /* Card gradient */
 
-        .movie-card img {
-            width: 100%;
-            height: 100%;
+    .movie-card::after {
+      content: "";
 
-            display: block;
+      position: absolute;
+      inset: 0;
 
-            object-fit: cover;
+      background:
+        linear-gradient(
+          180deg,
+          transparent 38%,
+          rgba(0, 0, 0, 0.9) 100%
+        );
 
-            transition:
-                transform .4s ease,
-                filter .3s ease;
-        }
+      opacity: 0.7;
 
-        .movie-card:hover img {
-            transform: scale(1.08);
-            filter: brightness(.82);
-        }
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
 
-        .movie-card::after {
-            content: "";
+    .movie-card:hover::after {
+      opacity: 1;
+    }
 
-            position: absolute;
-            inset: 0;
+    /* Hover preview */
 
-            background:
-                linear-gradient(
-                    to top,
-                    rgba(0,0,0,.97),
-                    rgba(0,0,0,.35) 58%,
-                    transparent
-                );
+    .movie-preview {
+      position: absolute;
+      z-index: 3;
 
-            pointer-events: none;
-        }
+      inset: auto 10px 10px;
 
-        /* =========================
-           CARD OVERLAY
-        ========================= */
+      transform: translateY(14px);
 
-        .movie-overlay {
-            position: absolute;
+      opacity: 0;
 
-            left: 0;
-            right: 0;
-            bottom: 0;
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
 
-            z-index: 3;
+    .movie-card:hover .movie-preview {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
-            padding: 13px;
+    .movie-title {
+      margin-bottom: 5px;
 
-            opacity: 0;
+      font-size: 14px;
+      font-weight: 800;
 
-            transform: translateY(14px);
+      text-shadow: 0 2px 8px #000;
+    }
 
-            transition:
-                opacity .3s ease,
-                transform .3s ease;
-        }
+    .movie-description {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
 
-        .movie-card:hover .movie-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      margin-bottom: 10px;
 
-        .movie-overlay h3 {
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
+      color: rgba(255, 255, 255, 0.72);
 
-        .movie-overlay p {
-            color: #ccc;
+      font-size: 10px;
+      line-height: 1.45;
+    }
 
-            font-size: 10px;
-            line-height: 1.45;
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
 
-            margin-bottom: 9px;
-        }
+    .play-btn {
+      width: 31px;
+      height: 31px;
 
-        .card-watch {
-            display: inline-flex;
-            align-items: center;
+      display: grid;
+      place-items: center;
 
-            gap: 5px;
+      border-radius: 50%;
 
-            padding: 7px 10px;
+      background: linear-gradient(
+        135deg,
+        #ff2600,
+        #ff6419
+      );
 
-            border-radius: 4px;
+      color: #fff;
 
-            background: #fff;
-            color: #000;
+      font-size: 12px;
 
-            text-decoration: none;
+      box-shadow:
+        0 5px 15px rgba(255, 60, 20, 0.3);
 
-            font-size: 10px;
-            font-weight: 700;
+      transition: transform 0.2s ease;
+    }
 
-            transition:
-                background .2s ease,
-                color .2s ease;
-        }
+    .play-btn:hover {
+      transform: scale(1.12);
+    }
 
-        .card-watch:hover {
-            background: #ff5a1f;
-            color: #fff;
-        }
+    .card-add {
+      width: 31px;
+      height: 31px;
 
-        /* =========================
-           FOOTER
-        ========================= */
+      display: grid;
+      place-items: center;
 
-        .footer {
-            padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 50%;
 
-            text-align: center;
+      background: rgba(0, 0, 0, 0.45);
 
-            color: #555;
+      color: #fff;
 
-            font-size: 12px;
+      font-size: 18px;
+    }
 
-            border-top:
-                1px solid rgba(255,255,255,.05);
-        }
+    /* =========================================================
+       SECOND ROW
+    ========================================================= */
 
-        /* =========================
-           TABLET
-        ========================= */
+    .movie-section + .movie-section {
+      margin-top: 0;
+    }
 
-        @media (max-width: 1000px) {
+    /* =========================================================
+       FOOTER
+    ========================================================= */
 
-            .sidebar {
-                width: 62px;
-                left: 10px;
-            }
+    footer {
+      margin-left: 105px;
 
-            .sidebar:hover {
-                width: 190px;
-            }
+      padding: 35px 25px 45px;
 
-            .main {
-                margin-left: 88px;
-                padding-right: 15px;
-            }
+      color: rgba(255, 255, 255, 0.38);
 
-            .sidebar:hover ~ .main {
-                margin-left: 210px;
-            }
+      text-align: center;
 
-            .hero {
-                min-height: 570px;
-            }
+      font-size: 12px;
+    }
 
-            .movie-grid {
-                grid-template-columns:
-                    repeat(4, 1fr);
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
 
-                gap: 14px;
-            }
+    @media (max-width: 1100px) {
 
-            .movie-card {
-                height: 195px;
-            }
-        }
+      .movie-row {
+        grid-template-columns:
+          repeat(5, minmax(135px, 1fr));
+      }
 
-        /* =========================
-           MOBILE
-        ========================= */
+      .movie-card {
+        height: 205px;
+      }
+    }
 
-        @media (max-width: 650px) {
+    @media (max-width: 850px) {
 
-            .sidebar {
-                position: fixed;
+      .sidebar {
+        width: 62px;
+        left: 12px;
+        top: 12px;
+        height: calc(100vh - 24px);
+      }
 
-                left: 8px;
-                right: 8px;
-                bottom: 8px;
-                top: auto;
+      .sidebar:hover {
+        width: 190px;
+      }
 
-                width: auto;
-                height: 62px;
+      main {
+        margin-left: 86px;
+      }
 
-                padding: 5px 8px;
+      .sidebar:hover ~ main {
+        margin-left: 215px;
+      }
 
-                border-radius: 16px;
+      .hero {
+        min-height: 600px;
+      }
 
-                flex-direction: row;
-                justify-content: center;
+      .hero-content {
+        padding-left: 20px;
+      }
 
-                background: rgba(15,17,23,.94);
-            }
+      .movie-row {
+        grid-template-columns:
+          repeat(4, minmax(125px, 1fr));
+      }
+    }
 
-            .sidebar:hover {
-                width: auto;
-            }
+    @media (max-width: 600px) {
 
-            .sidebar-logo {
-                display: none;
-            }
+      body {
+        padding-bottom: 70px;
+      }
 
-            .sidebar-nav {
-                width: 100%;
+      /* Mobile bottom navigation */
 
-                flex-direction: row;
+      .sidebar {
+        position: fixed;
 
-                justify-content: space-around;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        top: auto;
 
-                gap: 0;
-            }
+        width: auto;
+        height: 60px;
 
-            .sidebar-nav a {
-                min-height: 52px;
-                justify-content: center;
-            }
+        padding: 7px 10px;
 
-            .sidebar-icon {
-                min-width: 48px;
-                width: 48px;
-            }
+        flex-direction: row;
+        align-items: center;
 
-            .sidebar-label {
-                display: none;
-            }
+        border-radius: 17px;
 
-            .main,
-            .sidebar:hover ~ .main {
-                margin-left: 0;
-                padding-right: 0;
-                padding-bottom: 75px;
-            }
+        background: rgba(12, 14, 20, 0.82);
+      }
 
-            .hero {
-                min-height: 650px;
+      .sidebar:hover {
+        width: auto;
+      }
 
-                padding:
-                    275px 24px 55px;
+      .brand {
+        display: none;
+      }
 
-                border-radius: 0;
+      .nav {
+        width: 100%;
+        height: 100%;
 
-                background-position:
-                    center top;
-            }
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
 
-            .hero-content {
-                padding-top: 0;
-            }
+        gap: 2px;
+      }
 
-            .movie-logo {
-                font-size: 48px;
-                letter-spacing: 1px;
-            }
+      .nav-link {
+        min-height: 44px;
+        min-width: 45px;
 
-            .season-title {
-                font-size: 13px;
-                letter-spacing: 3px;
-            }
+        padding: 0;
 
-            .movie-meta {
-                font-size: 12px;
-                gap: 7px;
-            }
+        justify-content: center;
+      }
 
-            .description {
-                font-size: 13px;
-                line-height: 1.6;
-            }
+      .nav-link.active::before {
+        display: none;
+      }
 
-            .movies-section {
-                padding:
-                    25px 16px 50px;
-            }
+      .nav-label {
+        display: none;
+      }
 
-            .movie-grid {
-                grid-template-columns:
-                    repeat(2, 1fr);
+      .nav-icon {
+        margin: 0;
+      }
 
-                gap: 12px;
-            }
+      main,
+      .sidebar:hover ~ main {
+        margin-left: 0;
+        padding-right: 0;
+      }
 
-            .movie-card {
-                height: 205px;
-            }
+      .hero {
+        min-height: 620px;
 
-            .movie-card:hover {
-                transform: scale(1.045);
-            }
+        align-items: flex-end;
 
-            .movie-overlay {
-                padding: 11px;
-            }
+        background:
+          linear-gradient(
+            0deg,
+            #08090d 4%,
+            rgba(8, 9, 13, 0.78) 38%,
+            rgba(8, 9, 13, 0.2) 75%,
+            rgba(8, 9, 13, 0.45) 100%
+          ),
+          url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=90")
+          center top / cover no-repeat;
+      }
 
-            .movie-overlay h3 {
-                font-size: 13px;
-            }
+      .hero-content {
+        width: 100%;
+        padding: 60px 20px 48px;
+      }
 
-            .movie-overlay p {
-                font-size: 9px;
-            }
+      .movie-logo {
+        font-size: clamp(48px, 15vw, 72px);
+        letter-spacing: -3px;
+      }
 
-            .section-heading h2 {
-                font-size: 19px;
-            }
-        }
-    </style>
+      .season-title {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+      }
+
+      .metadata {
+        font-size: 12px;
+      }
+
+      .description {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .watch-btn {
+        flex: 1;
+      }
+
+      .whitelist-btn {
+        width: 52px;
+        padding: 0;
+      }
+
+      .whitelist-text {
+        display: none;
+      }
+
+      .movie-section {
+        margin-top: 0;
+        padding: 0 12px 25px;
+      }
+
+      .section-title {
+        font-size: 17px;
+      }
+
+      .movie-row {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        padding: 4px 2px 20px;
+      }
+
+      .movie-card {
+        height: 225px;
+      }
+
+      /*
+        On touch devices there is no real hover.
+        Keep cards compact until tapped/focused.
+      */
+
+      .movie-card:active,
+      .movie-card:focus-within {
+        transform:
+          translateY(-5px)
+          scale(1.025);
+      }
+
+      footer {
+        margin-left: 0;
+        padding: 20px 15px 95px;
+      }
+    }
+
+    @media (max-width: 380px) {
+
+      .movie-card {
+        height: 205px;
+      }
+
+      .hero {
+        min-height: 590px;
+      }
+
+      .hero-buttons {
+        width: 100%;
+      }
+    }
+
+    /* Reduced motion */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
-    <!-- =========================
-         SIDEBAR
-    ========================= -->
+  <!-- =========================================================
+       SIDEBAR
+  ========================================================== -->
 
-    <aside class="sidebar">
+  <aside class="sidebar">
 
-        <div class="sidebar-logo">
+    <div class="brand">
+      <div class="brand-star">★</div>
+      <div class="brand-name">VyaHotstar</div>
+    </div>
 
-            <div class="logo-icon">
-                V
-            </div>
+    <nav class="nav">
 
-            <div class="logo-text">
-                Vya<span>Hotstar</span>
-            </div>
+      <a href="index.html" class="nav-link">
+        <span class="nav-icon">⌂</span>
+        <span class="nav-label">Home</span>
+      </a>
+
+      <a href="search.html" class="nav-link">
+        <span class="nav-icon">⌕</span>
+        <span class="nav-label">Search</span>
+      </a>
+
+      <a href="TV.html" class="nav-link">
+        <span class="nav-icon">▣</span>
+        <span class="nav-label">TV Shows</span>
+      </a>
+
+      <a href="Movie.html" class="nav-link active">
+        <span class="nav-icon">▶</span>
+        <span class="nav-label">Movies</span>
+      </a>
+
+    </nav>
+
+  </aside>
+
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+        <div class="hero-kicker">
+          Featured Series
+        </div>
+
+        <h1 class="movie-logo">
+          Kurukshetra
+        </h1>
+
+        <div class="season-title">
+          Season 1 &nbsp;|&nbsp; Full Episodes 1 &amp; 2
+        </div>
+
+        <div class="metadata">
+
+          <span>2026</span>
+
+          <span class="meta-dot">•</span>
+
+          <span class="rating">★ 8.7</span>
+
+          <span class="meta-dot">•</span>
+
+          <span>2h 18m</span>
+
+          <span class="meta-dot">•</span>
+
+          <span>Hindi</span>
 
         </div>
 
-
-        <nav class="sidebar-nav">
-
-            <!-- HOME -->
-
-            <a href="index.html">
-
-                <span class="sidebar-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="
-                            M10 20v-6h4v6h5v-8h3L12 3
-                            2 12h3v8z
-                        " />
-                    </svg>
-
-                </span>
-
-                <span class="sidebar-label">
-                    Home
-                </span>
-
-            </a>
-
-
-            <!-- SEARCH -->
-
-            <a href="search.html">
-
-                <span class="sidebar-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="
-                            M9.5 3a6.5 6.5 0 1 0
-                            4.03 11.6l4.44 4.44
-                            1.41-1.41-4.44-4.44
-                            A6.5 6.5 0 0 0 9.5 3zm0
-                            2a4.5 4.5 0 1 1 0
-                            9 4.5 4.5 0 0 1 0-9z
-                        " />
-                    </svg>
-
-                </span>
-
-                <span class="sidebar-label">
-                    Search
-                </span>
-
-            </a>
-
-
-            <!-- TV -->
-
-            <a href="TV.html">
-
-                <span class="sidebar-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="
-                            M21 3H3c-1.1 0-2 .9-2
-                            2v14c0 1.1.9 2 2
-                            2h18c1.1 0 2-.9
-                            2-2V5c0-1.1-.9-2-2-2z
-                            M21 19H3V5h18v14z
-                            M8 7H6v2h2V7zm4 0h-2v2h2V7zm4
-                            0h-2v2h2V7z
-                        " />
-                    </svg>
-
-                </span>
-
-                <span class="sidebar-label">
-                    TV
-                </span>
-
-            </a>
-
-
-            <!-- MOVIES -->
-
-            <a href="Movie.html" class="active">
-
-                <span class="sidebar-icon">
-
-                    <svg viewBox="0 0 24 24">
-                        <path d="
-                            M18 4l2 4h-3l-2-4h-2l2
-                            4h-3l-2-4H8l2 4H7L5
-                            4H3c-1.1 0-2 .9-2 2v12
-                            c0 1.1.9 2 2 2h18c1.1
-                            0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3z
-                            M21 18H3V9h18v9z
-                        " />
-                    </svg>
-
-                </span>
-
-                <span class="sidebar-label">
-                    Movies
-                </span>
-
-            </a>
-
-        </nav>
-
-    </aside>
-
-
-    <!-- =========================
-         MAIN
-    ========================= -->
-
-    <main class="main">
-
-        <!-- =========================
-             KURUKSHETRA HERO
-        ========================= -->
-
-        <section class="hero">
-
-            <div class="hero-content">
-
-                <div class="hero-small-title">
-                    Featured Series
-                </div>
-
-
-                <!-- PROFESSIONAL TITLE -->
-
-                <div class="movie-logo">
-                    Kurukshetra
-                </div>
-
-                <span class="season-title">
-                    Season 1
-                </span>
-
-
-                <!-- MOVIE DETAILS -->
-
-                <div class="movie-meta">
-
-                    <span>
-                        2026
-                    </span>
-
-                    <span class="meta-divider">
-                        •
-                    </span>
-
-                    <span class="rating">
-                        ★ 8.7
-                    </span>
-
-                    <span class="meta-divider">
-                        •
-                    </span>
-
-                    <span>
-                        2h 18m
-                    </span>
-
-                    <span class="meta-divider">
-                        •
-                    </span>
-
-                    <span class="language">
-                        Hindi
-                    </span>
-
-                </div>
-
-
-                <!-- DESCRIPTION -->
-
-                <p class="description">
-
-                    Kurukshetra: Season 1 is an epic tale of
-                    courage, duty and destiny. Witness a powerful
-                    story filled with ambition, loyalty and
-                    righteousness as unforgettable characters
-                    face choices that can change their world
-                    forever.
-
-                </p>
-
-
-                <!-- ACTION BUTTONS -->
-
-                <div class="hero-buttons">
-
-                    <a
-                        href="player.html?title=Kurukshetra%20Season%201&video=G-3JSyi_Ss0"
-                        class="watch-now">
-
-                        ▶
-                        Watch Now
-
-                    </a>
-
-
-                    <button
-                        class="plus-btn"
-                        title="Add to My Space"
-                        onclick="addMovie(this)">
-
-                        +
-
-                    </button>
-
-                </div>
+        <p class="description">
+          Kurukshetra is an epic tale of courage, duty and destiny.
+          Witness a powerful battle between ambition and righteousness
+          as unforgettable characters face choices that will change
+          their world forever.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a
+            class="watch-btn"
+            href="player.html?title=Kurukshetra&video=G-3JSyi_Ss0"
+          >
+            ▶
+            Watch Now
+          </a>
+
+          <button
+            class="whitelist-btn"
+            onclick="addMovie(this)"
+            title="Add to Whitelist"
+          >
+            <span class="plus">+</span>
+            <span class="whitelist-text">Whitelist</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         NEW ON VYAHOTSTAR
+    ======================================================== -->
+
+    <section class="movie-section">
+
+      <div class="section-heading">
+        <h2 class="section-title">
+          New on VyaHotstar
+        </h2>
+
+        <a href="Movie.html" class="see-all">
+          See All →
+        </a>
+      </div>
+
+
+      <div class="movie-row">
+
+        <!-- Card 1 -->
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=500&q=85"
+            alt="Kurukshetra"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              Kurukshetra
+            </div>
+
+            <div class="movie-description">
+              An epic story of courage, destiny and war.
+            </div>
+
+            <div class="card-actions">
+
+              <a
+                href="player.html?title=Kurukshetra&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play Kurukshetra"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add Kurukshetra to Whitelist"
+              >
+                +
+              </button>
 
             </div>
 
-        </section>
+          </div>
+
+        </article>
 
 
-        <!-- =========================
-             MOVIE GRID
-        ========================= -->
+        <!-- Card 2 -->
 
-        <section class="movies-section">
+        <article class="movie-card">
 
-            <div class="section-heading">
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=85"
+            alt="Dark Night"
+            loading="lazy"
+          >
 
-                <h2>
-                    Latest Movies
-                </h2>
+          <div class="movie-preview">
 
-                <a
-                    href="Movie.html"
-                    class="view-all">
+            <div class="movie-title">
+              Dark Night
+            </div>
 
-                    View All →
+            <div class="movie-description">
+              A mysterious night changes everything.
+            </div>
 
-                </a>
+            <div class="card-actions">
+
+              <a
+                href="player.html?title=Dark%20Night&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play Dark Night"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add Dark Night"
+              >
+                +
+              </button>
 
             </div>
 
+          </div>
 
-            <div class="movie-grid">
+        </article>
 
 
-                <!-- MOVIE 1 -->
+        <!-- Card 3 -->
 
-                <div class="movie-card">
+        <article class="movie-card">
 
-                    <img
-                        src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=85"
-                        alt="Kurukshetra Season 1">
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=85"
+            alt="Future World"
+            loading="lazy"
+          >
 
-                    <div class="movie-overlay">
+          <div class="movie-preview">
 
-                        <h3>
-                            Kurukshetra: Season 1
-                        </h3>
+            <div class="movie-title">
+              Future World
+            </div>
 
-                        <p>
-                            An epic story of courage,
-                            duty and destiny.
-                        </p>
+            <div class="movie-description">
+              Humanity faces a new world beyond imagination.
+            </div>
 
-                        <a
-                            href="player.html?title=Kurukshetra%20Season%201&video=G-3JSyi_Ss0"
-                            class="card-watch">
+            <div class="card-actions">
 
-                            ▶ Watch Now
+              <a
+                href="player.html?title=Future%20World&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play Future World"
+              >
+                ▶
+              </a>
 
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- MOVIE 2 -->
-
-                <div class="movie-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=85"
-                        alt="Dark Night">
-
-                    <div class="movie-overlay">
-
-                        <h3>
-                            Dark Night
-                        </h3>
-
-                        <p>
-                            A mysterious story filled
-                            with suspense and action.
-                        </p>
-
-                        <a
-                            href="player.html?title=Dark%20Night&video=G-3JSyi_Ss0"
-                            class="card-watch">
-
-                            ▶ Watch Now
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- MOVIE 3 -->
-
-                <div class="movie-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=85"
-                        alt="Future World">
-
-                    <div class="movie-overlay">
-
-                        <h3>
-                            Future World
-                        </h3>
-
-                        <p>
-                            Enter a futuristic world where
-                            technology changes everything.
-                        </p>
-
-                        <a
-                            href="player.html?title=Future%20World&video=G-3JSyi_Ss0"
-                            class="card-watch">
-
-                            ▶ Watch Now
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- MOVIE 4 -->
-
-                <div class="movie-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=85"
-                        alt="Lost Journey">
-
-                    <div class="movie-overlay">
-
-                        <h3>
-                            Lost Journey
-                        </h3>
-
-                        <p>
-                            An incredible journey full of
-                            adventure and discovery.
-                        </p>
-
-                        <a
-                            href="player.html?title=Lost%20Journey&video=G-3JSyi_Ss0"
-                            class="card-watch">
-
-                            ▶ Watch Now
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- MOVIE 5 -->
-
-                <div class="movie-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=85"
-                        alt="Action Zone">
-
-                    <div class="movie-overlay">
-
-                        <h3>
-                            Action Zone
-                        </h3>
-
-                        <p>
-                            High-speed action and thrilling
-                            entertainment.
-                        </p>
-
-                        <a
-                            href="player.html?title=Action%20Zone&video=G-3JSyi_Ss0"
-                            class="card-watch">
-
-                            ▶ Watch Now
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- MOVIE 6 -->
-
-                <div class="movie-card">
-
-                    <img
-                        src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=85"
-                        alt="The Adventure">
-
-                    <div class="movie-overlay">
-
-                        <h3>
-                            The Adventure
-                        </h3>
-
-                        <p>
-                            A spectacular journey beyond
-                            imagination.
-                        </p>
-
-                        <a
-                            href="player.html?title=The%20Adventure&video=G-3JSyi_Ss0"
-                            class="card-watch">
-
-                            ▶ Watch Now
-
-                        </a>
-
-                    </div>
-
-                </div>
-
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add Future World"
+              >
+                +
+              </button>
 
             </div>
 
-        </section>
+          </div>
+
+        </article>
 
 
-        <footer class="footer">
+        <!-- Card 4 -->
 
-            © 2026 VyaHotstar. All Rights Reserved.
+        <article class="movie-card">
 
-        </footer>
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=85"
+            alt="Lost Journey"
+            loading="lazy"
+          >
 
-    </main>
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              Lost Journey
+            </div>
+
+            <div class="movie-description">
+              One journey. One secret. No way back.
+            </div>
+
+            <div class="card-actions">
+
+              <a
+                href="player.html?title=Lost%20Journey&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play Lost Journey"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add Lost Journey"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
 
 
-    <script>
+        <!-- Card 5 -->
 
-        function addMovie(button) {
+        <article class="movie-card">
 
-            button.textContent = "✓";
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=85"
+            alt="Action Zone"
+            loading="lazy"
+          >
 
-            button.style.background =
-                "#ff5a1f";
+          <div class="movie-preview">
 
-            button.style.color =
-                "#fff";
+            <div class="movie-title">
+              Action Zone
+            </div>
 
-            button.title =
-                "Added to My Space";
+            <div class="movie-description">
+              High stakes, fast action and impossible odds.
+            </div>
 
-        }
+            <div class="card-actions">
 
-    </script>
+              <a
+                href="player.html?title=Action%20Zone&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play Action Zone"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add Action Zone"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- Card 6 -->
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1470214304380-aadaedcfff1b?auto=format&fit=crop&w=500&q=85"
+            alt="The Adventure"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              The Adventure
+            </div>
+
+            <div class="movie-description">
+              A thrilling adventure beyond the unknown.
+            </div>
+
+            <div class="card-actions">
+
+              <a
+                href="player.html?title=The%20Adventure&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play The Adventure"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add The Adventure"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         TRENDING ROW
+    ======================================================== -->
+
+    <section class="movie-section">
+
+      <div class="section-heading">
+
+        <h2 class="section-title">
+          Trending Now
+        </h2>
+
+        <a href="Movie.html" class="see-all">
+          See All →
+        </a>
+
+      </div>
+
+      <div class="movie-row">
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1513106580091-1d82408b8cd8?auto=format&fit=crop&w=500&q=85"
+            alt="The Last Battle"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+            <div class="movie-title">The Last Battle</div>
+            <div class="movie-description">
+              The final battle begins.
+            </div>
+
+            <div class="card-actions">
+              <a href="player.html?title=The%20Last%20Battle&video=G-3JSyi_Ss0"
+                 class="play-btn">▶</a>
+
+              <button class="card-add" onclick="addMovie(this)">
+                +
+              </button>
+            </div>
+          </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=500&q=85"
+            alt="The Kingdom"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+            <div class="movie-title">The Kingdom</div>
+            <div class="movie-description">
+              Power comes at a dangerous price.
+            </div>
+
+            <div class="card-actions">
+              <a href="player.html?title=The%20Kingdom&video=G-3JSyi_Ss0"
+                 class="play-btn">▶</a>
+
+              <button class="card-add" onclick="addMovie(this)">
+                +
+              </button>
+            </div>
+          </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=85"
+            alt="Beyond Time"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+            <div class="movie-title">Beyond Time</div>
+            <div class="movie-description">
+              A journey through time itself.
+            </div>
+
+            <div class="card-actions">
+              <a href="player.html?title=Beyond%20Time&video=G-3JSyi_Ss0"
+                 class="play-btn">▶</a>
+
+              <button class="card-add" onclick="addMovie(this)">
+                +
+              </button>
+            </div>
+          </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=85"
+            alt="The Unknown"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+            <div class="movie-title">The Unknown</div>
+            <div class="movie-description">
+              Nothing is what it seems.
+            </div>
+
+            <div class="card-actions">
+              <a href="player.html?title=The%20Unknown&video=G-3JSyi_Ss0"
+                 class="play-btn">▶</a>
+
+              <button class="card-add" onclick="addMovie(this)">
+                +
+              </button>
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 VyaHotstar. All Rights Reserved.
+  </footer>
+
+
+  <script>
+
+    function addMovie(button) {
+
+      if (button.dataset.added === "true") {
+
+        button.dataset.added = "false";
+
+        button.innerHTML =
+          button.classList.contains("whitelist-btn")
+            ? '<span class="plus">+</span><span class="whitelist-text">Whitelist</span>'
+            : "+";
+
+        button.title = "Add to Whitelist";
+
+        return;
+      }
+
+      button.dataset.added = "true";
+
+      if (button.classList.contains("whitelist-btn")) {
+
+        button.innerHTML =
+          '<span class="plus">✓</span><span class="whitelist-text">Whitelisted</span>';
+
+        button.title = "Remove from Whitelist";
+
+      } else {
+
+        button.innerHTML = "✓";
+        button.title = "Remove from Whitelist";
+
+      }
+
+    }
+
+  </script>
 
 </body>
-
 </html>
