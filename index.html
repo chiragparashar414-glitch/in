@@ -1,977 +1,1617 @@
-/* =========================================================
-   SIDEBAR — JioHotstar Inspired Transparent Navigation
-========================================================= */
-
-.sidebar {
-  position: fixed;
-  z-index: 1000;
-
-  left: 18px;
-  top: 18px;
-
-  width: 78px;
-  height: calc(100vh - 36px);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  padding: 20px 10px;
-
-  /*
-    Completely transparent.
-    No solid background panel.
-  */
-  background: transparent;
-
-  border: none;
-  box-shadow: none;
-
-  /*
-    Keeps the sidebar visually separated from
-    the page without creating a solid panel.
-  */
-  transition:
-    width 0.3s ease,
-    background 0.3s ease;
-}
-
-
-/* ---------------------------------------------------------
-   Optional subtle glow behind the navigation
---------------------------------------------------------- */
-
-.sidebar::before {
-  content: "";
-
-  position: absolute;
-
-  left: -20px;
-  top: 0;
-
-  width: 110px;
-  height: 100%;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0.28),
-      rgba(0, 0, 0, 0.08),
-      transparent
-    );
-
-  opacity: 0;
-
-  pointer-events: none;
-
-  transition: opacity 0.3s ease;
-}
-
-.sidebar:hover::before {
-  opacity: 1;
-}
-
-
-/* =========================================================
-   BRAND
-========================================================= */
-
-.brand {
-  position: relative;
-  z-index: 2;
-
-  width: 100%;
-  height: 58px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  margin-bottom: 35px;
-
-  overflow: visible;
-}
-
-
-/* VyaHotstar Star */
-
-.brand-star {
-  flex: 0 0 43px;
-
-  width: 43px;
-  height: 43px;
-
-  display: grid;
-  place-items: center;
-
-  background:
-    linear-gradient(
-      145deg,
-      #ff2100,
-      #ff6a00
-    );
-
-  color: #fff;
-
-  font-size: 21px;
-  font-weight: 900;
-
-  clip-path: polygon(
-    50% 0%,
-    61% 35%,
-    98% 35%,
-    68% 56%,
-    79% 92%,
-    50% 70%,
-    21% 92%,
-    32% 56%,
-    2% 35%,
-    39% 35%
-  );
-
-  filter:
-    drop-shadow(
-      0 5px 14px
-      rgba(255, 58, 0, 0.4)
-    );
-
-  transition:
-    transform 0.3s ease,
-    filter 0.3s ease;
-}
-
-.sidebar:hover .brand-star {
-  transform:
-    rotate(8deg)
-    scale(1.06);
-
-  filter:
-    drop-shadow(
-      0 6px 18px
-      rgba(255, 58, 0, 0.6)
-    );
-}
-
-
-/* Brand name */
-
-.brand-name {
-  position: absolute;
-
-  left: 58px;
-
-  font-size: 18px;
-  font-weight: 800;
-
-  letter-spacing: -0.5px;
-
-  white-space: nowrap;
-
-  opacity: 0;
-
-  transform: translateX(-12px);
-
-  pointer-events: none;
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-}
-
-.sidebar:hover .brand-name {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-.nav {
-  position: relative;
-  z-index: 2;
-
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  gap: 8px;
-
-  flex: 1;
-}
-
-
-/* Individual navigation item */
-
-.nav-link {
-  position: relative;
-
-  width: 58px;
-  min-height: 54px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 0;
-
-  border-radius: 15px;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.62
-    );
-
-  background: transparent;
-
-  transition:
-    width 0.3s ease,
-    background 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
-}
-
-
-/* Expanded navigation item */
-
-.sidebar:hover .nav-link {
-  width: 180px;
-
-  justify-content: flex-start;
-
-  padding-left: 18px;
-}
-
-
-/* Hover */
-
-.nav-link:hover {
-  color: #fff;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.075
-    );
-
-  transform: translateX(2px);
-}
-
-
-/* Active */
-
-.nav-link.active {
-  color: #fff;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.08
-    );
-}
-
-
-/* Active orange indicator */
-
-.nav-link.active::before {
-  content: "";
-
-  position: absolute;
-
-  left: -5px;
-
-  top: 50%;
-
-  width: 3px;
-  height: 24px;
-
-  transform: translateY(-50%);
-
-  background:
-    linear-gradient(
-      180deg,
-      #ff2600,
-      #ff6b1a
-    );
-
-  border-radius: 10px;
-
-  box-shadow:
-    0 0 12px
-    rgba(
-      255,
-      59,
-      18,
-      0.75
-    );
-}
-
-
-/* =========================================================
-   NAVIGATION ICON
-========================================================= */
-
-.nav-icon {
-  flex: 0 0 28px;
-
-  width: 28px;
-  height: 28px;
-
-  display: grid;
-  place-items: center;
-
-  font-size: 20px;
-  line-height: 1;
-
-  color: inherit;
-
-  transition:
-    transform 0.25s ease,
-    color 0.25s ease;
-}
-
-.nav-link:hover .nav-icon {
-  transform: scale(1.08);
-}
-
-.nav-link.active .nav-icon {
-  color: #fff;
-}
-
-
-/* =========================================================
-   NAVIGATION LABEL
-========================================================= */
-
-.nav-label {
-  margin-left: 14px;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  line-height: 1;
-
-  white-space: nowrap;
-
-  opacity: 0;
-
-  transform: translateX(-10px);
-
-  pointer-events: none;
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-}
-
-.sidebar:hover .nav-label {
-  opacity: 1;
-
-  transform: translateX(0);
-}
-
-
-/* =========================================================
-   PROFILE / ACCOUNT AREA
-========================================================= */
-
-.profile-area {
-  position: relative;
-  z-index: 3;
-
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  margin-top: auto;
-
-  padding-top: 18px;
-}
-
-
-/* Profile button */
-
-.profile-btn {
-  position: relative;
-
-  width: 52px;
-  height: 52px;
-
-  display: flex;
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 13px;
-
-  padding: 0;
-
-  border-radius: 50%;
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.07
-    );
-
-  border:
-    1px solid
-    rgba(
-      255,
-      255,
-      255,
-      0.12
-    );
-
-  color: #fff;
-
-  overflow: hidden;
-
-  transition:
-    width 0.3s ease,
-    border-radius 0.3s ease,
-    background 0.25s ease,
-    transform 0.25s ease;
-}
-
-
-/* Profile hover */
-
-.profile-btn:hover {
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.13
-    );
-
-  border-color:
-    rgba(
-      255,
-      255,
-      255,
-      0.22
-    );
-
-  transform: scale(1.04);
-}
-
-
-/* Expanded profile */
-
-.sidebar:hover .profile-btn {
-  width: 180px;
-
-  justify-content: flex-start;
-
-  padding-left: 15px;
-
-  border-radius: 15px;
-}
-
-
-/* Profile icon */
-
-.profile-icon {
-  flex: 0 0 28px;
-
-  width: 28px;
-  height: 28px;
-
-  display: grid;
-  place-items: center;
-
-  font-size: 21px;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.85
-    );
-}
-
-
-/* Profile label */
-
-.profile-label {
-  font-size: 14px;
-  font-weight: 600;
-
-  white-space: nowrap;
-
-  opacity: 0;
-
-  transform: translateX(-8px);
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
-}
-
-.sidebar:hover .profile-label {
-  opacity: 1;
-
-  transform: translateX(0);
-}
-
-
-/* =========================================================
-   MAIN CONTENT OFFSET
-========================================================= */
-
-main {
-  margin-left: 105px;
-
-  padding-right: 25px;
-
-  transition:
-    margin-left 0.3s ease;
-}
-
-.sidebar:hover ~ main {
-  margin-left: 235px;
-}
-
-
-/* Footer follows sidebar expansion */
-
-footer {
-  margin-left: 105px;
-
-  padding:
-    35px
-    25px
-    45px;
-
-  color:
-    rgba(
-      255,
-      255,
-      255,
-      0.38
-    );
-
-  text-align: center;
-
-  font-size: 12px;
-
-  transition:
-    margin-left 0.3s ease;
-}
-
-.sidebar:hover ~ main + footer {
-  margin-left: 235px;
-}
-
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 850px) {
-
-  .sidebar {
-    left: 12px;
-    top: 12px;
-
-    width: 68px;
-
-    height:
-      calc(100vh - 24px);
-
-    padding:
-      18px 8px;
-  }
-
-  .sidebar:hover {
-    width: 195px;
-  }
-
-  .brand {
-    margin-bottom: 28px;
-  }
-
-  .sidebar:hover .nav-link {
-    width: 165px;
-  }
-
-  .sidebar:hover .profile-btn {
-    width: 165px;
-  }
-
-  main {
-    margin-left: 88px;
-  }
-
-  .sidebar:hover ~ main {
-    margin-left: 215px;
-  }
-
-  footer {
-    margin-left: 88px;
-  }
-
-  .sidebar:hover ~ main + footer {
-    margin-left: 215px;
-  }
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 600px) {
-
-  body {
-    padding-bottom: 75px;
-  }
-
-
-  /* Bottom transparent navigation */
-
-  .sidebar {
-    position: fixed;
-
-    left: 10px;
-    right: 10px;
-
-    bottom: 10px;
-    top: auto;
-
-    width: auto;
-
-    height: 64px;
-
-    padding:
-      7px 10px;
-
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-
-    background:
-      rgba(
-        8,
-        9,
-        13,
-        0.78
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="VyaHotstar - Watch Kurukshetra and discover movies, TV shows and entertainment.">
+
+  <title>Kurukshetra - VyaHotstar</title>
+
+  <link rel="icon" href="Subject.png">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #08090d;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      border: 0;
+      cursor: pointer;
+    }
+
+    /* =========================================================
+       SIDEBAR
+    ========================================================= */
+
+    .sidebar {
+      position: fixed;
+      z-index: 1000;
+      left: 18px;
+      top: 18px;
+      width: 70px;
+      height: calc(100vh - 36px);
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 18px 10px;
+
+      background: rgba(15, 17, 23, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 20px;
+
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+
+      box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+      transition:
+        width 0.3s ease,
+        background 0.3s ease;
+    }
+
+    .sidebar:hover {
+      width: 210px;
+      background: rgba(12, 14, 20, 0.72);
+    }
+
+    /* Brand */
+
+    .brand {
+      height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 8px;
+      margin-bottom: 28px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .brand-star {
+      flex: 0 0 42px;
+      width: 42px;
+      height: 42px;
+
+      display: grid;
+      place-items: center;
+
+      background: linear-gradient(145deg, #ff2100, #ff6a00);
+      color: #fff;
+
+      font-size: 22px;
+      font-weight: 900;
+
+      clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 56%,
+        79% 92%,
+        50% 70%,
+        21% 92%,
+        32% 56%,
+        2% 35%,
+        39% 35%
       );
 
-    border:
-      1px solid
-      rgba(
-        255,
-        255,
-        255,
-        0.08
+      filter: drop-shadow(0 5px 12px rgba(255, 58, 0, 0.35));
+
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar:hover .brand-star {
+      transform: rotate(12deg) scale(1.04);
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+
+      opacity: 0;
+      transform: translateX(-8px);
+
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .sidebar:hover .brand-name {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* Navigation */
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .nav-link {
+      position: relative;
+
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+
+      padding: 0 11px;
+      border-radius: 13px;
+
+      color: rgba(255, 255, 255, 0.65);
+
+      transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-link.active::before {
+      content: "";
+
+      position: absolute;
+      left: -10px;
+      width: 3px;
+      height: 22px;
+
+      background: #ff3b12;
+      border-radius: 5px;
+
+      box-shadow: 0 0 12px rgba(255, 59, 18, 0.65);
+    }
+
+    .nav-icon {
+      flex: 0 0 26px;
+
+      width: 26px;
+      display: grid;
+      place-items: center;
+
+      font-size: 19px;
+    }
+
+    .nav-label {
+      margin-left: 14px;
+
+      font-size: 14px;
+      font-weight: 600;
+
+      opacity: 0;
+      transform: translateX(-8px);
+
+      white-space: nowrap;
+
+      transition:
+        opacity 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    .sidebar:hover .nav-label {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* =========================================================
+       MAIN CONTENT
+    ========================================================= */
+
+    main {
+      margin-left: 105px;
+      padding-right: 25px;
+
+      transition: margin-left 0.3s ease;
+    }
+
+    .sidebar:hover ~ main {
+      margin-left: 235px;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      position: relative;
+      min-height: 650px;
+
+      display: flex;
+      align-items: center;
+
+      overflow: hidden;
+
+      background:
+        linear-gradient(
+          90deg,
+          #08090d 0%,
+          rgba(8, 9, 13, 0.88) 25%,
+          rgba(8, 9, 13, 0.36) 62%,
+          rgba(8, 9, 13, 0.72) 100%
+        ),
+        linear-gradient(
+          0deg,
+          #08090d 0%,
+          transparent 28%,
+          rgba(0, 0, 0, 0.12) 100%
+        ),
+        url("https://images.filmibeat.com/img/2025/09/kurukshetrad-1757488652.jpg")
+        center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at 70% 45%,
+          rgba(255, 69, 20, 0.12),
+          transparent 32%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+
+      max-width: 680px;
+      padding: 100px 30px 90px 25px;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 15px;
+
+      color: #ff7a45;
+      font-size: 12px;
+      font-weight: 800;
+
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero-kicker::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+
+      background: #ff4a1a;
+      box-shadow: 0 0 10px rgba(255, 74, 26, 0.8);
+    }
+
+    /* Professional movie logo */
+
+    .movie-logo {
+      position: relative;
+
+      width: fit-content;
+
+      margin-bottom: 8px;
+
+      font-family: Georgia, "Times New Roman", serif;
+
+      font-size: clamp(54px, 8vw, 100px);
+      line-height: 0.9;
+
+      font-weight: 900;
+      letter-spacing: -4px;
+      text-transform: uppercase;
+
+      color: #fff;
+
+      text-shadow:
+        0 3px 0 #b3260b,
+        0 8px 25px rgba(0, 0, 0, 0.75),
+        0 0 30px rgba(255, 70, 20, 0.18);
+
+      transform: skewX(-5deg);
+    }
+
+    .movie-logo::after {
+      content: "";
+
+      position: absolute;
+      left: 4px;
+      bottom: -13px;
+
+      width: 72%;
+      height: 4px;
+
+      background: linear-gradient(
+        90deg,
+        #ff2600,
+        #ff751f,
+        transparent
       );
 
-    border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 65, 15, 0.6);
 
-    backdrop-filter:
-      blur(20px);
+      transform: skewX(5deg);
+    }
 
-    -webkit-backdrop-filter:
-      blur(20px);
+    .season-title {
+      margin-top: 22px;
+      margin-bottom: 22px;
 
-    box-shadow:
-      0 12px 35px
-      rgba(0, 0, 0, 0.45);
-  }
+      font-size: 13px;
+      font-weight: 700;
 
+      letter-spacing: 4px;
+      color: rgba(255, 255, 255, 0.75);
 
-  .sidebar:hover {
-    width: auto;
+      text-transform: uppercase;
+    }
 
-    background:
-      rgba(
-        8,
-        9,
-        13,
-        0.78
+    .metadata {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+
+      margin-bottom: 20px;
+
+      color: rgba(255, 255, 255, 0.82);
+
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .metadata span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .metadata .rating {
+      color: #ffc247;
+    }
+
+    .meta-dot {
+      opacity: 0.35;
+    }
+
+    .description {
+      max-width: 600px;
+
+      color: rgba(255, 255, 255, 0.72);
+
+      font-size: 15px;
+      line-height: 1.75;
+
+      margin-bottom: 28px;
+    }
+
+    /* Hero buttons */
+
+    .hero-buttons {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .watch-btn {
+      min-height: 50px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      padding: 0 27px;
+
+      border-radius: 7px;
+
+      background: linear-gradient(
+        135deg,
+        #ff2500,
+        #ff6517
       );
-  }
 
+      color: #fff;
 
-  .sidebar::before {
-    display: none;
-  }
+      font-size: 14px;
+      font-weight: 800;
 
+      box-shadow:
+        0 10px 30px rgba(255, 53, 13, 0.25);
 
-  /* Hide desktop brand */
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        filter 0.25s ease;
+    }
 
-  .brand {
-    display: none;
-  }
+    .watch-btn:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.1);
 
+      box-shadow:
+        0 14px 35px rgba(255, 53, 13, 0.4);
+    }
 
-  /* Navigation */
+    .whitelist-btn {
+      min-height: 50px;
+      min-width: 50px;
 
-  .nav {
-    width: 100%;
-    height: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
 
-    flex: 1;
+      padding: 0 17px;
 
-    display: flex;
-    flex-direction: row;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 7px;
 
-    align-items: center;
-    justify-content: space-around;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
 
-    gap: 2px;
-  }
+      backdrop-filter: blur(10px);
 
+      font-size: 14px;
+      font-weight: 700;
 
-  .nav-link,
-  .sidebar:hover .nav-link {
-    width: 48px;
+      transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        border-color 0.25s ease;
+    }
 
-    min-height: 48px;
+    .whitelist-btn:hover {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
 
-    padding: 0;
+    .plus {
+      width: 22px;
+      height: 22px;
 
-    justify-content: center;
+      display: grid;
+      place-items: center;
 
-    border-radius: 14px;
-  }
+      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      border-radius: 50%;
 
+      font-size: 17px;
+      line-height: 1;
+    }
 
-  .nav-link.active::before {
-    display: none;
-  }
+    /* =========================================================
+       MOVIE ROWS
+    ========================================================= */
 
+    .movie-section {
+      position: relative;
+      z-index: 5;
 
-  .nav-label {
-    display: none;
-  }
+      margin-top: -15px;
+      padding-bottom: 38px;
+    }
 
+    .section-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-  .nav-icon {
-    margin: 0;
+      margin-bottom: 16px;
+    }
 
-    font-size: 20px;
-  }
+    .section-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
 
+    .see-all {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
 
-  /* Mobile profile */
+    .see-all:hover {
+      color: #ff5a22;
+    }
 
-  .profile-area {
-    width: auto;
+    .movie-row {
+      display: grid;
+      grid-template-columns: repeat(
+        auto-fill,
+        minmax(145px, 1fr)
+      );
 
-    margin: 0;
+      gap: 15px;
 
-    padding: 0;
-  }
+      padding: 7px 5px 25px;
 
+      overflow: visible;
+    }
 
-  .profile-btn,
-  .sidebar:hover .profile-btn {
-    width: 48px;
-    height: 48px;
+    /* Movie card */
 
-    padding: 0;
+    .movie-card {
+      position: relative;
 
-    justify-content: center;
+      height: 215px;
 
-    border-radius: 14px;
-  }
+      overflow: hidden;
 
+      border-radius: 9px;
 
-  .profile-label {
-    display: none;
-  }
+      background: #12141b;
 
+      border: 1px solid rgba(255, 255, 255, 0.05);
 
-  .profile-icon {
-    font-size: 20px;
-  }
+      box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.25);
 
+      transform: translateY(0) scale(1);
 
-  main,
-  .sidebar:hover ~ main {
-    margin-left: 0;
+      transition:
+        transform 0.3s cubic-bezier(.2,.8,.2,1),
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
 
-    padding-right: 0;
-  }
+      will-change: transform;
+    }
 
+    .movie-card:hover {
+      z-index: 20;
 
-  footer,
-  .sidebar:hover ~ main + footer {
-    margin-left: 0;
-  }
-}
+      transform:
+        translateY(-7px)
+        scale(1.065);
 
+      border-color: rgba(255, 77, 25, 0.35);
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+      box-shadow:
+        0 20px 42px rgba(0, 0, 0, 0.65),
+        0 0 0 1px rgba(255, 75, 25, 0.08);
+    }
 
-@media (prefers-reduced-motion: reduce) {
+    .movie-poster {
+      width: 100%;
+      height: 100%;
 
-  .sidebar,
-  .brand-star,
-  .nav-link,
-  .nav-icon,
-  .nav-label,
-  .profile-btn,
-  .profile-label {
-    transition: none !important;
-  }
-}
+      object-fit: cover;
 
-<!-- =========================================================
-     JIOHOTSTAR-STYLE TRANSPARENT SIDEBAR
-========================================================== -->
+      transition:
+        transform 0.45s cubic-bezier(.2,.8,.2,1),
+        filter 0.35s ease;
+    }
 
-<aside class="sidebar">
+    .movie-card:hover .movie-poster {
+      transform: scale(1.08);
+      filter: brightness(0.65);
+    }
 
-  <!-- =======================================================
-       VYAHOTSTAR LOGO
-  ======================================================== -->
+    /* Card gradient */
 
-  <div class="brand">
+    .movie-card::after {
+      content: "";
 
-    <div class="brand-star" aria-label="VyaHotstar">
-      ★
+      position: absolute;
+      inset: 0;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent 38%,
+          rgba(0, 0, 0, 0.9) 100%
+        );
+
+      opacity: 0.7;
+
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .movie-card:hover::after {
+      opacity: 1;
+    }
+
+    /* Hover preview */
+
+    .movie-preview {
+      position: absolute;
+      z-index: 3;
+
+      inset: auto 10px 10px;
+
+      transform: translateY(14px);
+
+      opacity: 0;
+
+      transition:
+        opacity 0.3s ease,
+        transform 0.3s ease;
+    }
+
+    .movie-card:hover .movie-preview {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .movie-title {
+      margin-bottom: 5px;
+
+      font-size: 14px;
+      font-weight: 800;
+
+      text-shadow: 0 2px 8px #000;
+    }
+
+    .movie-description {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
+      margin-bottom: 10px;
+
+      color: rgba(255, 255, 255, 0.72);
+
+      font-size: 10px;
+      line-height: 1.45;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .play-btn {
+      width: 31px;
+      height: 31px;
+
+      display: grid;
+      place-items: center;
+
+      border-radius: 50%;
+
+      background: linear-gradient(
+        135deg,
+        #ff2600,
+        #ff6419
+      );
+
+      color: #fff;
+
+      font-size: 12px;
+
+      box-shadow:
+        0 5px 15px rgba(255, 60, 20, 0.3);
+
+      transition: transform 0.2s ease;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.12);
+    }
+
+    .card-add {
+      width: 31px;
+      height: 31px;
+
+      display: grid;
+      place-items: center;
+
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 50%;
+
+      background: rgba(0, 0, 0, 0.45);
+
+      color: #fff;
+
+      font-size: 18px;
+    }
+
+    /* =========================================================
+       SECOND ROW
+    ========================================================= */
+
+    .movie-section + .movie-section {
+      margin-top: 0;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      margin-left: 105px;
+
+      padding: 35px 25px 45px;
+
+      color: rgba(255, 255, 255, 0.38);
+
+      text-align: center;
+
+      font-size: 12px;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 1100px) {
+
+      .movie-row {
+        grid-template-columns:
+          repeat(5, minmax(135px, 1fr));
+      }
+
+      .movie-card {
+        height: 205px;
+      }
+    }
+
+    @media (max-width: 850px) {
+
+      .sidebar {
+        width: 62px;
+        left: 12px;
+        top: 12px;
+        height: calc(100vh - 24px);
+      }
+
+      .sidebar:hover {
+        width: 190px;
+      }
+
+      main {
+        margin-left: 86px;
+      }
+
+      .sidebar:hover ~ main {
+        margin-left: 215px;
+      }
+
+      .hero {
+        min-height: 600px;
+      }
+
+      .hero-content {
+        padding-left: 20px;
+      }
+
+      .movie-row {
+        grid-template-columns:
+          repeat(4, minmax(125px, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+
+      body {
+        padding-bottom: 70px;
+      }
+
+      /* Mobile bottom navigation */
+
+      .sidebar {
+        position: fixed;
+
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        top: auto;
+
+        width: auto;
+        height: 60px;
+
+        padding: 7px 10px;
+
+        flex-direction: row;
+        align-items: center;
+
+        border-radius: 17px;
+
+        background: rgba(12, 14, 20, 0.82);
+      }
+
+      .sidebar:hover {
+        width: auto;
+      }
+
+      .brand {
+        display: none;
+      }
+
+      .nav {
+        width: 100%;
+        height: 100%;
+
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+
+        gap: 2px;
+      }
+
+      .nav-link {
+        min-height: 44px;
+        min-width: 45px;
+
+        padding: 0;
+
+        justify-content: center;
+      }
+
+      .nav-link.active::before {
+        display: none;
+      }
+
+      .nav-label {
+        display: none;
+      }
+
+      .nav-icon {
+        margin: 0;
+      }
+
+      main,
+      .sidebar:hover ~ main {
+        margin-left: 0;
+        padding-right: 0;
+      }
+
+      .hero {
+        min-height: 620px;
+
+        align-items: flex-end;
+
+        background:
+          linear-gradient(
+            0deg,
+            #08090d 4%,
+            rgba(8, 9, 13, 0.78) 38%,
+            rgba(8, 9, 13, 0.2) 75%,
+            rgba(8, 9, 13, 0.45) 100%
+          ),
+          url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=90")
+          center top / cover no-repeat;
+      }
+
+      .hero-content {
+        width: 100%;
+        padding: 60px 20px 48px;
+      }
+
+      .movie-logo {
+        font-size: clamp(48px, 15vw, 72px);
+        letter-spacing: -3px;
+      }
+
+      .season-title {
+        font-size: 10px;
+        letter-spacing: 2.5px;
+      }
+
+      .metadata {
+        font-size: 12px;
+      }
+
+      .description {
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .watch-btn {
+        flex: 1;
+      }
+
+      .whitelist-btn {
+        width: 52px;
+        padding: 0;
+      }
+
+      .whitelist-text {
+        display: none;
+      }
+
+      .movie-section {
+        margin-top: 0;
+        padding: 0 12px 25px;
+      }
+
+      .section-title {
+        font-size: 17px;
+      }
+
+      .movie-row {
+        grid-template-columns:
+          repeat(2, minmax(0, 1fr));
+
+        gap: 12px;
+
+        padding: 4px 2px 20px;
+      }
+
+      .movie-card {
+        height: 225px;
+      }
+
+      /*
+        On touch devices there is no real hover.
+        Keep cards compact until tapped/focused.
+      */
+
+      .movie-card:active,
+      .movie-card:focus-within {
+        transform:
+          translateY(-5px)
+          scale(1.025);
+      }
+
+      footer {
+        margin-left: 0;
+        padding: 20px 15px 95px;
+      }
+    }
+
+    @media (max-width: 380px) {
+
+      .movie-card {
+        height: 205px;
+      }
+
+      .hero {
+        min-height: 590px;
+      }
+
+      .hero-buttons {
+        width: 100%;
+      }
+    }
+
+    /* Reduced motion */
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       SIDEBAR
+  ========================================================== -->
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-star">★</div>
+      <div class="brand-name">VyaHotstar</div>
     </div>
 
-    <div class="brand-name">
-      VyaHotstar
-    </div>
+    <nav class="nav">
 
-  </div>
+      <a href="index.html" class="nav-link">
+        <span class="nav-icon">⌂</span>
+        <span class="nav-label">Home</span>
+      </a>
 
+      <a href="search.html" class="nav-link">
+        <span class="nav-icon">⌕</span>
+        <span class="nav-label">Search</span>
+      </a>
 
-  <!-- =======================================================
-       MAIN NAVIGATION
-  ======================================================== -->
+      <a href="TV.html" class="nav-link">
+        <span class="nav-icon">▣</span>
+        <span class="nav-label">TV Shows</span>
+      </a>
 
-  <nav class="nav" aria-label="Main navigation">
+      <a href="Movie.html" class="nav-link active">
+        <span class="nav-icon">▶</span>
+        <span class="nav-label">Movies</span>
+      </a>
 
-    <!-- Home -->
+    </nav>
 
-    <a
-      href="index.html"
-      class="nav-link"
-      aria-label="Home"
-    >
-
-      <span class="nav-icon">
-        ⌂
-      </span>
-
-      <span class="nav-label">
-        Home
-      </span>
-
-    </a>
+  </aside>
 
 
-    <!-- Search -->
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
 
-    <a
-      href="search.html"
-      class="nav-link"
-      aria-label="Search"
-    >
+  <main>
 
-      <span class="nav-icon">
-        ⌕
-      </span>
+    <!-- HERO -->
 
-      <span class="nav-label">
-        Search
-      </span>
+    <section class="hero">
 
-    </a>
+      <div class="hero-content">
+
+        <div class="hero-kicker">
+          Featured Series
+        </div>
+
+        <h1 class="movie-logo">
+          Kurukshetra
+        </h1>
+
+        <div class="season-title">
+          Season 1 &nbsp;|&nbsp; Full Episodes 1 &amp; 2
+        </div>
+
+        <div class="metadata">
+
+          <span>2026</span>
+
+          <span class="meta-dot">•</span>
+
+          <span class="rating">★ 8.7</span>
+
+          <span class="meta-dot">•</span>
+
+          <span>2h 18m</span>
+
+          <span class="meta-dot">•</span>
+
+          <span>Hindi</span>
+
+        </div>
+
+        <p class="description">
+          Kurukshetra is an epic tale of courage, duty and destiny.
+          Witness a powerful battle between ambition and righteousness
+          as unforgettable characters face choices that will change
+          their world forever.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a
+            class="watch-btn"
+            href="player.html?title=Kurukshetra&video=G-3JSyi_Ss0"
+          >
+            ▶
+            Watch Now
+          </a>
+
+          <button
+            class="whitelist-btn"
+            onclick="addMovie(this)"
+            title="Add to Whitelist"
+          >
+            <span class="plus">+</span>
+            <span class="whitelist-text">Whitelist</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
 
 
-    <!-- TV Shows -->
+    <!-- =======================================================
+         NEW ON VYAHOTSTAR
+    ======================================================== -->
 
-    <a
-      href="TV.html"
-      class="nav-link"
-      aria-label="TV Shows"
-    >
+    <section class="movie-section">
 
-      <span class="nav-icon">
-        ▣
-      </span>
+      <div class="section-heading">
+        <h2 class="section-title">
+          New on VyaHotstar
+        </h2>
 
-      <span class="nav-label">
-        TV Shows
-      </span>
-
-    </a>
+        <a href="Movie.html" class="see-all">
+          See All →
+        </a>
+      </div>
 
 
-    <!-- Movies -->
+      <div class="movie-row">
 
-    <a
-      href="Movie.html"
-      class="nav-link active"
-      aria-label="Movies"
-      aria-current="page"
-    >
+        <!-- Card 1 -->
 
-      <span class="nav-icon">
-        ▶
-      </span>
+        <article class="movie-card">
 
-      <span class="nav-label">
-        Movies
-      </span>
+          <img
+            class="movie-poster"
+            src="https://upload.wikimedia.org/wikipedia/en/thumb/1/1a/KurukshetraThe_Great_War_of_Mahabharata.jpg/250px-KurukshetraThe_Great_War_of_Mahabharata.jpg"
+            alt="Kurukshetra"
+            loading="lazy"
+          >
 
-    </a>
+          <div class="movie-preview">
 
-  </nav>
+            <div class="movie-title">
+              Kurukshetra
+            </div>
+
+            <div class="movie-description">
+              An epic story of courage, destiny and war.
+            </div>
+
+            <div class="card-actions">
+
+              <a
+                href="player.html?title=Kurukshetra&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play Kurukshetra"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add Kurukshetra to Whitelist"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
 
 
-  <!-- =======================================================
-       ACCOUNT / PROFILE
-  ======================================================== -->
+        <!-- Card 2 -->
 
-  <div class="profile-area">
+        <article class="movie-card">
 
-    <button
-      class="profile-btn"
-      type="button"
-      aria-label="Account"
-      title="Account"
-      onclick="window.location.href='account.html'"
-    >
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=500&q=85"
+            alt="Dark Night"
+            loading="lazy"
+          >
 
-      <span class="profile-icon">
-        ◉
-      </span>
+          <div class="movie-preview">
 
-      <span class="profile-label">
-        Account
-      </span>
+            <div class="movie-title">
+              Dark Night
+            </div>
 
-    </button>
+            <div class="movie-description">
+              A mysterious night changes everything.
+            </div>
 
-  </div>
+            <div class="card-actions">
 
-</aside>
+              <a
+                href="player.html?title=Dark%20Night&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play Dark Night"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add Dark Night"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- Card 3 -->
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=85"
+            alt="Future World"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              Future World
+            </div>
+
+            <div class="movie-description">
+              Humanity faces a new world beyond imagination.
+            </div>
+
+            <div class="card-actions">
+
+              <a
+                href="player.html?title=Future%20World&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play Future World"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add Future World"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- Card 4 -->
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=85"
+            alt="Lost Journey"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              Lost Journey
+            </div>
+
+            <div class="movie-description">
+              One journey. One secret. No way back.
+            </div>
+
+            <div class="card-actions">
+
+              <a
+                href="player.html?title=Lost%20Journey&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play Lost Journey"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add Lost Journey"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- Card 5 -->
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=500&q=85"
+            alt="Action Zone"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              Action Zone
+            </div>
+
+            <div class="movie-description">
+              High stakes, fast action and impossible odds.
+            </div>
+
+            <div class="card-actions">
+
+              <a
+                href="player.html?title=Action%20Zone&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play Action Zone"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add Action Zone"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- Card 6 -->
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1470214304380-aadaedcfff1b?auto=format&fit=crop&w=500&q=85"
+            alt="The Adventure"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              The Adventure
+            </div>
+
+            <div class="movie-description">
+              A thrilling adventure beyond the unknown.
+            </div>
+
+            <div class="card-actions">
+
+              <a
+                href="player.html?title=The%20Adventure&video=G-3JSyi_Ss0"
+                class="play-btn"
+                aria-label="Play The Adventure"
+              >
+                ▶
+              </a>
+
+              <button
+                class="card-add"
+                onclick="addMovie(this)"
+                aria-label="Add The Adventure"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         TRENDING ROW
+    ======================================================== -->
+
+    <section class="movie-section">
+
+      <div class="section-heading">
+
+        <h2 class="section-title">
+          Trending Now
+        </h2>
+
+        <a href="Movie.html" class="see-all">
+          See All →
+        </a>
+
+      </div>
+
+      <div class="movie-row">
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1513106580091-1d82408b8cd8?auto=format&fit=crop&w=500&q=85"
+            alt="The Last Battle"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+            <div class="movie-title">The Last Battle</div>
+            <div class="movie-description">
+              The final battle begins.
+            </div>
+
+            <div class="card-actions">
+              <a href="player.html?title=The%20Last%20Battle&video=G-3JSyi_Ss0"
+                 class="play-btn">▶</a>
+
+              <button class="card-add" onclick="addMovie(this)">
+                +
+              </button>
+            </div>
+          </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=500&q=85"
+            alt="The Kingdom"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+            <div class="movie-title">The Kingdom</div>
+            <div class="movie-description">
+              Power comes at a dangerous price.
+            </div>
+
+            <div class="card-actions">
+              <a href="player.html?title=The%20Kingdom&video=G-3JSyi_Ss0"
+                 class="play-btn">▶</a>
+
+              <button class="card-add" onclick="addMovie(this)">
+                +
+              </button>
+            </div>
+          </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=500&q=85"
+            alt="Beyond Time"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+            <div class="movie-title">Beyond Time</div>
+            <div class="movie-description">
+              A journey through time itself.
+            </div>
+
+            <div class="card-actions">
+              <a href="player.html?title=Beyond%20Time&video=G-3JSyi_Ss0"
+                 class="play-btn">▶</a>
+
+              <button class="card-add" onclick="addMovie(this)">
+                +
+              </button>
+            </div>
+          </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=500&q=85"
+            alt="The Unknown"
+            loading="lazy"
+          >
+
+          <div class="movie-preview">
+            <div class="movie-title">The Unknown</div>
+            <div class="movie-description">
+              Nothing is what it seems.
+            </div>
+
+            <div class="card-actions">
+              <a href="player.html?title=The%20Unknown&video=G-3JSyi_Ss0"
+                 class="play-btn">▶</a>
+
+              <button class="card-add" onclick="addMovie(this)">
+                +
+              </button>
+            </div>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+    © 2026 VyaHotstar. All Rights Reserved.
+  </footer>
+
+
+  <script>
+
+    function addMovie(button) {
+
+      if (button.dataset.added === "true") {
+
+        button.dataset.added = "false";
+
+        button.innerHTML =
+          button.classList.contains("whitelist-btn")
+            ? '<span class="plus">+</span><span class="whitelist-text">Whitelist</span>'
+            : "+";
+
+        button.title = "Add to Whitelist";
+
+        return;
+      }
+
+      button.dataset.added = "true";
+
+      if (button.classList.contains("whitelist-btn")) {
+
+        button.innerHTML =
+          '<span class="plus">✓</span><span class="whitelist-text">Whitelisted</span>';
+
+        button.title = "Remove from Whitelist";
+
+      } else {
+
+        button.innerHTML = "✓";
+        button.title = "Remove from Whitelist";
+
+      }
+
+    }
+
+  </script>
