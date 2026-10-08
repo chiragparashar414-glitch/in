@@ -451,7 +451,354 @@
     <main class="content">
 
     </main>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>VyaHotstar - Movies</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #08090d;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Header */
+        .header {
+            height: 70px;
+            padding: 0 5%;
+            display: flex;
+            align-items: center;
+            background: #101116;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            color: #00d9ff;
+            font-size: 27px;
+            font-weight: bold;
+        }
+
+        .nav {
+            margin-left: auto;
+        }
+
+        .nav a {
+            color: #ddd;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+        }
+
+        .nav a:hover {
+            color: #00d9ff;
+        }
+
+        /* Section */
+        .movies-section {
+            padding: 45px 5%;
+        }
+
+        .section-title {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .section-description {
+            color: #999;
+            margin-bottom: 30px;
+        }
+
+        /* Movie Grid */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fill,
+                minmax(190px, 1fr)
+            );
+
+            gap: 24px;
+        }
+
+        /* Movie Card */
+        .movie-card {
+            position: relative;
+            height: 285px;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #15161c;
+            cursor: pointer;
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+
+            transition: transform 0.4s ease;
+        }
+
+        .movie-card:hover img {
+            transform: scale(1.08);
+        }
+
+        /* Overlay */
+        .movie-overlay {
+            position: absolute;
+            inset: 0;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+
+            padding: 20px;
+
+            background: linear-gradient(
+                to top,
+                rgba(0, 0, 0, 0.98),
+                rgba(0, 0, 0, 0.65),
+                rgba(0, 0, 0, 0)
+            );
+
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .movie-card:hover .movie-overlay {
+            opacity: 1;
+        }
+
+        .movie-overlay h2 {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .movie-overlay p {
+            color: #ddd;
+            font-size: 13px;
+            line-height: 1.45;
+            margin-bottom: 15px;
+        }
+
+        /* Watch Button */
+        .watch-btn {
+            display: inline-block;
+            width: fit-content;
+
+            padding: 10px 18px;
+
+            background: #00d9ff;
+            color: #000;
+
+            border-radius: 5px;
+
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: 0.25s;
+        }
+
+        .watch-btn:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 25px;
+            text-align: center;
+            background: #101116;
+            color: #777;
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            .movie-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
+            .movie-card {
+                height: 250px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+
+        <div class="logo">
+            VyaHotstar
+        </div>
+
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#">Movies</a>
+            <a href="#">Series</a>
+            <a href="#">Login</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Movies -->
+    <section class="movies-section">
+
+        <h1 class="section-title">
+            Latest Movies
+        </h1>
+
+        <p class="section-description">
+            Watch your favourite movies and entertainment online.
+        </p>
+
+
+        <div class="movie-grid">
+
+
+            <!-- Movie 1 -->
+            <div class="movie-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=80"
+                    alt="Movie poster">
+
+                <div class="movie-overlay">
+
+                    <h2>Featured Movie</h2>
+
+                    <p>
+                        Watch this exciting movie packed with
+                        entertainment and unforgettable moments.
+                    </p>
+
+                    <a
+                        href="player.html?title=Featured%20Movie&video=G-3JSyi_Ss0"
+                        class="watch-btn">
+                        Watch Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie 2 -->
+            <div class="movie-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&w=600&q=80"
+                    alt="Movie poster">
+
+                <div class="movie-overlay">
+
+                    <h2>Dark Night</h2>
+
+                    <p>
+                        A mysterious story filled with suspense,
+                        action and unexpected twists.
+                    </p>
+
+                    <a
+                        href="player.html?title=Dark%20Night&video=G-3JSyi_Ss0"
+                        class="watch-btn">
+                        Watch Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie 3 -->
+            <div class="movie-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=80"
+                    alt="Movie poster">
+
+                <div class="movie-overlay">
+
+                    <h2>Future World</h2>
+
+                    <p>
+                        Enter a futuristic world where technology
+                        changes everything.
+                    </p>
+
+                    <a
+                        href="player.html?title=Future%20World&video=G-3JSyi_Ss0"
+                        class="watch-btn">
+                        Watch Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- Movie 4 -->
+            <div class="movie-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80"
+                    alt="Movie poster">
+
+                <div class="movie-overlay">
+
+                    <h2>Lost Journey</h2>
+
+                    <p>
+                        An incredible journey full of adventure,
+                        friendship and discovery.
+                    </p>
+
+                    <a
+                        href="player.html?title=Lost%20Journey&video=G-3JSyi_Ss0"
+                        class="watch-btn">
+                        Watch Now
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <footer class="footer">
+        © 2026 VyaHotstar. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
 
 </body>
 
