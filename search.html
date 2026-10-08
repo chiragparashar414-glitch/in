@@ -10,8 +10,18 @@
   <title>VyaHotstar - Home</title>
 
   <link rel="icon" href="VYA.png">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
   <style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
     * {
       margin: 0;
       padding: 0;
@@ -41,32 +51,18 @@
       cursor: pointer;
     }
 
+
     /* =========================================================
        SIDEBAR
     ========================================================= */
-.nav-icon {
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 21px;
-}
 
-.nav-link {
-  color: #fff;
-  text-decoration: none;
-}
-
-.nav-label {
-  color: #fff;
-}
     .sidebar {
       position: fixed;
       z-index: 1000;
+
       left: 18px;
       top: 18px;
+
       width: 70px;
       height: calc(100vh - 36px);
 
@@ -75,7 +71,9 @@
 
       padding: 18px 10px;
 
-      background: rgba(15,17,23,0\.48);
+      /* FIXED RGBA */
+      background: rgba(15, 17, 23, 0.48);
+
       border: 1px solid rgba(255, 255, 255, 0.09);
       border-radius: 20px;
 
@@ -96,28 +94,41 @@
       background: rgba(12, 14, 20, 0.72);
     }
 
-    /* Brand */
+
+    /* =========================================================
+       BRAND
+    ========================================================= */
 
     .brand {
       height: 54px;
+
       display: flex;
       align-items: center;
+
       gap: 12px;
+
       padding: 0 8px;
       margin-bottom: 28px;
+
       overflow: hidden;
       white-space: nowrap;
     }
 
     .brand-star {
       flex: 0 0 42px;
+
       width: 42px;
       height: 42px;
 
       display: grid;
       place-items: center;
 
-      background: linear-gradient(145deg, #ff2100, #ff6a00);
+      background: linear-gradient(
+        145deg,
+        #ff2100,
+        #ff6a00
+      );
+
       color: #fff;
 
       font-size: 22px;
@@ -136,13 +147,19 @@
         39% 35%
       );
 
-      filter: drop-shadow(0 5px 12px rgba(255, 58, 0, 0.35));
+      filter:
+        drop-shadow(
+          0 5px 12px rgba(255, 58, 0, 0.35)
+        );
 
-      transition: transform 0.3s ease;
+      transition:
+        transform 0.3s ease;
     }
 
     .sidebar:hover .brand-star {
-      transform: rotate(12deg) scale(1.04);
+      transform:
+        rotate(12deg)
+        scale(1.04);
     }
 
     .brand-name {
@@ -151,7 +168,9 @@
       letter-spacing: -0.5px;
 
       opacity: 0;
-      transform: translateX(-8px);
+
+      transform:
+        translateX(-8px);
 
       transition:
         opacity 0.25s ease,
@@ -163,11 +182,15 @@
       transform: translateX(0);
     }
 
-    /* Navigation */
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
 
     .nav {
       display: flex;
       flex-direction: column;
+
       gap: 7px;
     }
 
@@ -175,10 +198,12 @@
       position: relative;
 
       min-height: 48px;
+
       display: flex;
       align-items: center;
 
       padding: 0 11px;
+
       border-radius: 13px;
 
       color: rgba(255, 255, 255, 0.65);
@@ -199,22 +224,29 @@
       content: "";
 
       position: absolute;
+
       left: -10px;
+
       width: 3px;
       height: 22px;
 
       background: #ff3b12;
+
       border-radius: 5px;
 
-      box-shadow: 0 0 12px rgba(255, 59, 18, 0.65);
+      box-shadow:
+        0 0 12px rgba(255, 59, 18, 0.65);
     }
 
     .nav-icon {
       flex: 0 0 26px;
 
       width: 26px;
+
       display: grid;
       place-items: center;
+
+      color: #fff;
 
       font-size: 19px;
     }
@@ -222,11 +254,15 @@
     .nav-label {
       margin-left: 14px;
 
+      color: #fff;
+
       font-size: 14px;
       font-weight: 600;
 
       opacity: 0;
-      transform: translateX(-8px);
+
+      transform:
+        translateX(-8px);
 
       white-space: nowrap;
 
@@ -240,20 +276,162 @@
       transform: translateX(0);
     }
 
+
     /* =========================================================
-       MAIN CONTENT
+       SEARCH PANEL
+    ========================================================= */
+
+    .search-panel {
+      position: relative;
+      z-index: 50;
+
+      margin-left: 105px;
+
+      padding: 28px 25px 10px;
+
+      display: none;
+    }
+
+    .search-panel.show {
+      display: block;
+    }
+
+    .search-container {
+      width: 100%;
+      max-width: 750px;
+    }
+
+    .search-input-wrap {
+      width: 100%;
+      height: 58px;
+
+      display: flex;
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 0 18px;
+
+      background: rgba(255, 255, 255, 0.08);
+
+      border:
+        1px solid rgba(255, 255, 255, 0.15);
+
+      border-radius: 10px;
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    .search-input-wrap:focus-within {
+      background:
+        rgba(255, 255, 255, 0.11);
+
+      border-color:
+        rgba(255, 255, 255, 0.3);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(255, 255, 255, 0.04);
+    }
+
+    .search-input-wrap > i {
+      flex-shrink: 0;
+
+      color:
+        rgba(255, 255, 255, 0.65);
+
+      font-size: 19px;
+    }
+
+    .search-input-wrap input {
+      flex: 1;
+
+      width: 100%;
+
+      border: none;
+      outline: none;
+
+      background: transparent;
+
+      color: #fff;
+
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .search-input-wrap input::placeholder {
+      color:
+        rgba(255, 255, 255, 0.45);
+    }
+
+    .search-clear {
+      width: 30px;
+      height: 30px;
+
+      display: none;
+
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255, 255, 255, 0.08);
+
+      color:
+        rgba(255, 255, 255, 0.7);
+
+      font-size: 14px;
+    }
+
+    .search-clear.show {
+      display: flex;
+    }
+
+    .search-clear:hover {
+      background:
+        rgba(255, 255, 255, 0.15);
+
+      color: #fff;
+    }
+
+    .search-message {
+      margin-top: 18px;
+
+      color:
+        rgba(255, 255, 255, 0.45);
+
+      font-size: 13px;
+    }
+
+    .sidebar:hover ~ .search-panel {
+      margin-left: 235px;
+    }
+
+
+    /* =========================================================
+       MAIN
     ========================================================= */
 
     main {
       margin-left: 105px;
+
       padding-right: 25px;
 
-      transition: margin-left 0.3s ease;
+      transition:
+        margin-left 0.3s ease;
     }
 
-    .sidebar:hover ~ main {
+    .sidebar:hover ~ .search-panel + main {
       margin-left: 235px;
     }
+
 
     /* =========================================================
        HERO
@@ -261,6 +439,7 @@
 
     .hero {
       position: relative;
+
       min-height: 650px;
 
       display: flex;
@@ -269,6 +448,7 @@
       overflow: hidden;
 
       background:
+
         linear-gradient(
           90deg,
           #08090d 0%,
@@ -276,12 +456,14 @@
           rgba(8, 9, 13, 0.36) 62%,
           rgba(8, 9, 13, 0.72) 100%
         ),
+
         linear-gradient(
           0deg,
           #08090d 0%,
           transparent 28%,
           rgba(0, 0, 0, 0.12) 100%
         ),
+
         url("https://images.filmibeat.com/img/2025/09/kurukshetrad-1757488652.jpg")
         center / cover no-repeat;
     }
@@ -304,37 +486,50 @@
 
     .hero-content {
       position: relative;
+
       z-index: 2;
 
       max-width: 680px;
-      padding: 100px 30px 90px 25px;
+
+      padding:
+        100px 30px 90px 25px;
     }
 
     .hero-kicker {
       display: inline-flex;
       align-items: center;
+
       gap: 8px;
 
       margin-bottom: 15px;
 
       color: #ff7a45;
+
       font-size: 12px;
       font-weight: 800;
 
       letter-spacing: 2px;
+
       text-transform: uppercase;
     }
 
     .hero-kicker::before {
       content: "";
+
       width: 28px;
       height: 2px;
 
       background: #ff4a1a;
-      box-shadow: 0 0 10px rgba(255, 74, 26, 0.8);
+
+      box-shadow:
+        0 0 10px
+        rgba(255, 74, 26, 0.8);
     }
 
-    /* Professional movie logo */
+
+    /* =========================================================
+       MOVIE LOGO
+    ========================================================= */
 
     .movie-logo {
       position: relative;
@@ -343,13 +538,20 @@
 
       margin-bottom: 8px;
 
-      font-family: Georgia, "Times New Roman", serif;
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
 
-      font-size: clamp(54px, 8vw, 100px);
+      font-size:
+        clamp(54px, 8vw, 100px);
+
       line-height: 0.9;
 
       font-weight: 900;
+
       letter-spacing: -4px;
+
       text-transform: uppercase;
 
       color: #fff;
@@ -359,29 +561,35 @@
         0 8px 25px rgba(0, 0, 0, 0.75),
         0 0 30px rgba(255, 70, 20, 0.18);
 
-      transform: skewX(-5deg);
+      transform:
+        skewX(-5deg);
     }
 
     .movie-logo::after {
       content: "";
 
       position: absolute;
+
       left: 4px;
       bottom: -13px;
 
       width: 72%;
       height: 4px;
 
-      background: linear-gradient(
-        90deg,
-        #ff2600,
-        #ff751f,
-        transparent
-      );
+      background:
+        linear-gradient(
+          90deg,
+          #ff2600,
+          #ff751f,
+          transparent
+        );
 
-      box-shadow: 0 0 15px rgba(255, 65, 15, 0.6);
+      box-shadow:
+        0 0 15px
+        rgba(255, 65, 15, 0.6);
 
-      transform: skewX(5deg);
+      transform:
+        skewX(5deg);
     }
 
     .season-title {
@@ -392,20 +600,30 @@
       font-weight: 700;
 
       letter-spacing: 4px;
-      color: rgba(255, 255, 255, 0.75);
+
+      color:
+        rgba(255, 255, 255, 0.75);
 
       text-transform: uppercase;
     }
 
+
+    /* =========================================================
+       METADATA
+    ========================================================= */
+
     .metadata {
       display: flex;
       align-items: center;
+
       flex-wrap: wrap;
+
       gap: 9px;
 
       margin-bottom: 20px;
 
-      color: rgba(255, 255, 255, 0.82);
+      color:
+        rgba(255, 255, 255, 0.82);
 
       font-size: 14px;
       font-weight: 600;
@@ -414,6 +632,7 @@
     .metadata span {
       display: inline-flex;
       align-items: center;
+
       gap: 5px;
     }
 
@@ -428,20 +647,27 @@
     .description {
       max-width: 600px;
 
-      color: rgba(255, 255, 255, 0.72);
+      color:
+        rgba(255, 255, 255, 0.72);
 
       font-size: 15px;
+
       line-height: 1.75;
 
       margin-bottom: 28px;
     }
 
-    /* Hero buttons */
+
+    /* =========================================================
+       HERO BUTTONS
+    ========================================================= */
 
     .hero-buttons {
       display: flex;
       align-items: center;
+
       gap: 12px;
+
       flex-wrap: wrap;
     }
 
@@ -451,17 +677,19 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+
       gap: 9px;
 
       padding: 0 27px;
 
       border-radius: 7px;
 
-      background: linear-gradient(
-        135deg,
-        #ff2500,
-        #ff6517
-      );
+      background:
+        linear-gradient(
+          135deg,
+          #ff2500,
+          #ff6517
+        );
 
       color: #fff;
 
@@ -469,7 +697,8 @@
       font-weight: 800;
 
       box-shadow:
-        0 10px 30px rgba(255, 53, 13, 0.25);
+        0 10px 30px
+        rgba(255, 53, 13, 0.25);
 
       transition:
         transform 0.25s ease,
@@ -478,11 +707,15 @@
     }
 
     .watch-btn:hover {
-      transform: translateY(-3px);
-      filter: brightness(1.1);
+      transform:
+        translateY(-3px);
+
+      filter:
+        brightness(1.1);
 
       box-shadow:
-        0 14px 35px rgba(255, 53, 13, 0.4);
+        0 14px 35px
+        rgba(255, 53, 13, 0.4);
     }
 
     .whitelist-btn {
@@ -492,14 +725,20 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
+
       gap: 8px;
 
       padding: 0 17px;
 
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.14);
+
       border-radius: 7px;
 
-      background: rgba(255, 255, 255, 0.08);
+      background:
+        rgba(255, 255, 255, 0.08);
+
       color: #fff;
 
       backdrop-filter: blur(10px);
@@ -514,9 +753,14 @@
     }
 
     .whitelist-btn:hover {
-      background: rgba(255, 255, 255, 0.14);
-      border-color: rgba(255, 255, 255, 0.25);
-      transform: translateY(-3px);
+      background:
+        rgba(255, 255, 255, 0.14);
+
+      border-color:
+        rgba(255, 255, 255, 0.25);
+
+      transform:
+        translateY(-3px);
     }
 
     .plus {
@@ -526,12 +770,17 @@
       display: grid;
       place-items: center;
 
-      border: 1.5px solid rgba(255, 255, 255, 0.75);
+      border:
+        1.5px solid
+        rgba(255, 255, 255, 0.75);
+
       border-radius: 50%;
 
       font-size: 17px;
+
       line-height: 1;
     }
+
 
     /* =========================================================
        MOVIE ROWS
@@ -539,9 +788,11 @@
 
     .movie-section {
       position: relative;
+
       z-index: 5;
 
       margin-top: -15px;
+
       padding-bottom: 38px;
     }
 
@@ -556,14 +807,19 @@
     .section-title {
       font-size: 20px;
       font-weight: 800;
+
       letter-spacing: -0.3px;
     }
 
     .see-all {
-      color: rgba(255, 255, 255, 0.5);
+      color:
+        rgba(255, 255, 255, 0.5);
+
       font-size: 12px;
       font-weight: 700;
-      transition: color 0.2s ease;
+
+      transition:
+        color 0.2s ease;
     }
 
     .see-all:hover {
@@ -572,10 +828,12 @@
 
     .movie-row {
       display: grid;
-      grid-template-columns: repeat(
-        auto-fill,
-        minmax(145px, 1fr)
-      );
+
+      grid-template-columns:
+        repeat(
+          auto-fill,
+          minmax(145px, 1fr)
+        );
 
       gap: 15px;
 
@@ -584,7 +842,10 @@
       overflow: visible;
     }
 
-    /* Movie card */
+
+    /* =========================================================
+       MOVIE CARD
+    ========================================================= */
 
     .movie-card {
       position: relative;
@@ -597,16 +858,24 @@
 
       background: #12141b;
 
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.05);
 
       box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.25);
+        0 8px 20px
+        rgba(0, 0, 0, 0.25);
 
-      transform: translateY(0) scale(1);
+      transform:
+        translateY(0)
+        scale(1);
 
       transition:
-        transform 0.3s cubic-bezier(.2,.8,.2,1),
+        transform 0.3s
+        cubic-bezier(.2,.8,.2,1),
+
         box-shadow 0.3s ease,
+
         border-color 0.3s ease;
 
       will-change: transform;
@@ -619,11 +888,15 @@
         translateY(-7px)
         scale(1.065);
 
-      border-color: rgba(255, 77, 25, 0.35);
+      border-color:
+        rgba(255, 77, 25, 0.35);
 
       box-shadow:
-        0 20px 42px rgba(0, 0, 0, 0.65),
-        0 0 0 1px rgba(255, 75, 25, 0.08);
+        0 20px 42px
+        rgba(0, 0, 0, 0.65),
+
+        0 0 0 1px
+        rgba(255, 75, 25, 0.08);
     }
 
     .movie-poster {
@@ -633,21 +906,25 @@
       object-fit: cover;
 
       transition:
-        transform 0.45s cubic-bezier(.2,.8,.2,1),
+        transform 0.45s
+        cubic-bezier(.2,.8,.2,1),
+
         filter 0.35s ease;
     }
 
     .movie-card:hover .movie-poster {
-      transform: scale(1.08);
-      filter: brightness(0.65);
-    }
+      transform:
+        scale(1.08);
 
-    /* Card gradient */
+      filter:
+        brightness(0.65);
+    }
 
     .movie-card::after {
       content: "";
 
       position: absolute;
+
       inset: 0;
 
       background:
@@ -659,7 +936,9 @@
 
       opacity: 0.7;
 
-      transition: opacity 0.3s ease;
+      transition:
+        opacity 0.3s ease;
+
       pointer-events: none;
     }
 
@@ -667,15 +946,21 @@
       opacity: 1;
     }
 
-    /* Hover preview */
+
+    /* =========================================================
+       MOVIE PREVIEW
+    ========================================================= */
 
     .movie-preview {
       position: absolute;
+
       z-index: 3;
 
-      inset: auto 10px 10px;
+      inset:
+        auto 10px 10px;
 
-      transform: translateY(14px);
+      transform:
+        translateY(14px);
 
       opacity: 0;
 
@@ -686,7 +971,9 @@
 
     .movie-card:hover .movie-preview {
       opacity: 1;
-      transform: translateY(0);
+
+      transform:
+        translateY(0);
     }
 
     .movie-title {
@@ -695,26 +982,32 @@
       font-size: 14px;
       font-weight: 800;
 
-      text-shadow: 0 2px 8px #000;
+      text-shadow:
+        0 2px 8px #000;
     }
 
     .movie-description {
       display: -webkit-box;
+
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+
       overflow: hidden;
 
       margin-bottom: 10px;
 
-      color: rgba(255, 255, 255, 0.72);
+      color:
+        rgba(255, 255, 255, 0.72);
 
       font-size: 10px;
+
       line-height: 1.45;
     }
 
     .card-actions {
       display: flex;
       align-items: center;
+
       gap: 7px;
     }
 
@@ -727,24 +1020,28 @@
 
       border-radius: 50%;
 
-      background: linear-gradient(
-        135deg,
-        #ff2600,
-        #ff6419
-      );
+      background:
+        linear-gradient(
+          135deg,
+          #ff2600,
+          #ff6419
+        );
 
       color: #fff;
 
       font-size: 12px;
 
       box-shadow:
-        0 5px 15px rgba(255, 60, 20, 0.3);
+        0 5px 15px
+        rgba(255, 60, 20, 0.3);
 
-      transition: transform 0.2s ease;
+      transition:
+        transform 0.2s ease;
     }
 
     .play-btn:hover {
-      transform: scale(1.12);
+      transform:
+        scale(1.12);
     }
 
     .card-add {
@@ -754,23 +1051,20 @@
       display: grid;
       place-items: center;
 
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      border:
+        1px solid
+        rgba(255, 255, 255, 0.22);
+
       border-radius: 50%;
 
-      background: rgba(0, 0, 0, 0.45);
+      background:
+        rgba(0, 0, 0, 0.45);
 
       color: #fff;
 
       font-size: 18px;
     }
 
-    /* =========================================================
-       SECOND ROW
-    ========================================================= */
-
-    .movie-section + .movie-section {
-      margin-top: 0;
-    }
 
     /* =========================================================
        FOOTER
@@ -779,14 +1073,17 @@
     footer {
       margin-left: 105px;
 
-      padding: 35px 25px 45px;
+      padding:
+        35px 25px 45px;
 
-      color: rgba(255, 255, 255, 0.38);
+      color:
+        rgba(255, 255, 255, 0.38);
 
       text-align: center;
 
       font-size: 12px;
     }
+
 
     /* =========================================================
        RESPONSIVE
@@ -796,21 +1093,29 @@
 
       .movie-row {
         grid-template-columns:
-          repeat(5, minmax(135px, 1fr));
+          repeat(
+            5,
+            minmax(135px, 1fr)
+          );
       }
 
       .movie-card {
         height: 205px;
       }
+
     }
+
 
     @media (max-width: 850px) {
 
       .sidebar {
         width: 62px;
+
         left: 12px;
         top: 12px;
-        height: calc(100vh - 24px);
+
+        height:
+          calc(100vh - 24px);
       }
 
       .sidebar:hover {
@@ -821,7 +1126,19 @@
         margin-left: 86px;
       }
 
-      .sidebar:hover ~ main {
+      footer {
+        margin-left: 86px;
+      }
+
+      .search-panel {
+        margin-left: 86px;
+      }
+
+      .sidebar:hover ~ .search-panel {
+        margin-left: 215px;
+      }
+
+      .sidebar:hover ~ .search-panel + main {
         margin-left: 215px;
       }
 
@@ -835,9 +1152,18 @@
 
       .movie-row {
         grid-template-columns:
-          repeat(4, minmax(125px, 1fr));
+          repeat(
+            4,
+            minmax(125px, 1fr)
+          );
       }
+
     }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
 
     @media (max-width: 600px) {
 
@@ -845,27 +1171,33 @@
         padding-bottom: 70px;
       }
 
-      /* Mobile bottom navigation */
+
+      /* Bottom navigation */
 
       .sidebar {
         position: fixed;
 
         left: 10px;
         right: 10px;
+
         bottom: 10px;
         top: auto;
 
         width: auto;
+
         height: 60px;
 
-        padding: 7px 10px;
+        padding:
+          7px 10px;
 
         flex-direction: row;
+
         align-items: center;
 
         border-radius: 17px;
 
-        background: rgba(12, 14, 20, 0.82);
+        background:
+          rgba(12, 14, 20, 0.82);
       }
 
       .sidebar:hover {
@@ -881,7 +1213,10 @@
         height: 100%;
 
         flex-direction: row;
-        justify-content: space-around;
+
+        justify-content:
+          space-around;
+
         align-items: center;
 
         gap: 2px;
@@ -908,11 +1243,37 @@
         margin: 0;
       }
 
-      main,
-      .sidebar:hover ~ main {
+
+      /* Search */
+
+      .search-panel,
+      .sidebar:hover ~ .search-panel {
         margin-left: 0;
+
+        padding:
+          20px 15px 10px;
+      }
+
+      .search-input-wrap {
+        height: 52px;
+      }
+
+      .search-input-wrap input {
+        font-size: 14px;
+      }
+
+
+      /* Main */
+
+      main,
+      .sidebar:hover ~ .search-panel + main {
+        margin-left: 0;
+
         padding-right: 0;
       }
+
+
+      /* Hero */
 
       .hero {
         min-height: 620px;
@@ -920,6 +1281,7 @@
         align-items: flex-end;
 
         background:
+
           linear-gradient(
             0deg,
             #08090d 4%,
@@ -927,22 +1289,32 @@
             rgba(8, 9, 13, 0.2) 75%,
             rgba(8, 9, 13, 0.45) 100%
           ),
+
           url("https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=90")
           center top / cover no-repeat;
       }
 
       .hero-content {
         width: 100%;
-        padding: 60px 20px 48px;
+
+        padding:
+          60px 20px 48px;
       }
 
       .movie-logo {
-        font-size: clamp(48px, 15vw, 72px);
+        font-size:
+          clamp(
+            48px,
+            15vw,
+            72px
+          );
+
         letter-spacing: -3px;
       }
 
       .season-title {
         font-size: 10px;
+
         letter-spacing: 2.5px;
       }
 
@@ -952,6 +1324,7 @@
 
       .description {
         font-size: 13px;
+
         line-height: 1.6;
       }
 
@@ -961,6 +1334,7 @@
 
       .whitelist-btn {
         width: 52px;
+
         padding: 0;
       }
 
@@ -968,9 +1342,14 @@
         display: none;
       }
 
+
+      /* Movie sections */
+
       .movie-section {
         margin-top: 0;
-        padding: 0 12px 25px;
+
+        padding:
+          0 12px 25px;
       }
 
       .section-title {
@@ -979,21 +1358,20 @@
 
       .movie-row {
         grid-template-columns:
-          repeat(2, minmax(0, 1fr));
+          repeat(
+            2,
+            minmax(0, 1fr)
+          );
 
         gap: 12px;
 
-        padding: 4px 2px 20px;
+        padding:
+          4px 2px 20px;
       }
 
       .movie-card {
         height: 225px;
       }
-
-      /*
-        On touch devices there is no real hover.
-        Keep cards compact until tapped/focused.
-      */
 
       .movie-card:active,
       .movie-card:focus-within {
@@ -1002,11 +1380,18 @@
           scale(1.025);
       }
 
+
+      /* Footer */
+
       footer {
         margin-left: 0;
-        padding: 20px 15px 95px;
+
+        padding:
+          20px 15px 95px;
       }
+
     }
+
 
     @media (max-width: 380px) {
 
@@ -1021,22 +1406,32 @@
       .hero-buttons {
         width: 100%;
       }
+
     }
 
-    /* Reduced motion */
+
+    /* =========================================================
+       REDUCED MOTION
+    ========================================================= */
 
     @media (prefers-reduced-motion: reduce) {
+
       *,
-      *::before,
-      *::after {
+      *::before {
         scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
+
+        transition-duration:
+          0.01ms !important;
       }
+
     }
+
   </style>
 </head>
 
+
 <body>
+
 
   <!-- =========================================================
        SIDEBAR
@@ -1045,75 +1440,573 @@
   <aside class="sidebar">
 
     <div class="brand">
-      <div class="brand-star">★</div>
+
+      <div class="brand-star">
+        ★
+      </div>
+
     </div>
 
-  <nav class="nav">
 
-  <a href="index.html" class="nav-link active">
-    <span class="nav-icon"><i class="fa-solid fa-house"></i></span>
-    <span class="nav-label">Home</span>
-  </a>
+    <nav class="nav">
 
-  <a href="search.html" class="nav-link">
-    <span class="nav-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-    <span class="nav-label">Search</span>
-  </a>
 
-  <a href="TV.html" class="nav-link">
-    <span class="nav-icon"><i class="fa-solid fa-tv"></i></span>
-    <span class="nav-label">TV Shows</span>
-  </a>
+      <!-- HOME -->
 
-  <a href="Movie.html" class="nav-link">
-    <span class="nav-icon"><i class="fa-solid fa-film"></i></span>
-    <span class="nav-label">Movies</span>
-  </a>
-
-  <a href="myspace.html" class="nav-link">
-    <span class="nav-icon"><i class="fa-solid fa-user"></i></span>
-    <span class="nav-label">My Space</span>
-  </a>
-
-  </nav>
-
-  </aside>
-  <a href="search.html" class="nav-link">
-  <span class="nav-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-  <span class="nav-label">Search</span>
-  </a>
-  <a href="#search" class="nav-link" id="searchNav">
-  <span class="nav-icon">
-   <i class="fa-solid fa-magnifying-glass"></i>
-  </span>
-  <span class="nav-label">Search</span>
-  </a>
-
-  <!-- SEARCH PANEL -->
-
-<section class="search-panel" id="search">
-
-  <div class="search-container">
-
-    <div class="search-input-wrap">
-      <i class="fa-solid fa-magnifying-glass"></i>
-
-      <input
-        type="search"
-        id="movieSearch"
-        placeholder="Search for movies, shows and more..."
-        autocomplete="off"
+      <a
+        href="index.html"
+        class="nav-link active"
       >
 
-      <button class="search-clear" id="searchClear" type="button">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
+        <span class="nav-icon">
+          <i class="fa-solid fa-house"></i>
+        </span>
+
+        <span class="nav-label">
+          Home
+        </span>
+
+      </a>
+
+
+      <!-- SEARCH -->
+
+      <a
+        href="#search"
+        class="nav-link"
+        id="searchNav"
+      >
+
+        <span class="nav-icon">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </span>
+
+        <span class="nav-label">
+          Search
+        </span>
+
+      </a>
+
+
+      <!-- TV -->
+
+      <a
+        href="TV.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">
+          <i class="fa-solid fa-tv"></i>
+        </span>
+
+        <span class="nav-label">
+          TV Shows
+        </span>
+
+      </a>
+
+
+      <!-- MOVIES -->
+
+      <a
+        href="Movie.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">
+          <i class="fa-solid fa-film"></i>
+        </span>
+
+        <span class="nav-label">
+          Movies
+        </span>
+
+      </a>
+
+
+      <!-- MY SPACE -->
+
+      <a
+        href="myspace.html"
+        class="nav-link"
+      >
+
+        <span class="nav-icon">
+          <i class="fa-solid fa-user"></i>
+        </span>
+
+        <span class="nav-label">
+          My Space
+        </span>
+
+      </a>
+
+
+    </nav>
+
+  </aside>
+
+
+
+  <!-- =========================================================
+       SEARCH
+  ========================================================== -->
+
+  <section
+    class="search-panel"
+    id="search"
+  >
+
+    <div class="search-container">
+
+      <div class="search-input-wrap">
+
+        <i
+          class="fa-solid fa-magnifying-glass"
+        ></i>
+
+
+        <input
+          type="search"
+          id="movieSearch"
+          placeholder="Search for movies, shows and more..."
+          autocomplete="off"
+        >
+
+
+        <button
+          class="search-clear"
+          id="searchClear"
+          type="button"
+          aria-label="Clear search"
+        >
+
+          <i
+            class="fa-solid fa-xmark"
+          ></i>
+
+        </button>
+
+      </div>
+
+
+      <p
+        class="search-message"
+        id="searchMessage"
+      >
+        Search for your favourite movies and TV shows
+      </p>
+
     </div>
 
-    <p class="search-message" id="searchMessage">
-      Search for your favourite movies and TV shows
-    </p>
+  </section>
 
-  </div>
 
-</section>
+
+  <!-- =========================================================
+       MAIN
+  ========================================================== -->
+
+  <main>
+
+
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
+
+    <section class="hero">
+
+      <div class="hero-content">
+
+
+        <div class="hero-kicker">
+          VyaHotstar Original
+        </div>
+
+
+        <h1 class="movie-logo">
+          Kurukshetra
+        </h1>
+
+
+        <div class="season-title">
+          The Great War
+        </div>
+
+
+        <div class="metadata">
+
+          <span>
+            <i class="fa-solid fa-star rating"></i>
+            8.7
+          </span>
+
+          <span class="meta-dot">
+            •
+          </span>
+
+          <span>
+            2025
+          </span>
+
+          <span class="meta-dot">
+            •
+          </span>
+
+          <span>
+            2 Seasons
+          </span>
+
+          <span class="meta-dot">
+            •
+          </span>
+
+          <span>
+            U/A 16+
+          </span>
+
+        </div>
+
+
+        <p class="description">
+
+          Kurukshetra brings the epic story of the Mahabharata
+          to life with powerful characters, intense battles,
+          legendary warriors and unforgettable moments.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+
+          <a
+            href="#"
+            class="watch-btn"
+          >
+
+            <i class="fa-solid fa-play"></i>
+
+            Watch Now
+
+          </a>
+
+
+          <button
+            class="whitelist-btn"
+            type="button"
+          >
+
+            <span class="plus">
+              +
+            </span>
+
+            <span class="whitelist-text">
+              My List
+            </span>
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =======================================================
+         MOVIE SECTION
+    ======================================================== -->
+
+    <section class="movie-section">
+
+      <div class="section-heading">
+
+        <h2 class="section-title">
+          Popular Movies
+        </h2>
+
+        <a
+          href="Movie.html"
+          class="see-all"
+        >
+          See All
+        </a>
+
+      </div>
+
+
+      <div class="movie-row">
+
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=600&q=85"
+            alt="Movie poster"
+          >
+
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              Popular Movie
+            </div>
+
+            <div class="movie-description">
+              Watch exciting movies and discover
+              new entertainment on VyaHotstar.
+            </div>
+
+            <div class="card-actions">
+
+              <button class="play-btn">
+                <i class="fa-solid fa-play"></i>
+              </button>
+
+              <button class="card-add">
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=85"
+            alt="Movie poster"
+          >
+
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              Entertainment
+            </div>
+
+            <div class="movie-description">
+              Discover movies, stories and
+              unforgettable entertainment.
+            </div>
+
+            <div class="card-actions">
+
+              <button class="play-btn">
+                <i class="fa-solid fa-play"></i>
+              </button>
+
+              <button class="card-add">
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?auto=format&fit=crop&w=600&q=85"
+            alt="Movie poster"
+          >
+
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              New Releases
+            </div>
+
+            <div class="movie-description">
+              Explore the latest movies and
+              trending stories.
+            </div>
+
+            <div class="card-actions">
+
+              <button class="play-btn">
+                <i class="fa-solid fa-play"></i>
+              </button>
+
+              <button class="card-add">
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article class="movie-card">
+
+          <img
+            class="movie-poster"
+            src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&w=600&q=85"
+            alt="Movie poster"
+          >
+
+          <div class="movie-preview">
+
+            <div class="movie-title">
+              Trending Now
+            </div>
+
+            <div class="movie-description">
+              See what's trending on
+              VyaHotstar right now.
+            </div>
+
+            <div class="card-actions">
+
+              <button class="play-btn">
+                <i class="fa-solid fa-play"></i>
+              </button>
+
+              <button class="card-add">
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+
+  <!-- =========================================================
+       FOOTER
+  ========================================================== -->
+
+  <footer>
+
+    © 2026 VyaHotstar.
+    All rights reserved.
+
+  </footer>
+
+
+
+  <!-- =========================================================
+       SEARCH JAVASCRIPT
+  ========================================================== -->
+
+  <script>
+
+    const searchNav =
+      document.getElementById("searchNav");
+
+    const searchPanel =
+      document.getElementById("search");
+
+    const movieSearch =
+      document.getElementById("movieSearch");
+
+    const searchClear =
+      document.getElementById("searchClear");
+
+    const searchMessage =
+      document.getElementById("searchMessage");
+
+
+    /* Open / close search */
+
+    searchNav.addEventListener(
+      "click",
+      function (event) {
+
+        event.preventDefault();
+
+        searchPanel.classList.toggle("show");
+
+
+        if (
+          searchPanel.classList.contains("show")
+        ) {
+
+          movieSearch.focus();
+
+          searchPanel.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }
+
+      }
+    );
+
+
+    /* Search typing */
+
+    movieSearch.addEventListener(
+      "input",
+      function () {
+
+        const query =
+          movieSearch.value.trim();
+
+
+        if (query.length > 0) {
+
+          searchClear.classList.add("show");
+
+          searchMessage.textContent =
+            `Searching for "${query}"...`;
+
+        } else {
+
+          searchClear.classList.remove("show");
+
+          searchMessage.textContent =
+            "Search for your favourite movies and TV shows";
+
+        }
+
+      }
+    );
+
+
+    /* Clear search */
+
+    searchClear.addEventListener(
+      "click",
+      function () {
+
+        movieSearch.value = "";
+
+        searchClear.classList.remove("show");
+
+        searchMessage.textContent =
+          "Search for your favourite movies and TV shows";
+
+        movieSearch.focus();
+
+      }
+    );
+
+  </script>
+
+
+</body>
+</html>
