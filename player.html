@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,9 +11,10 @@
 
     <meta
         name="description"
-        content="Watch movies and series on VyaHotstar.">
+        content="VyaHotstar custom cinematic video player">
 
     <title>VyaHotstar Player</title>
+
 
     <style>
 
@@ -25,8 +28,10 @@
             box-sizing: border-box;
         }
 
+
         html,
         body {
+
             width: 100%;
             height: 100%;
 
@@ -42,10 +47,11 @@
 
 
         /* =====================================================
-           PLAYER
+           PLAYER CONTAINER
         ===================================================== */
 
         .player-container {
+
             position: relative;
 
             width: 100%;
@@ -58,13 +64,15 @@
 
 
         /* =====================================================
-           YOUTUBE
+           YOUTUBE IFRAME
         ===================================================== */
 
         #youtubePlayer {
+
             position: absolute;
 
-            inset: 0;
+            top: 0;
+            left: 0;
 
             width: 100%;
             height: 100%;
@@ -76,10 +84,11 @@
 
 
         /* =====================================================
-           TOP BAR
+           VYAHOTSTAR TOP BAR
         ===================================================== */
 
         .top-bar {
+
             position: absolute;
 
             top: 0;
@@ -88,7 +97,7 @@
 
             z-index: 20;
 
-            height: 100px;
+            height: 105px;
 
             display: flex;
             align-items: flex-start;
@@ -99,15 +108,13 @@
                 linear-gradient(
                     to bottom,
                     rgba(0, 0, 0, 0.9),
-                    rgba(0, 0, 0, 0.45),
+                    rgba(0, 0, 0, 0.35),
                     transparent
                 );
 
-            opacity: 1;
-
             transition:
-                opacity 0.35s ease,
-                transform 0.35s ease;
+                opacity 0.3s ease,
+                transform 0.3s ease;
         }
 
 
@@ -115,13 +122,15 @@
            BRAND
         ===================================================== */
 
-        .player-brand {
+        .brand {
+
             display: flex;
+
             align-items: center;
 
             gap: 10px;
 
-            margin-right: 22px;
+            margin-right: 20px;
 
             color: #fff;
 
@@ -131,23 +140,26 @@
             white-space: nowrap;
         }
 
+
         .brand-star {
-            width: 34px;
-            height: 34px;
+
+            width: 36px;
+            height: 36px;
 
             display: grid;
+
             place-items: center;
 
             background:
                 linear-gradient(
                     135deg,
-                    #ff2100,
-                    #ff6500
+                    #ff2400,
+                    #ff681c
                 );
 
             color: #fff;
 
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 900;
 
             clip-path: polygon(
@@ -165,8 +177,8 @@
 
             filter:
                 drop-shadow(
-                    0 0 10px
-                    rgba(255, 55, 15, 0.45)
+                    0 0 12px
+                    rgba(255, 65, 20, 0.5)
                 );
         }
 
@@ -176,25 +188,27 @@
         ===================================================== */
 
         .back-btn {
+
             display: inline-flex;
+
             align-items: center;
             justify-content: center;
 
-            min-height: 38px;
+            height: 40px;
 
-            padding: 0 14px;
+            padding: 0 15px;
 
             border:
                 1px solid
-                rgba(255, 255, 255, 0.14);
+                rgba(255, 255, 255, 0.12);
 
             border-radius: 7px;
 
             background:
-                rgba(10, 10, 12, 0.58);
+                rgba(10, 10, 12, 0.65);
 
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
 
             color: #fff;
 
@@ -203,20 +217,23 @@
             font-size: 13px;
             font-weight: 700;
 
-            transition:
-                background 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
+            transition: 0.25s ease;
         }
 
+
         .back-btn:hover {
+
             background:
-                rgba(255, 59, 18, 0.9);
+                linear-gradient(
+                    135deg,
+                    #ff2400,
+                    #ff681c
+                );
 
-            border-color:
-                rgba(255, 100, 50, 0.9);
+            border-color: transparent;
 
-            transform: translateY(-1px);
+            transform:
+                translateY(-2px);
         }
 
 
@@ -225,19 +242,20 @@
         ===================================================== */
 
         #movieTitle {
+
             display: flex;
+
             align-items: center;
 
-            min-height: 38px;
+            height: 40px;
 
-            margin-left: 16px;
+            margin-left: 15px;
 
             color: #fff;
 
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 17px;
 
-            letter-spacing: 0.1px;
+            font-weight: 700;
 
             text-shadow:
                 0 2px 8px rgba(0, 0, 0, 0.8);
@@ -245,122 +263,303 @@
 
 
         /* =====================================================
-           FULLSCREEN
+           CUSTOM FULLSCREEN BUTTON
         ===================================================== */
 
-        .fullscreen-btn {
+        .fullscreen-top {
+
             margin-left: auto;
 
-            min-height: 38px;
+            height: 40px;
 
             padding: 0 15px;
 
             border:
                 1px solid
-                rgba(255, 255, 255, 0.14);
+                rgba(255, 255, 255, 0.12);
 
             border-radius: 7px;
 
             background:
-                rgba(10, 10, 12, 0.58);
-
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
+                rgba(10, 10, 12, 0.65);
 
             color: #fff;
 
             cursor: pointer;
 
+            backdrop-filter: blur(12px);
+
             font-size: 13px;
+
             font-weight: 700;
 
-            transition:
-                background 0.25s ease,
-                border-color 0.25s ease,
-                transform 0.25s ease;
+            transition: 0.25s ease;
         }
 
-        .fullscreen-btn:hover {
+
+        .fullscreen-top:hover {
+
             background:
-                rgba(255, 59, 18, 0.9);
+                linear-gradient(
+                    135deg,
+                    #ff2400,
+                    #ff681c
+                );
 
-            border-color:
-                rgba(255, 100, 50, 0.9);
-
-            transform: translateY(-1px);
+            border-color: transparent;
         }
 
 
         /* =====================================================
-           BOTTOM CINEMATIC GRADIENT
+           BOTTOM CONTROL AREA
         ===================================================== */
 
-        .bottom-gradient {
-            position: absolute;
+        .controls {
 
-            z-index: 5;
+            position: absolute;
 
             left: 0;
             right: 0;
             bottom: 0;
 
-            height: 150px;
+            z-index: 30;
 
-            pointer-events: none;
+            padding:
+                45px 30px 25px;
 
             background:
                 linear-gradient(
                     to top,
-                    rgba(0, 0, 0, 0.72),
+                    rgba(0, 0, 0, 0.92),
+                    rgba(0, 0, 0, 0.55),
                     transparent
                 );
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+
+            transition:
+                opacity 0.3s ease,
+                transform 0.3s ease;
         }
 
 
         /* =====================================================
-           PLAYER STATUS
+           PROGRESS BAR
         ===================================================== */
 
-        .player-status {
-            position: absolute;
+        .progress-container {
 
-            z-index: 10;
+            width: 100%;
 
-            left: 28px;
-            bottom: 25px;
+            height: 5px;
+
+            margin-bottom: 18px;
+
+            border-radius: 10px;
+
+            background:
+                rgba(255, 255, 255, 0.22);
+
+            cursor: pointer;
+
+            overflow: hidden;
+        }
+
+
+        .progress {
+
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: inherit;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ff2400,
+                    #ff681c
+                );
+
+            transition:
+                width 0.15s linear;
+        }
+
+
+        /* =====================================================
+           CONTROL ROW
+        ===================================================== */
+
+        .control-row {
 
             display: flex;
+
             align-items: center;
 
-            gap: 8px;
+            gap: 10px;
+        }
+
+
+        /* =====================================================
+           CONTROL BUTTON
+        ===================================================== */
+
+        .control-btn {
+
+            width: 42px;
+            height: 42px;
+
+            display: grid;
+
+            place-items: center;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.12);
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 255, 255, 0.08);
+
+            color: #fff;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            transition:
+                background 0.2s ease,
+                transform 0.2s ease;
+        }
+
+
+        .control-btn:hover {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff2400,
+                    #ff681c
+                );
+
+            transform:
+                scale(1.08);
+        }
+
+
+        /* =====================================================
+           PLAY BUTTON
+        ===================================================== */
+
+        #playButton {
+
+            width: 48px;
+            height: 48px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff2400,
+                    #ff681c
+                );
+
+            border: none;
+
+            box-shadow:
+                0 6px 22px
+                rgba(255, 55, 15, 0.3);
+        }
+
+
+        #playButton:hover {
+
+            transform:
+                scale(1.1);
+
+            box-shadow:
+                0 8px 28px
+                rgba(255, 55, 15, 0.45);
+        }
+
+
+        /* =====================================================
+           TIME
+        ===================================================== */
+
+        .time {
+
+            min-width: 105px;
+
+            margin-left: 5px;
 
             color:
-                rgba(255, 255, 255, 0.55);
+                rgba(255, 255, 255, 0.75);
 
-            font-size: 11px;
+            font-size: 12px;
+
+            font-weight: 600;
+
+            user-select: none;
+        }
+
+
+        /* =====================================================
+           SPACER
+        ===================================================== */
+
+        .control-spacer {
+
+            flex: 1;
+        }
+
+
+        /* =====================================================
+           VOLUME
+        ===================================================== */
+
+        .volume-wrapper {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 7px;
+        }
+
+
+        .volume-slider {
+
+            width: 75px;
+
+            accent-color: #ff4317;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           HIDDEN CONTROLS
+        ===================================================== */
+
+        .player-container.controls-hidden
+        .controls {
+
+            opacity: 0;
+
+            transform:
+                translateY(20px);
 
             pointer-events: none;
         }
 
-        .status-dot {
-            width: 7px;
-            height: 7px;
 
-            border-radius: 50%;
+        .player-container.controls-hidden
+        .top-bar {
 
-            background: #ff4216;
-
-            box-shadow:
-                0 0 10px
-                rgba(255, 66, 22, 0.8);
-        }
-
-
-        /* =====================================================
-           HIDE UI
-        ===================================================== */
-
-        .player-container.controls-hidden .top-bar {
             opacity: 0;
 
             transform:
@@ -371,84 +570,224 @@
 
 
         /* =====================================================
-           RESPONSIVE
+           CENTER PLAY BUTTON
+        ===================================================== */
+
+        .center-play {
+
+            position: absolute;
+
+            z-index: 15;
+
+            top: 50%;
+            left: 50%;
+
+            transform:
+                translate(-50%, -50%)
+                scale(1);
+
+            width: 76px;
+            height: 76px;
+
+            display: grid;
+
+            place-items: center;
+
+            border:
+                1px solid
+                rgba(255, 255, 255, 0.15);
+
+            border-radius: 50%;
+
+            background:
+                rgba(10, 10, 10, 0.55);
+
+            backdrop-filter:
+                blur(10px);
+
+            color: #fff;
+
+            font-size: 28px;
+
+            cursor: pointer;
+
+            transition:
+                opacity 0.25s ease,
+                transform 0.25s ease,
+                background 0.25s ease;
+        }
+
+
+        .center-play:hover {
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff2400,
+                    #ff681c
+                );
+
+            transform:
+                translate(-50%, -50%)
+                scale(1.08);
+        }
+
+
+        .center-play.hidden {
+
+            opacity: 0;
+
+            pointer-events: none;
+
+            transform:
+                translate(-50%, -50%)
+                scale(0.75);
+        }
+
+
+        /* =====================================================
+           MOBILE
         ===================================================== */
 
         @media (max-width: 700px) {
 
             .top-bar {
-                height: 90px;
+
+                height: 85px;
 
                 padding:
-                    15px 14px;
+                    14px 14px;
             }
 
-            .player-brand {
+
+            .brand span {
+
+                display: none;
+            }
+
+
+            .brand {
+
                 margin-right: 8px;
-
-                font-size: 0;
             }
+
 
             .brand-star {
+
                 width: 32px;
                 height: 32px;
             }
 
+
             .back-btn {
-                min-height: 35px;
+
+                height: 36px;
 
                 padding: 0 11px;
 
                 font-size: 12px;
             }
 
+
             #movieTitle {
+
                 max-width: 40vw;
 
-                margin-left: 9px;
+                height: 36px;
+
+                margin-left: 8px;
 
                 overflow: hidden;
 
-                white-space: nowrap;
                 text-overflow: ellipsis;
+
+                white-space: nowrap;
 
                 font-size: 13px;
             }
 
-            .fullscreen-btn {
-                min-height: 35px;
 
-                padding: 0 10px;
+            .fullscreen-top {
+
+                width: 40px;
+
+                height: 36px;
+
+                padding: 0;
 
                 font-size: 0;
             }
 
-            .fullscreen-btn::before {
+
+            .fullscreen-top::before {
+
                 content: "⛶";
 
-                font-size: 18px;
+                font-size: 17px;
             }
 
-            .player-status {
-                left: 15px;
-                bottom: 18px;
+
+            .controls {
+
+                padding:
+                    35px 12px 14px;
             }
 
-            .bottom-gradient {
-                height: 110px;
+
+            .control-btn {
+
+                width: 36px;
+                height: 36px;
+
+                font-size: 14px;
             }
+
+
+            #playButton {
+
+                width: 43px;
+                height: 43px;
+            }
+
+
+            .time {
+
+                min-width: 80px;
+
+                font-size: 10px;
+            }
+
+
+            .volume-slider {
+
+                width: 50px;
+            }
+
+
+            .center-play {
+
+                width: 62px;
+                height: 62px;
+
+                font-size: 23px;
+            }
+
         }
 
 
         @media (max-width: 420px) {
 
-            .player-brand {
+            .volume-wrapper {
+
                 display: none;
             }
 
-            #movieTitle {
-                max-width: 42vw;
+
+            .time {
+
+                min-width: auto;
             }
+
         }
 
 
@@ -459,289 +798,987 @@
         @media (prefers-reduced-motion: reduce) {
 
             * {
-                transition: none !important;
+
+                transition:
+                    none !important;
             }
 
         }
 
     </style>
+
 </head>
 
 
 <body>
 
+
+<div
+    class="player-container"
+    id="playerContainer">
+
+
+    <!-- =====================================================
+         YOUTUBE PLAYER
+    ===================================================== -->
+
+    <div id="youtubePlayer"></div>
+
+
+    <!-- =====================================================
+         TOP BAR
+    ===================================================== -->
+
+    <div class="top-bar">
+
+
+        <div class="brand">
+
+            <div class="brand-star">
+                ★
+            </div>
+
+            <span>
+                VyaHotstar
+            </span>
+
+        </div>
+
+
+        <a
+            href="index.html"
+            class="back-btn">
+
+            ← Back
+
+        </a>
+
+
+        <span id="movieTitle">
+            Loading...
+        </span>
+
+
+        <button
+            class="fullscreen-top"
+            id="fullscreenTopButton"
+            type="button">
+
+            ⛶ Fullscreen
+
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         CENTER PLAY
+    ===================================================== -->
+
+    <button
+        class="center-play"
+        id="centerPlay"
+        type="button"
+        aria-label="Play">
+
+        ▶
+
+    </button>
+
+
+    <!-- =====================================================
+         CUSTOM CONTROLS
+    ===================================================== -->
+
     <div
-        class="player-container"
-        id="playerContainer">
+        class="controls"
+        id="controls">
 
 
-        <!-- =================================================
-             YOUTUBE VIDEO
-        ================================================== -->
+        <!-- Progress -->
 
-        <iframe
-            id="youtubePlayer"
+        <div
+            class="progress-container"
+            id="progressContainer">
 
-            src=""
+            <div
+                class="progress"
+                id="progress">
+            </div>
 
-            title="VyaHotstar video player"
-
-            frameborder="0"
-
-            allow="
-                accelerometer;
-                autoplay;
-                clipboard-write;
-                encrypted-media;
-                gyroscope;
-                picture-in-picture;
-                web-share
-            "
-
-            referrerpolicy="strict-origin-when-cross-origin"
-
-            allowfullscreen>
-        </iframe>
+        </div>
 
 
-        <!-- =================================================
-             TOP BAR
-        ================================================== -->
+        <!-- Control Row -->
 
-        <div class="top-bar">
+        <div class="control-row">
 
 
-            <!-- VyaHotstar Brand -->
+            <!-- Play/Pause -->
 
-            <div class="player-brand">
+            <button
+                class="control-btn"
+                id="playButton"
+                type="button"
+                aria-label="Play">
 
-                <div class="brand-star">
-                    ★
-                </div>
+                ▶
 
-                <span>
-                    VyaHotstar
-                </span>
+            </button>
+
+
+            <!-- Rewind -->
+
+            <button
+                class="control-btn"
+                id="rewindButton"
+                type="button"
+                aria-label="Rewind 10 seconds">
+
+                ↶
+
+            </button>
+
+
+            <!-- Forward -->
+
+            <button
+                class="control-btn"
+                id="forwardButton"
+                type="button"
+                aria-label="Forward 10 seconds">
+
+                ↷
+
+            </button>
+
+
+            <!-- Time -->
+
+            <div
+                class="time"
+                id="timeDisplay">
+
+                00:00 / 00:00
 
             </div>
 
 
-            <!-- Back -->
-
-            <a
-                href="index.html"
-                class="back-btn">
-
-                ← Back
-
-            </a>
+            <div class="control-spacer"></div>
 
 
-            <!-- Movie Title -->
+            <!-- Volume -->
 
-            <span id="movieTitle">
-                Loading...
-            </span>
+            <div class="volume-wrapper">
+
+                <button
+                    class="control-btn"
+                    id="muteButton"
+                    type="button"
+                    aria-label="Mute">
+
+                    🔊
+
+                </button>
+
+
+                <input
+                    type="range"
+                    class="volume-slider"
+                    id="volumeSlider"
+                    min="0"
+                    max="100"
+                    value="100"
+                    aria-label="Volume">
+
+            </div>
 
 
             <!-- Fullscreen -->
 
             <button
-                class="fullscreen-btn"
-                onclick="goFullscreen()">
+                class="control-btn"
+                id="fullscreenButton"
+                type="button"
+                aria-label="Fullscreen">
 
-                ⛶ Fullscreen
+                ⛶
 
             </button>
 
         </div>
 
-
-        <!-- =================================================
-             BOTTOM GRADIENT
-        ================================================== -->
-
-        <div class="bottom-gradient"></div>
-
-
-        <!-- =================================================
-             STATUS
-        ================================================== -->
-
-        <div class="player-status">
-
-            <span class="status-dot"></span>
-
-            <span>
-                VyaHotstar Player
-            </span>
-
-        </div>
-
-
     </div>
 
+</div>
 
-    <script>
 
-        /* =====================================================
-           GET URL PARAMETERS
-        ===================================================== */
+<!-- =========================================================
+     YOUTUBE IFRAME PLAYER API
+========================================================= -->
 
-        const params =
-            new URLSearchParams(
-                window.location.search
+<script src="https://www.youtube.com/iframe_api"></script>
+
+
+<script>
+
+    /* ========================================================
+       URL PARAMETERS
+    ======================================================== */
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const movieTitle =
+        params.get("title")
+        || "Kurukshetra";
+
+
+    const videoId =
+        params.get("video")
+        || "G-3JSyi_Ss0";
+
+
+    document.getElementById(
+        "movieTitle"
+    ).textContent = movieTitle;
+
+
+    document.title =
+        movieTitle + " | VyaHotstar";
+
+
+    /* ========================================================
+       PLAYER VARIABLES
+    ======================================================== */
+
+    let player = null;
+
+    let progressTimer = null;
+
+    let hideTimer = null;
+
+
+    const container =
+        document.getElementById(
+            "playerContainer"
+        );
+
+
+    const playButton =
+        document.getElementById(
+            "playButton"
+        );
+
+
+    const centerPlay =
+        document.getElementById(
+            "centerPlay"
+        );
+
+
+    const progress =
+        document.getElementById(
+            "progress"
+        );
+
+
+    const progressContainer =
+        document.getElementById(
+            "progressContainer"
+        );
+
+
+    const timeDisplay =
+        document.getElementById(
+            "timeDisplay"
+        );
+
+
+    const volumeSlider =
+        document.getElementById(
+            "volumeSlider"
+        );
+
+
+    const muteButton =
+        document.getElementById(
+            "muteButton"
+        );
+
+
+    /* ========================================================
+       YOUTUBE API READY
+    ======================================================== */
+
+    function onYouTubeIframeAPIReady() {
+
+        player =
+            new YT.Player(
+                "youtubePlayer",
+                {
+
+                    width: "100%",
+
+                    height: "100%",
+
+                    videoId: videoId,
+
+                    playerVars: {
+
+                        autoplay: 1,
+
+                        controls: 0,
+
+                        disablekb: 1,
+
+                        fs: 0,
+
+                        modestbranding: 1,
+
+                        rel: 0,
+
+                        iv_load_policy: 3,
+
+                        playsinline: 1
+
+                    },
+
+
+                    events: {
+
+                        onReady:
+                            onPlayerReady,
+
+                        onStateChange:
+                            onPlayerStateChange
+
+                    }
+
+                }
             );
 
-
-        /*
-            Example:
-
-            player.html
-            ?title=Kurukshetra
-            &video=G-3JSyi_Ss0
-        */
-
-        const title =
-            params.get("title")
-            || "Kurukshetra";
+    }
 
 
-        const videoId =
-            params.get("video")
-            || "G-3JSyi_Ss0";
+    /* ========================================================
+       PLAYER READY
+    ======================================================== */
+
+    function onPlayerReady(event) {
+
+        event.target.setVolume(100);
+
+        updateTime();
+
+        startProgressTimer();
+
+        showControls();
+
+    }
 
 
-        /* =====================================================
-           SET TITLE
-        ===================================================== */
+    /* ========================================================
+       PLAYER STATE
+    ======================================================== */
 
-        document.getElementById(
-            "movieTitle"
-        ).textContent = title;
+    function onPlayerStateChange(event) {
 
+        if (
+            event.data ===
+            YT.PlayerState.PLAYING
+        ) {
 
-        document.title =
-            title + " | VyaHotstar";
+            playButton.textContent = "❚❚";
 
+            playButton.setAttribute(
+                "aria-label",
+                "Pause"
+            );
 
-        /* =====================================================
-           YOUTUBE URL
-        ===================================================== */
+            centerPlay.classList.add(
+                "hidden"
+            );
 
-        const youtubeURL =
-            "https://www.youtube-nocookie.com/embed/"
-            + encodeURIComponent(videoId)
-            + "?autoplay=1"
-            + "&rel=0"
-            + "&modestbranding=1"
-            + "&playsinline=1"
-            + "&controls=1";
-
-
-        /* =====================================================
-           LOAD VIDEO
-        ===================================================== */
-
-        document.getElementById(
-            "youtubePlayer"
-        ).src = youtubeURL;
-
-
-        /* =====================================================
-           FULLSCREEN
-        ===================================================== */
-
-        function goFullscreen() {
-
-            const container =
-                document.getElementById(
-                    "playerContainer"
-                );
-
-
-            if (container.requestFullscreen) {
-
-                container.requestFullscreen();
-
-            }
-
-            else if (
-                container.webkitRequestFullscreen
-            ) {
-
-                container.webkitRequestFullscreen();
-
-            }
-
-            else if (
-                container.msRequestFullscreen
-            ) {
-
-                container.msRequestFullscreen();
-
-            }
+            startProgressTimer();
 
         }
 
 
-        /* =====================================================
-           AUTO-HIDE TOP BAR
-        ===================================================== */
+        else if (
+            event.data ===
+            YT.PlayerState.PAUSED
+        ) {
 
-        const container =
-            document.getElementById(
-                "playerContainer"
+            playButton.textContent = "▶";
+
+            playButton.setAttribute(
+                "aria-label",
+                "Play"
+            );
+
+            centerPlay.classList.remove(
+                "hidden"
+            );
+
+            stopProgressTimer();
+
+            showControls();
+
+        }
+
+
+        else if (
+            event.data ===
+            YT.PlayerState.ENDED
+        ) {
+
+            playButton.textContent = "▶";
+
+            centerPlay.classList.remove(
+                "hidden"
+            );
+
+            stopProgressTimer();
+
+            progress.style.width = "100%";
+
+            showControls();
+
+        }
+
+    }
+
+
+    /* ========================================================
+       PLAY / PAUSE
+    ======================================================== */
+
+    function togglePlay() {
+
+        if (!player) return;
+
+
+        const state =
+            player.getPlayerState();
+
+
+        if (
+            state ===
+            YT.PlayerState.PLAYING
+        ) {
+
+            player.pauseVideo();
+
+        }
+
+        else {
+
+            player.playVideo();
+
+        }
+
+    }
+
+
+    playButton.addEventListener(
+        "click",
+        togglePlay
+    );
+
+
+    centerPlay.addEventListener(
+        "click",
+        togglePlay
+    );
+
+
+    /* ========================================================
+       REWIND
+    ======================================================== */
+
+    document.getElementById(
+        "rewindButton"
+    ).addEventListener(
+        "click",
+        function () {
+
+            if (!player) return;
+
+            const current =
+                player.getCurrentTime();
+
+            player.seekTo(
+                Math.max(
+                    current - 10,
+                    0
+                ),
+                true
+            );
+
+            showControls();
+
+        }
+    );
+
+
+    /* ========================================================
+       FORWARD
+    ======================================================== */
+
+    document.getElementById(
+        "forwardButton"
+    ).addEventListener(
+        "click",
+        function () {
+
+            if (!player) return;
+
+            const current =
+                player.getCurrentTime();
+
+            const duration =
+                player.getDuration();
+
+            player.seekTo(
+                Math.min(
+                    current + 10,
+                    duration
+                ),
+                true
+            );
+
+            showControls();
+
+        }
+    );
+
+
+    /* ========================================================
+       PROGRESS UPDATE
+    ======================================================== */
+
+    function startProgressTimer() {
+
+        stopProgressTimer();
+
+        progressTimer =
+            setInterval(
+                updateTime,
+                250
+            );
+
+    }
+
+
+    function stopProgressTimer() {
+
+        if (progressTimer) {
+
+            clearInterval(
+                progressTimer
+            );
+
+            progressTimer = null;
+
+        }
+
+    }
+
+
+    function updateTime() {
+
+        if (!player) return;
+
+
+        const current =
+            player.getCurrentTime();
+
+
+        const duration =
+            player.getDuration();
+
+
+        if (!duration) return;
+
+
+        const percentage =
+            (current / duration) * 100;
+
+
+        progress.style.width =
+            percentage + "%";
+
+
+        timeDisplay.textContent =
+            formatTime(current)
+            + " / "
+            + formatTime(duration);
+
+    }
+
+
+    /* ========================================================
+       FORMAT TIME
+    ======================================================== */
+
+    function formatTime(seconds) {
+
+        if (!seconds || isNaN(seconds)) {
+
+            return "00:00";
+
+        }
+
+
+        seconds =
+            Math.floor(seconds);
+
+
+        const minutes =
+            Math.floor(
+                seconds / 60
             );
 
 
-        let hideTimer;
+        const remainingSeconds =
+            seconds % 60;
 
 
-        function showControls() {
+        return (
+            String(minutes)
+                .padStart(2, "0")
+            + ":"
+            +
+            String(remainingSeconds)
+                .padStart(2, "0")
+        );
 
-            container.classList.remove(
-                "controls-hidden"
+    }
+
+
+    /* ========================================================
+       SEEK USING PROGRESS BAR
+    ======================================================== */
+
+    progressContainer.addEventListener(
+        "click",
+        function (event) {
+
+            if (!player) return;
+
+
+            const rect =
+                progressContainer
+                    .getBoundingClientRect();
+
+
+            const position =
+                (
+                    event.clientX
+                    - rect.left
+                )
+                / rect.width;
+
+
+            const duration =
+                player.getDuration();
+
+
+            player.seekTo(
+                duration * position,
+                true
             );
 
 
-            clearTimeout(hideTimer);
+            showControls();
+
+        }
+    );
 
 
-            hideTimer =
-                setTimeout(
-                    () => {
+    /* ========================================================
+       VOLUME
+    ======================================================== */
+
+    volumeSlider.addEventListener(
+        "input",
+        function () {
+
+            if (!player) return;
+
+
+            const volume =
+                Number(
+                    this.value
+                );
+
+
+            player.setVolume(
+                volume
+            );
+
+
+            if (volume === 0) {
+
+                muteButton.textContent =
+                    "🔇";
+
+            }
+
+            else {
+
+                muteButton.textContent =
+                    "🔊";
+
+            }
+
+        }
+    );
+
+
+    /* ========================================================
+       MUTE
+    ======================================================== */
+
+    muteButton.addEventListener(
+        "click",
+        function () {
+
+            if (!player) return;
+
+
+            if (player.isMuted()) {
+
+                player.unMute();
+
+                const volume =
+                    player.getVolume();
+
+                volumeSlider.value =
+                    volume;
+
+                muteButton.textContent =
+                    "🔊";
+
+            }
+
+            else {
+
+                player.mute();
+
+                volumeSlider.value = 0;
+
+                muteButton.textContent =
+                    "🔇";
+
+            }
+
+            showControls();
+
+        }
+    );
+
+
+    /* ========================================================
+       FULLSCREEN
+    ======================================================== */
+
+    function goFullscreen() {
+
+        if (
+            document.fullscreenElement
+        ) {
+
+            document.exitFullscreen();
+
+            return;
+
+        }
+
+
+        if (
+            container.requestFullscreen
+        ) {
+
+            container.requestFullscreen();
+
+        }
+
+        else if (
+            container.webkitRequestFullscreen
+        ) {
+
+            container.webkitRequestFullscreen();
+
+        }
+
+    }
+
+
+    document.getElementById(
+        "fullscreenButton"
+    ).addEventListener(
+        "click",
+        goFullscreen
+    );
+
+
+    document.getElementById(
+        "fullscreenTopButton"
+    ).addEventListener(
+        "click",
+        goFullscreen
+    );
+
+
+    /* ========================================================
+       SHOW / HIDE CONTROLS
+    ======================================================== */
+
+    function showControls() {
+
+        container.classList.remove(
+            "controls-hidden"
+        );
+
+
+        clearTimeout(
+            hideTimer
+        );
+
+
+        hideTimer =
+            setTimeout(
+                function () {
+
+                    if (
+                        player &&
+                        player.getPlayerState()
+                        === YT.PlayerState.PLAYING
+                    ) {
 
                         container.classList.add(
                             "controls-hidden"
                         );
 
-                    },
-                    4000
-                );
+                    }
+
+                },
+                3500
+            );
+
+    }
+
+
+    container.addEventListener(
+        "mousemove",
+        showControls
+    );
+
+
+    container.addEventListener(
+        "touchstart",
+        showControls,
+        {
+            passive: true
+        }
+    );
+
+
+    /* ========================================================
+       KEYBOARD CONTROLS
+    ======================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (!player) return;
+
+
+            switch (event.code) {
+
+
+                case "Space":
+
+                    event.preventDefault();
+
+                    togglePlay();
+
+                    showControls();
+
+                    break;
+
+
+                case "ArrowLeft":
+
+                    event.preventDefault();
+
+                    player.seekTo(
+                        Math.max(
+                            player.getCurrentTime() - 10,
+                            0
+                        ),
+                        true
+                    );
+
+                    showControls();
+
+                    break;
+
+
+                case "ArrowRight":
+
+                    event.preventDefault();
+
+                    player.seekTo(
+                        Math.min(
+                            player.getCurrentTime() + 10,
+                            player.getDuration()
+                        ),
+                        true
+                    );
+
+                    showControls();
+
+                    break;
+
+
+                case "KeyM":
+
+                    event.preventDefault();
+
+                    muteButton.click();
+
+                    break;
+
+
+                case "KeyF":
+
+                    event.preventDefault();
+
+                    goFullscreen();
+
+                    break;
+
+            }
 
         }
+    );
 
 
-        container.addEventListener(
-            "mousemove",
-            showControls
-        );
+    /* ========================================================
+       INITIAL CONTROL VISIBILITY
+    ======================================================== */
 
+    showControls();
 
-        container.addEventListener(
-            "touchstart",
-            showControls,
-            {
-                passive: true
-            }
-        );
+</script>
 
-
-        showControls();
-
-
-    </script>
 
 </body>
 </html>
