@@ -2,21 +2,18 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="VyaHotstar Movies - Watch Kurukshetra and discover movies, TV shows and entertainment.">
+    <meta name="description"
+        content="VyaHotstar Movies - Watch Kurukshetra: Season 1 and discover movies, TV shows and entertainment.">
 
-    <title>Kurukshetra - Movies | VyaHotstar</title>
+    <title>Kurukshetra: Season 1 | VyaHotstar</title>
 
     <link rel="icon" type="image/x-icon" href="Subject.png">
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
@@ -174,7 +171,6 @@
             opacity: 1;
         }
 
-
         /* =========================
            MAIN
         ========================= */
@@ -189,7 +185,6 @@
             margin-left: 230px;
         }
 
-
         /* =========================
            HERO BANNER
         ========================= */
@@ -197,33 +192,32 @@
         .hero {
             position: relative;
 
-            min-height: 610px;
+            min-height: 650px;
 
             display: flex;
             align-items: center;
 
             overflow: hidden;
 
-            padding: 70px 6% 90px;
+            padding: 70px 6% 100px;
 
             background:
-
                 linear-gradient(
                     90deg,
                     #08090d 0%,
-                    rgba(8,9,13,.97) 23%,
-                    rgba(8,9,13,.72) 48%,
-                    rgba(8,9,13,.28) 76%,
-                    rgba(8,9,13,.04) 100%
+                    rgba(8,9,13,.98) 20%,
+                    rgba(8,9,13,.82) 43%,
+                    rgba(8,9,13,.38) 72%,
+                    rgba(8,9,13,.08) 100%
                 ),
 
                 linear-gradient(
                     0deg,
                     #08090d 0%,
-                    transparent 38%
+                    transparent 45%
                 ),
 
-                url("https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=2000&q=90");
+                url("https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=2200&q=90");
 
             background-size: cover;
             background-position: center;
@@ -237,7 +231,7 @@
             right: 0;
             bottom: 0;
 
-            height: 190px;
+            height: 220px;
 
             background:
                 linear-gradient(
@@ -253,12 +247,12 @@
             position: relative;
             z-index: 2;
 
-            max-width: 620px;
+            max-width: 680px;
             padding-top: 45px;
         }
 
         .hero-small-title {
-            color: #ff5a1f;
+            color: #ff6328;
 
             font-size: 11px;
             font-weight: 800;
@@ -266,9 +260,8 @@
             letter-spacing: 3px;
             text-transform: uppercase;
 
-            margin-bottom: 14px;
+            margin-bottom: 15px;
         }
-
 
         /* =========================
            KURUKSHETRA LOGO
@@ -279,7 +272,7 @@
 
             display: inline-block;
 
-            margin-bottom: 20px;
+            margin-bottom: 22px;
 
             font-family:
                 Georgia,
@@ -287,21 +280,22 @@
                 serif;
 
             font-size:
-                clamp(48px, 7vw, 88px);
+                clamp(55px, 8vw, 105px);
 
             line-height: .85;
 
             font-weight: 900;
 
-            letter-spacing: 2px;
+            letter-spacing: 3px;
 
             text-transform: uppercase;
 
             color: #fff;
 
             text-shadow:
-                0 3px 0 #35100a,
-                0 7px 18px rgba(0,0,0,.85);
+                0 3px 0 #3a1007,
+                0 6px 0 #1b0904,
+                0 12px 28px rgba(0,0,0,.9);
 
             transform: skewX(-4deg);
         }
@@ -311,16 +305,16 @@
 
             position: absolute;
 
-            left: 3px;
-            right: -8px;
-            bottom: -10px;
+            left: 4px;
+            right: -15px;
+            bottom: -13px;
 
-            height: 4px;
+            height: 5px;
 
             background:
                 linear-gradient(
                     90deg,
-                    #ff3d00,
+                    #ff2d00,
                     #ff8a00,
                     transparent
                 );
@@ -328,7 +322,7 @@
             border-radius: 10px;
 
             box-shadow:
-                0 2px 10px rgba(255,69,0,.4);
+                0 2px 15px rgba(255,69,0,.5);
         }
 
         .movie-logo::after {
@@ -336,16 +330,30 @@
 
             position: absolute;
 
-            left: 4px;
-            top: 3px;
+            left: 5px;
+            top: 4px;
 
             z-index: -1;
 
-            color: rgba(255,69,0,.25);
+            color: rgba(255,69,0,.28);
 
-            filter: blur(5px);
+            filter: blur(6px);
         }
 
+        .season-title {
+            display: block;
+
+            margin-top: 12px;
+
+            color: #ddd;
+
+            font-size: 17px;
+            font-weight: 700;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+        }
 
         /* =========================
            MOVIE META
@@ -358,7 +366,7 @@
 
             gap: 10px;
 
-            margin-bottom: 18px;
+            margin-bottom: 19px;
 
             color: #ddd;
             font-size: 14px;
@@ -377,22 +385,20 @@
             color: #fff;
         }
 
-
         /* =========================
            DESCRIPTION
         ========================= */
 
         .description {
-            max-width: 570px;
+            max-width: 590px;
 
             color: #c8c8c8;
 
             font-size: 15px;
-            line-height: 1.7;
+            line-height: 1.75;
 
-            margin-bottom: 28px;
+            margin-bottom: 30px;
         }
-
 
         /* =========================
            HERO BUTTONS
@@ -405,7 +411,7 @@
         }
 
         .watch-now {
-            min-height: 48px;
+            min-height: 50px;
 
             display: inline-flex;
             align-items: center;
@@ -413,7 +419,7 @@
 
             gap: 9px;
 
-            padding: 0 25px;
+            padding: 0 28px;
 
             border: none;
             border-radius: 6px;
@@ -421,8 +427,8 @@
             background:
                 linear-gradient(
                     135deg,
-                    #ff2d00,
-                    #ff6500
+                    #ff2b00,
+                    #ff6200
                 );
 
             color: #fff;
@@ -433,7 +439,7 @@
             font-weight: 800;
 
             box-shadow:
-                0 8px 25px rgba(255,65,0,.28);
+                0 8px 28px rgba(255,65,0,.35);
 
             transition:
                 transform .25s ease,
@@ -442,17 +448,17 @@
         }
 
         .watch-now:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.02);
 
             filter: brightness(1.08);
 
             box-shadow:
-                0 12px 32px rgba(255,65,0,.42);
+                0 13px 38px rgba(255,65,0,.5);
         }
 
         .plus-btn {
-            width: 48px;
-            height: 48px;
+            width: 50px;
+            height: 50px;
 
             display: flex;
             align-items: center;
@@ -479,9 +485,8 @@
             transform: scale(1.06);
         }
 
-
         /* =========================
-           MOVIES
+           MOVIES SECTION
         ========================= */
 
         .movies-section {
@@ -515,7 +520,6 @@
             color: #ff5a1f;
         }
 
-
         /* =========================
            SMALLER MOVIE GRID
         ========================= */
@@ -526,14 +530,13 @@
             grid-template-columns:
                 repeat(
                     auto-fill,
-                    minmax(145px, 1fr)
+                    minmax(135px, 1fr)
                 );
 
             gap: 17px;
 
             align-items: start;
         }
-
 
         /* =========================
            MOVIE CARD
@@ -542,7 +545,7 @@
         .movie-card {
             position: relative;
 
-            height: 225px;
+            height: 205px;
 
             overflow: hidden;
 
@@ -560,12 +563,12 @@
         }
 
         .movie-card:hover {
-            transform: scale(1.065);
+            transform: scale(1.08);
 
             z-index: 20;
 
             box-shadow:
-                0 18px 42px rgba(0,0,0,.75);
+                0 18px 42px rgba(0,0,0,.78);
         }
 
         .movie-card img {
@@ -577,11 +580,13 @@
             object-fit: cover;
 
             transition:
-                transform .4s ease;
+                transform .4s ease,
+                filter .3s ease;
         }
 
         .movie-card:hover img {
             transform: scale(1.08);
+            filter: brightness(.82);
         }
 
         .movie-card::after {
@@ -600,7 +605,6 @@
 
             pointer-events: none;
         }
-
 
         /* =========================
            CARD OVERLAY
@@ -632,7 +636,7 @@
         }
 
         .movie-overlay h3 {
-            font-size: 15px;
+            font-size: 14px;
             margin-bottom: 5px;
         }
 
@@ -662,13 +666,16 @@
 
             font-size: 10px;
             font-weight: 700;
+
+            transition:
+                background .2s ease,
+                color .2s ease;
         }
 
         .card-watch:hover {
             background: #ff5a1f;
             color: #fff;
         }
-
 
         /* =========================
            FOOTER
@@ -686,7 +693,6 @@
             border-top:
                 1px solid rgba(255,255,255,.05);
         }
-
 
         /* =========================
            TABLET
@@ -713,7 +719,7 @@
             }
 
             .hero {
-                min-height: 560px;
+                min-height: 570px;
             }
 
             .movie-grid {
@@ -724,10 +730,9 @@
             }
 
             .movie-card {
-                height: 215px;
+                height: 195px;
             }
         }
-
 
         /* =========================
            MOBILE
@@ -796,10 +801,10 @@
             }
 
             .hero {
-                min-height: 620px;
+                min-height: 650px;
 
                 padding:
-                    270px 24px 50px;
+                    275px 24px 55px;
 
                 border-radius: 0;
 
@@ -812,7 +817,13 @@
             }
 
             .movie-logo {
-                font-size: 47px;
+                font-size: 48px;
+                letter-spacing: 1px;
+            }
+
+            .season-title {
+                font-size: 13px;
+                letter-spacing: 3px;
             }
 
             .movie-meta {
@@ -822,7 +833,7 @@
 
             .description {
                 font-size: 13px;
-                line-height: 1.55;
+                line-height: 1.6;
             }
 
             .movies-section {
@@ -838,7 +849,11 @@
             }
 
             .movie-card {
-                height: 220px;
+                height: 205px;
+            }
+
+            .movie-card:hover {
+                transform: scale(1.045);
             }
 
             .movie-overlay {
@@ -857,14 +872,11 @@
                 font-size: 19px;
             }
         }
-
     </style>
-
 </head>
 
 
 <body>
-
 
     <!-- =========================
          SIDEBAR
@@ -887,7 +899,6 @@
 
         <nav class="sidebar-nav">
 
-
             <!-- HOME -->
 
             <a href="index.html">
@@ -895,12 +906,10 @@
                 <span class="sidebar-icon">
 
                     <svg viewBox="0 0 24 24">
-
                         <path d="
                             M10 20v-6h4v6h5v-8h3L12 3
                             2 12h3v8z
-                        "/>
-
+                        " />
                     </svg>
 
                 </span>
@@ -919,7 +928,6 @@
                 <span class="sidebar-icon">
 
                     <svg viewBox="0 0 24 24">
-
                         <path d="
                             M9.5 3a6.5 6.5 0 1 0
                             4.03 11.6l4.44 4.44
@@ -927,8 +935,7 @@
                             A6.5 6.5 0 0 0 9.5 3zm0
                             2a4.5 4.5 0 1 1 0
                             9 4.5 4.5 0 0 1 0-9z
-                        "/>
-
+                        " />
                     </svg>
 
                 </span>
@@ -947,7 +954,6 @@
                 <span class="sidebar-icon">
 
                     <svg viewBox="0 0 24 24">
-
                         <path d="
                             M21 3H3c-1.1 0-2 .9-2
                             2v14c0 1.1.9 2 2
@@ -956,8 +962,7 @@
                             M21 19H3V5h18v14z
                             M8 7H6v2h2V7zm4 0h-2v2h2V7zm4
                             0h-2v2h2V7z
-                        "/>
-
+                        " />
                     </svg>
 
                 </span>
@@ -976,7 +981,6 @@
                 <span class="sidebar-icon">
 
                     <svg viewBox="0 0 24 24">
-
                         <path d="
                             M18 4l2 4h-3l-2-4h-2l2
                             4h-3l-2-4H8l2 4H7L5
@@ -984,8 +988,7 @@
                             c0 1.1.9 2 2 2h18c1.1
                             0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3z
                             M21 18H3V9h18v9z
-                        "/>
-
+                        " />
                     </svg>
 
                 </span>
@@ -996,11 +999,9 @@
 
             </a>
 
-
         </nav>
 
     </aside>
-
 
 
     <!-- =========================
@@ -1008,7 +1009,6 @@
     ========================= -->
 
     <main class="main">
-
 
         <!-- =========================
              KURUKSHETRA HERO
@@ -1019,15 +1019,19 @@
             <div class="hero-content">
 
                 <div class="hero-small-title">
-                    Featured Movie
+                    Featured Series
                 </div>
 
 
-                <!-- PROFESSIONAL TITLE LOGO -->
+                <!-- PROFESSIONAL TITLE -->
 
                 <div class="movie-logo">
                     Kurukshetra
                 </div>
+
+                <span class="season-title">
+                    Season 1
+                </span>
 
 
                 <!-- MOVIE DETAILS -->
@@ -1069,11 +1073,12 @@
 
                 <p class="description">
 
-                    Kurukshetra is an epic tale of courage,
-                    duty and destiny. Witness a powerful
-                    battle between ambition and righteousness
-                    as unforgettable characters face choices
-                    that will change their world forever.
+                    Kurukshetra: Season 1 is an epic tale of
+                    courage, duty and destiny. Witness a powerful
+                    story filled with ambition, loyalty and
+                    righteousness as unforgettable characters
+                    face choices that can change their world
+                    forever.
 
                 </p>
 
@@ -1083,7 +1088,7 @@
                 <div class="hero-buttons">
 
                     <a
-                        href="player.html?title=Kurukshetra&video=G-3JSyi_Ss0"
+                        href="player.html?title=Kurukshetra%20Season%201&video=G-3JSyi_Ss0"
                         class="watch-now">
 
                         ▶
@@ -1106,7 +1111,6 @@
             </div>
 
         </section>
-
 
 
         <!-- =========================
@@ -1141,12 +1145,12 @@
 
                     <img
                         src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=85"
-                        alt="Kurukshetra">
+                        alt="Kurukshetra Season 1">
 
                     <div class="movie-overlay">
 
                         <h3>
-                            Kurukshetra
+                            Kurukshetra: Season 1
                         </h3>
 
                         <p>
@@ -1155,7 +1159,7 @@
                         </p>
 
                         <a
-                            href="player.html?title=Kurukshetra&video=G-3JSyi_Ss0"
+                            href="player.html?title=Kurukshetra%20Season%201&video=G-3JSyi_Ss0"
                             class="card-watch">
 
                             ▶ Watch Now
@@ -1339,7 +1343,6 @@
         </footer>
 
     </main>
-
 
 
     <script>
