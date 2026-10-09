@@ -7,752 +7,588 @@
 
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --bg: #080a10;
-    --panel: #141722;
-    --accent: #ff3155;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    background: var(--bg);
-    color: white;
-    font-family: Arial, sans-serif;
+  background: #080910;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  height: 65px;
+  padding: 0 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #10111b;
+  border-bottom: 1px solid #242534;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00e5ff;
+}
+
+.logo span {
+  color: #ff277e;
+}
+
+.header-link {
+  color: white;
+  text-decoration: none;
+  background: #242637;
+  padding: 10px 16px;
+  border-radius: 20px;
 }
 
 .page-layout {
-    max-width: 1500px;
-    min-height: 100vh;
-    margin: auto;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 480px;
-    gap: 25px;
-    align-items: start;
+  display: grid;
+  grid-template-columns: 1fr 390px;
+  gap: 25px;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 25px;
 }
 
 .main-content {
-    background: var(--panel);
-    border-radius: 16px;
-    padding: 25px;
-    min-height: 300px;
+  padding: 20px 5px;
 }
 
 .main-content h1 {
-    margin-bottom: 12px;
+  font-size: 36px;
+  margin-bottom: 12px;
 }
 
 .main-content p {
-    color: #aeb5c5;
-    line-height: 1.7;
+  color: #a8aabb;
+  line-height: 1.7;
 }
 
-/* SHORTS SIDEBAR */
 .shorts-sidebar {
-    width: 100%;
-    position: sticky;
-    top: 15px;
-    background: #0c0e15;
-    border: 1px solid #242838;
-    border-radius: 18px;
-    overflow: hidden;
+  width: 100%;
 }
 
-.shorts-header {
-    height: 60px;
-    padding: 0 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #262a38;
+.shorts-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
 }
 
-.shorts-title {
-    font-size: 19px;
-    font-weight: bold;
+.shorts-heading h2 {
+  font-size: 21px;
 }
 
-.shuffle-btn {
-    background: #252a39;
-    color: white;
-    border: 0;
-    border-radius: 8px;
-    padding: 9px 12px;
-    cursor: pointer;
+.shuffle-button {
+  border: 0;
+  border-radius: 20px;
+  padding: 9px 13px;
+  color: white;
+  background: #292b3b;
+  cursor: pointer;
 }
 
-.shuffle-btn:hover {
-    background: var(--accent);
+.shuffle-button:hover {
+  background: #41445a;
 }
 
-/* VERTICAL SHORTS FEED */
 .shorts-list {
-    height: min(820px, calc(100vh - 95px));
-    overflow-y: auto;
-    overscroll-behavior-y: contain;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: #42485b transparent;
+  height: calc(100vh - 125px);
+  min-height: 480px;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  border-radius: 18px;
+  scrollbar-width: thin;
+  scrollbar-color: #41445a #11121c;
 }
 
 .short-card {
-    height: min(820px, calc(100vh - 95px));
-    min-height: 450px;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #000;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    overflow: hidden;
+  position: relative;
+  height: calc(100vh - 125px);
+  min-height: 480px;
+  max-height: 850px;
+  margin-bottom: 14px;
+  background: #141520;
+  border: 1px solid #292b3b;
+  border-radius: 18px;
+  overflow: hidden;
+  scroll-snap-align: start;
 }
 
 .video-frame {
-    width: 100%;
-    height: 100%;
-    max-width: 460px;
-    position: relative;
-    background: #000;
-    overflow: hidden;
+  position: absolute;
+  inset: 0;
+  background: #000;
 }
 
-.player-slot {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: #000;
+.player-slot,
+.player-slot iframe,
+.player-slot video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
 }
 
 .player-slot iframe {
-    width: 100%;
-    height: 100%;
-    border: 0;
+  position: absolute;
+  inset: 0;
 }
 
-/* VIDEO OVERLAY */
-.video-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 16px 12px;
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,.35),
-        transparent 22%,
-        transparent 65%,
-        rgba(0,0,0,.60)
-    );
+.video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: #aaa;
+  font-size: 14px;
+  background: #10111b;
+  pointer-events: none;
 }
 
-.video-top,
-.video-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-}
-
-.video-label {
-    font-size: 13px;
-    font-weight: bold;
-    text-shadow: 0 1px 5px #000;
-}
-
-.video-number {
-    background: rgba(0,0,0,.65);
-    padding: 6px 9px;
-    border-radius: 20px;
-    font-size: 12px;
-}
-
-.video-caption {
-    font-size: 13px;
-    text-shadow: 0 1px 5px black;
-}
-
-/* RIGHT-SIDE BUTTONS */
 .side-actions {
-    position: absolute;
-    z-index: 5;
-    right: 12px;
-    bottom: 90px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+  position: absolute;
+  z-index: 5;
+  right: 12px;
+  bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
 }
 
 .action-button {
-    width: 48px;
-    min-height: 53px;
-    border: 0;
-    border-radius: 25px;
-    background: rgba(20,23,34,.90);
-    color: white;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 4px;
-    backdrop-filter: blur(8px);
-    text-decoration: none;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(22, 24, 39, 0.88);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 23px;
+  cursor: pointer;
+  box-shadow: 0 3px 14px #0007;
+  transition: transform .2s, background .2s;
 }
 
 .action-button:hover {
-    background: #303547;
+  transform: scale(1.1);
+  background: #33364d;
 }
 
-.action-button .symbol {
-    font-size: 23px;
-    line-height: 1;
+.action-button.liked {
+  color: #ff3c78;
+  background: #351727;
 }
 
-.action-button .count {
-    font-size: 10px;
+.action-count {
+  color: white;
+  font-size: 11px;
+  text-align: center;
+  margin-top: -13px;
+  text-shadow: 0 1px 4px black;
 }
 
-.like-button.liked {
-    color: #ff4164;
+.bottom-controls {
+  position: absolute;
+  z-index: 4;
+  bottom: 15px;
+  left: 12px;
+  display: flex;
+  gap: 9px;
 }
 
-/* PLAY/PAUSE */
-.play-button {
-    position: absolute;
-    z-index: 6;
-    left: 12px;
-    bottom: 83px;
-    width: 45px;
-    height: 45px;
-    border: 1px solid rgba(255,255,255,.3);
-    border-radius: 50%;
-    background: rgba(0,0,0,.75);
-    color: white;
-    font-size: 19px;
-    cursor: pointer;
-    display: grid;
-    place-items: center;
+.small-control {
+  padding: 10px 13px;
+  border: 1px solid #ffffff30;
+  border-radius: 22px;
+  background: #11131cce;
+  color: white;
+  cursor: pointer;
 }
 
-.play-button:hover {
-    background: var(--accent);
+.small-control:hover {
+  background: #34374b;
 }
 
-/* STATUS MESSAGE */
-.player-status {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px;
-    color: #ddd;
-    font-size: 13px;
-    line-height: 1.6;
-    background: #000;
-    pointer-events: none;
+.short-number {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  z-index: 4;
+  padding: 7px 11px;
+  background: #11131cce;
+  border-radius: 20px;
+  font-size: 12px;
 }
 
-.player-status.hidden {
-    display: none;
+.empty-message {
+  padding: 30px;
+  text-align: center;
+  color: #aaa;
 }
 
-.api-message {
-    padding: 12px;
-    font-size: 12px;
-    line-height: 1.5;
-    color: #aeb5c5;
-    border-top: 1px solid #242838;
-}
-
-/* RESPONSIVE */
+/* Responsive design */
 @media (max-width: 850px) {
-    .page-layout {
-        display: block;
-        padding: 0;
-    }
+  .page-layout {
+    display: block;
+    padding: 15px;
+  }
 
-    .main-content {
-        margin: 15px;
-    }
+  .main-content {
+    display: none;
+  }
 
-    .shorts-sidebar {
-        position: static;
-        border-radius: 0;
-        border-left: 0;
-        border-right: 0;
-    }
+  .shorts-sidebar {
+    max-width: 430px;
+    margin: 0 auto;
+  }
 
-    .shorts-list {
-        height: calc(100dvh - 60px);
-    }
+  .shorts-list {
+    height: calc(100dvh - 115px);
+    min-height: 450px;
+  }
 
-    .short-card {
-        height: calc(100dvh - 60px);
-        min-height: 450px;
-    }
+  .short-card {
+    height: calc(100dvh - 115px);
+    min-height: 450px;
+  }
 
-    .video-frame {
-        max-width: 100%;
-    }
+  header {
+    height: 55px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-layout {
+    padding: 8px;
+  }
+
+  .shorts-list,
+  .short-card {
+    height: calc(100dvh - 95px);
+    min-height: 400px;
+  }
+
+  .short-card {
+    border-radius: 14px;
+  }
+
+  .side-actions {
+    right: 8px;
+    gap: 16px;
+  }
+
+  .action-button {
+    width: 43px;
+    height: 43px;
+  }
 }
 </style>
 </head>
 
 <body>
 
+<header>
+  <div class="logo">Vya<span>Hotstar</span></div>
+  <a class="header-link" href="#">Explore</a>
+</header>
+
 <div class="page-layout">
 
-    </main>
+  <main class="main-content">
+    <h1>Discover Shorts</h1>
+    <p>
+      Explore a collection of short videos. Scroll through the reel
+      feed, like your favourites, and share videos with your friends.
+    </p>
+  </main>
 
-    <aside class="shorts-sidebar">
+  <aside class="shorts-sidebar">
+    <div class="shorts-heading">
+      <h2>Short Videos</h2>
+      <button class="shuffle-button" id="shuffleButton">
+        ↻ Shuffle
+      </button>
+    </div>
 
-        <header class="shorts-header">
-            <div class="shorts-title">
-                <span style="color:#ff3155">▶</span> Shorts
-            </div>
-
-            <button class="shuffle-btn" id="shuffleBtn">
-                🔀 Shuffle
-            </button>
-        </header>
-
-        <div class="shorts-list" id="shortsList"></div>
-
-        <div class="api-message" id="apiMessage" aria-live="polite">
-            Loading YouTube Shorts...
-        </div>
-
-    </aside>
+    <div class="shorts-list" id="shortsList">
+      <div class="empty-message">Loading videos...</div>
+    </div>
+  </aside>
 
 </div>
 
 <script>
-/* ALL VIDEO IDS */
 const videoIds = [
-    "gkHKxnaPSC0",
-    "3NxmfLkBd1E",
-    "gPceQU6wrQw",
-    "gFFCLwGOUqs",
-    "BqyQ6koskeQ",
-    "_8aCcRdCGuk",
-    "zewR5bkSPpo",
-    "S_TxJxp9d78",
-    "b7ewsPK2B9U",
-    "ZFgQ5jYwvfI",
-    "Y2yoA5v4160",
-    "sQeOtxpw-uE",
-    "xe0ze83fKfA",
-    "TqeWNmzOgv8",
-    "aJbKees5_gs"
+  "gkHKxnaPSC0",
+  "3NxmfLkBd1E",
+  "gPceQU6wrQw",
+  "gFFCLwGOUqs",
+  "BqyQ6koskeQ",
+  "_8aCcRdCGuk",
+  "zewR5bkSPpo",
+  "S_TxJxp9d78",
+  "b7ewsPK2B9U",
+  "ZFgQ5jYwvfI",
+  "Y2yoA5v4160",
+  "sQeOtxpw-uE",
+  "xe0ze83fKfA",
+  "TqeWNmzOgv8",
+  "aJbKees5_gs"
 ];
 
 const shortsList = document.getElementById("shortsList");
-const apiMessage = document.getElementById("apiMessage");
-const shuffleBtn = document.getElementById("shuffleBtn");
+const shuffleButton = document.getElementById("shuffleButton");
 
-let cards = [];
-let players = new Map();
+let players = {};
 let activeCard = null;
-let observer = null;
 let apiReady = false;
-const likedVideos = new Set();
+let observer = null;
 
-/* RANDOM VIDEO ORDER */
-function shuffleVideos(array) {
-    const result = [...array];
+function shuffleArray(array) {
+  const result = [...array];
 
-    for (let i = result.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [result[i], result[j]] = [result[j], result[i]];
-    }
+  for (let i = result.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
 
-    return result;
+  return result;
 }
 
-/* CREATE ALL SHORTS CARDS */
-function renderShorts() {
-    const orderedIds = shuffleVideos(videoIds);
+function createCards() {
+  shortsList.innerHTML = "";
+  players = {};
 
-    shortsList.innerHTML = orderedIds.map((id, index) => `
-        <article class="short-card" data-id="${id}">
+  const shuffledVideos = shuffleArray(videoIds);
 
-            <div class="video-frame">
+  shuffledVideos.forEach((videoId, index) => {
+    const card = document.createElement("article");
+    card.className = "short-card";
+    card.dataset.videoId = videoId;
 
-                <div class="player-slot" id="player-${id}"></div>
+    card.innerHTML = `
+      <div class="video-frame">
+        <div class="player-slot" id="player-${videoId}">
+          <div class="video-placeholder">Loading video...</div>
+        </div>
+      </div>
 
-                <div class="player-status" id="status-${id}">
-                    Connecting to YouTube...
-                </div>
+      <div class="short-number">${index + 1} / ${shuffledVideos.length}</div>
 
-                <div class="video-overlay">
-                    <div class="video-top">
-                        <span class="video-label">▶ VyaHotstar</span>
-                        <span class="video-number">
-                            ${index + 1} / ${orderedIds.length}
-                        </span>
-                    </div>
+      <div class="side-actions">
+        <button class="action-button like-button"
+                aria-label="Like video"
+                title="Like">♥</button>
+        <div class="action-count like-count">0 likes</div>
 
-                    <div class="video-bottom">
-                        <span class="video-caption">
-                            Shorts · ${index + 1}
-                        </span>
-                    </div>
-                </div>
+        <button class="action-button share-button"
+                aria-label="Share video"
+                title="Share">↗</button>
+        <div class="action-count">Share</div>
 
-                <button
-                    class="play-button"
-                    data-action="play"
-                    data-id="${id}"
-                    aria-label="Play or pause video">
-                    ▶
-                </button>
+        <button class="action-button copy-button"
+                aria-label="Copy video link"
+                title="Copy link">🔗</button>
+        <div class="action-count">Copy link</div>
+      </div>
 
-                <div class="side-actions">
+      <div class="bottom-controls">
+        <button class="small-control mute-button">🔇 Sound</button>
+        <button class="small-control open-button">↗ Open video</button>
+      </div>
+    `;
 
-                    <button
-                        class="action-button like-button"
-                        data-action="like"
-                        data-id="${id}"
-                        aria-pressed="false">
-                        <span class="symbol">♥</span>
-                        <span class="count" id="likes-${id}">Like</span>
-                    </button>
+    shortsList.appendChild(card);
 
-                    <button
-                        class="action-button"
-                        data-action="share"
-                        data-id="${id}">
-                        <span class="symbol">↗</span>
-                        <span class="count">Share</span>
-                    </button>
+    card.querySelector(".like-button").addEventListener("click", event => {
+      const button = event.currentTarget;
+      const count = card.querySelector(".like-count");
+      const liked = button.classList.toggle("liked");
 
-                    <a
-                        class="action-button"
-                        href="https://www.youtube.com/shorts/${id}"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <span class="symbol">⤢</span>
-                        <span class="count">Open</span>
-                    </a>
-
-                </div>
-            </div>
-        </article>
-    `).join("");
-
-    cards = [...shortsList.querySelectorAll(".short-card")];
-
-    if (apiReady) {
-        initializePlayers();
-    }
-}
-
-/* INITIALIZE ALL PLAYERS */
-function initializePlayers() {
-    cards.forEach(card => createPlayer(card));
-    setupObserver();
-}
-
-/* CREATE YOUTUBE PLAYER */
-function createPlayer(card) {
-    const id = card.dataset.id;
-
-    if (!apiReady || players.has(id)) return;
-
-    const slot = document.getElementById(`player-${id}`);
-    if (!slot) return;
-
-    const player = new YT.Player(slot, {
-        width: "100%",
-        height: "100%",
-        videoId: id,
-
-        playerVars: {
-            autoplay: 0,
-            controls: 1,
-            playsinline: 1,
-            rel: 0,
-            enablejsapi: 1,
-            origin: location.origin
-        },
-
-        events: {
-            onReady: function(event) {
-                const status = document.getElementById(`status-${id}`);
-
-                if (status) {
-                    status.classList.add("hidden");
-                }
-
-                /* Play only the visible video */
-                if (card === activeCard) {
-                    playActiveVideo(card);
-                }
-            },
-
-            onStateChange: function(event) {
-                updatePlayButton(id, event.data);
-
-                if (event.data === YT.PlayerState.ENDED) {
-                    playNextVideo(card);
-                }
-            },
-
-            onError: function(event) {
-                const status = document.getElementById(`status-${id}`);
-
-                if (status) {
-                    status.classList.remove("hidden");
-                    status.textContent =
-                        "This video cannot play here. Try opening it on YouTube.";
-                }
-
-                console.warn("YouTube player error:", id, event.data);
-            }
-        }
+      button.textContent = liked ? "♥" : "♡";
+      count.textContent = liked ? "1 like" : "0 likes";
     });
 
-    players.set(id, player);
+    card.querySelector(".share-button").addEventListener("click", async () => {
+      const url = `https://www.youtube.com/shorts/${videoId}`;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: "Watch this short video",
+            url
+          });
+        } catch (error) {
+          // The user may cancel the share dialog.
+        }
+      } else {
+        copyText(url);
+      }
+    });
+
+    card.querySelector(".copy-button").addEventListener("click", () => {
+      copyText(`https://www.youtube.com/shorts/${videoId}`);
+    });
+
+    card.querySelector(".open-button").addEventListener("click", () => {
+      window.open(
+        `https://www.youtube.com/shorts/${videoId}`,
+        "_blank",
+        "noopener,noreferrer"
+      );
+    });
+
+    card.querySelector(".mute-button").addEventListener("click", () => {
+      const player = players[videoId];
+      if (!player || typeof player.isMuted !== "function") return;
+
+      if (player.isMuted()) {
+        player.unMute();
+        player.setVolume(100);
+        card.querySelector(".mute-button").textContent = "🔊 Sound";
+      } else {
+        player.mute();
+        card.querySelector(".mute-button").textContent = "🔇 Sound";
+      }
+    });
+  });
+
+  setupObserver();
+
+  if (apiReady) {
+    initializeVisiblePlayers();
+  }
 }
 
-/* YOUTUBE API READY CALLBACK */
-window.onYouTubeIframeAPIReady = function() {
-    apiReady = true;
-    apiMessage.textContent =
-        "Scroll through the Shorts. Only the active video plays.";
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    alert("Video link copied!");
+  } catch (error) {
+    window.prompt("Copy this video link:", text);
+  }
+}
 
-    initializePlayers();
+function setupObserver() {
+  if (observer) observer.disconnect();
+
+  observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      const card = entry.target;
+      const videoId = card.dataset.videoId;
+
+      if (entry.isIntersecting && entry.intersectionRatio >= 0.65) {
+        activeCard = card;
+
+        if (apiReady) {
+          createPlayerIfNeeded(videoId);
+        }
+
+        Object.entries(players).forEach(([id, player]) => {
+          if (id !== videoId && player && player.pauseVideo) {
+            try {
+              player.pauseVideo();
+            } catch (error) {}
+          }
+        });
+
+        const currentPlayer = players[videoId];
+
+        if (currentPlayer && currentPlayer.playVideo) {
+          try {
+            currentPlayer.playVideo();
+          } catch (error) {}
+        }
+      } else if (players[videoId] && players[videoId].pauseVideo) {
+        try {
+          players[videoId].pauseVideo();
+        } catch (error) {}
+      }
+    });
+  }, {
+    root: shortsList,
+    threshold: [0.25, 0.65, 0.9]
+  });
+
+  document.querySelectorAll(".short-card").forEach(card => {
+    observer.observe(card);
+  });
+}
+
+function initializeVisiblePlayers() {
+  const cards = document.querySelectorAll(".short-card");
+
+  cards.forEach(card => {
+    const rect = card.getBoundingClientRect();
+    const listRect = shortsList.getBoundingClientRect();
+
+    if (rect.bottom > listRect.top && rect.top < listRect.bottom) {
+      createPlayerIfNeeded(card.dataset.videoId);
+    }
+  });
+}
+
+function createPlayerIfNeeded(videoId) {
+  if (!apiReady || players[videoId]) return;
+
+  const container = document.getElementById(`player-${videoId}`);
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  const player = new YT.Player(container, {
+    videoId,
+    playerVars: {
+      autoplay: 1,
+      controls: 1,
+      playsinline: 1,
+      rel: 0,
+      enablejsapi: 1,
+      origin: window.location.origin
+    },
+    events: {
+      onReady: event => {
+        event.target.mute();
+
+        if (activeCard &&
+            activeCard.dataset.videoId === videoId) {
+          event.target.playVideo();
+        }
+      },
+      onError: () => {
+        container.innerHTML =
+          '<div class="video-placeholder">This video cannot be embedded. Use Open video to watch it.</div>';
+      }
+    }
+  });
+
+  players[videoId] = player;
+}
+
+window.onYouTubeIframeAPIReady = function() {
+  apiReady = true;
+  initializeVisiblePlayers();
 };
 
-/* LOAD THE API AFTER REGISTERING ITS CALLBACK */
 const youtubeScript = document.createElement("script");
 youtubeScript.src = "https://www.youtube.com/iframe_api";
-youtubeScript.async = true;
-youtubeScript.onerror = function() {
-    apiMessage.textContent =
-        "YouTube could not load. Check your internet connection or browser settings.";
-};
 document.head.appendChild(youtubeScript);
 
-/* WATCH WHICH CARD IS VISIBLE */
-function setupObserver() {
-    if (observer) observer.disconnect();
-
-    observer = new IntersectionObserver(entries => {
-        const visibleCards = entries
-            .filter(entry => entry.isIntersecting)
-            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        if (!visibleCards.length) return;
-
-        const best = visibleCards[0];
-
-        if (best.intersectionRatio >= 0.60) {
-            activateCard(best.target);
-        }
-    }, {
-        root: shortsList,
-        threshold: [0.2, 0.6, 0.9]
-    });
-
-    cards.forEach(card => observer.observe(card));
-}
-
-/* ACTIVATE VISIBLE SHORT */
-function activateCard(card) {
-    if (activeCard === card) return;
-
-    activeCard = card;
-    const id = card.dataset.id;
-
-    /* Pause all other Shorts */
-    players.forEach((player, playerId) => {
-        if (playerId !== id) {
-            try {
-                player.pauseVideo();
-            } catch (error) {}
-        }
-    });
-
-    playActiveVideo(card);
-}
-
-/* PLAY VISIBLE VIDEO */
-function playActiveVideo(card) {
-    if (!card || card !== activeCard) return;
-
-    const player = players.get(card.dataset.id);
-    if (!player) return;
-
-    try {
-        player.mute();
-        player.playVideo();
-    } catch (error) {
-        console.warn("Could not start video:", error);
-    }
-}
-
-/* CUSTOM PLAY / PAUSE BUTTON */
-function togglePlayback(id) {
-    const card = cards.find(item => item.dataset.id === id);
-    const player = players.get(id);
-
-    if (!player || !card) {
-        apiMessage.textContent = "YouTube player is still loading.";
-        return;
-    }
-
-    if (activeCard !== card) {
-        activateCard(card);
-    }
-
-    try {
-        const state = player.getPlayerState();
-
-        if (state === YT.PlayerState.PLAYING) {
-            player.pauseVideo();
-        } else {
-            /* User clicked: allow sound if browser permits */
-            player.unMute();
-            player.playVideo();
-        }
-    } catch (error) {
-        console.warn(error);
-    }
-}
-
-function updatePlayButton(id, state) {
-    const button = document.querySelector(
-        `.play-button[data-id="${id}"]`
-    );
-
-    if (!button) return;
-
-    button.textContent =
-        state === YT.PlayerState.PLAYING ? "Ⅱ" : "▶";
-}
-
-/* PLAY NEXT SHORT WHEN CURRENT ONE ENDS */
-function playNextVideo(card) {
-    const index = cards.indexOf(card);
-    const nextCard = cards[index + 1];
-
-    if (nextCard) {
-        nextCard.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }
-}
-
-/* LIKE BUTTON — LOCAL DEMO ONLY */
-function toggleLike(id, button) {
-    const liked = !likedVideos.has(id);
-
-    if (liked) {
-        likedVideos.add(id);
-    } else {
-        likedVideos.delete(id);
-    }
-
-    button.classList.toggle("liked", liked);
-    button.setAttribute("aria-pressed", String(liked));
-
-    const count = document.getElementById(`likes-${id}`);
-    if (count) count.textContent = liked ? "Liked" : "Like";
-}
-
-/* SHARE VIDEO */
-async function shareVideo(id) {
-    const url = `https://www.youtube.com/shorts/${id}`;
-
-    try {
-        if (navigator.share) {
-            await navigator.share({
-                title: "Watch this Short",
-                url: url
-            });
-        } else if (navigator.clipboard) {
-            await navigator.clipboard.writeText(url);
-            apiMessage.textContent = "Video link copied!";
-        } else {
-            window.open(url, "_blank", "noopener");
-        }
-    } catch (error) {
-        /* Sharing may be cancelled by the user */
-    }
-}
-
-/* HANDLE BUTTON CLICKS */
-shortsList.addEventListener("click", event => {
-    const button = event.target.closest("[data-action]");
-    if (!button) return;
-
-    const id = button.dataset.id;
-    const action = button.dataset.action;
-
-    if (action === "play") {
-        togglePlayback(id);
-    }
-
-    if (action === "like") {
-        toggleLike(id, button);
-    }
-
-    if (action === "share") {
-        shareVideo(id);
-    }
+shuffleButton.addEventListener("click", () => {
+  createCards();
 });
 
-/* SHUFFLE AND REBUILD THE FEED */
-shuffleBtn.addEventListener("click", () => {
-    if (observer) observer.disconnect();
-
-    players.forEach(player => {
-        try {
-            player.destroy();
-        } catch (error) {}
-    });
-
-    players.clear();
-    activeCard = null;
-
-    renderShorts();
-
-    shortsList.scrollTo({
-        top: 0,
-        behavior: "instant"
-    });
-});
-
-/* PAUSE VIDEOS WHEN TAB IS HIDDEN */
-document.addEventListener("visibilitychange", () => {
-    if (document.hidden) {
-        players.forEach(player => {
-            try {
-                player.pauseVideo();
-            } catch (error) {}
-        });
-    } else if (activeCard) {
-        playActiveVideo(activeCard);
-    }
-});
-
-/* RENDER THE COMPLETE FEED */
-renderShorts();
+createCards();
 </script>
 
 </body>
