@@ -24,7 +24,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-/* PAGE LAYOUT */
 .page-layout {
     max-width: 1500px;
     min-height: 100vh;
@@ -52,7 +51,7 @@ body {
     line-height: 1.7;
 }
 
-/* REELS SECTION */
+/* SHORTS SIDEBAR */
 .shorts-sidebar {
     width: 100%;
     position: sticky;
@@ -86,7 +85,11 @@ body {
     cursor: pointer;
 }
 
-/* VERTICAL SCROLL CONTAINER */
+.shuffle-btn:hover {
+    background: var(--accent);
+}
+
+/* VERTICAL SHORTS FEED */
 .shorts-list {
     height: min(820px, calc(100vh - 95px));
     overflow-y: auto;
@@ -97,7 +100,6 @@ body {
     scrollbar-color: #42485b transparent;
 }
 
-/* EACH REEL */
 .short-card {
     height: min(820px, calc(100vh - 95px));
     min-height: 450px;
@@ -112,7 +114,6 @@ body {
     overflow: hidden;
 }
 
-/* BIG, CENTERED PLAYER */
 .video-frame {
     width: 100%;
     height: 100%;
@@ -125,6 +126,8 @@ body {
 .player-slot {
     position: absolute;
     inset: 0;
+    z-index: 1;
+    background: #000;
 }
 
 .player-slot iframe {
@@ -133,7 +136,7 @@ body {
     border: 0;
 }
 
-/* PLAYER OVERLAY */
+/* VIDEO OVERLAY */
 .video-overlay {
     position: absolute;
     inset: 0;
@@ -145,10 +148,10 @@ body {
     padding: 16px 12px;
     background: linear-gradient(
         to bottom,
-        rgba(0,0,0,.30),
+        rgba(0,0,0,.35),
         transparent 22%,
         transparent 65%,
-        rgba(0,0,0,.58)
+        rgba(0,0,0,.60)
     );
 }
 
@@ -167,23 +170,18 @@ body {
 }
 
 .video-number {
-    background: rgba(0,0,0,.6);
+    background: rgba(0,0,0,.65);
     padding: 6px 9px;
     border-radius: 20px;
     font-size: 12px;
 }
 
-.video-bottom {
-    justify-content: flex-start;
-}
-
 .video-caption {
     font-size: 13px;
-    color: white;
     text-shadow: 0 1px 5px black;
 }
 
-/* RIGHT-SIDE ACTION BUTTONS */
+/* RIGHT-SIDE BUTTONS */
 .side-actions {
     position: absolute;
     z-index: 5;
@@ -199,7 +197,7 @@ body {
     min-height: 53px;
     border: 0;
     border-radius: 25px;
-    background: rgba(20, 23, 34, .88);
+    background: rgba(20,23,34,.90);
     color: white;
     cursor: pointer;
     display: flex;
@@ -207,12 +205,11 @@ body {
     justify-content: center;
     align-items: center;
     gap: 4px;
-    transition: transform .2s, background .2s;
     backdrop-filter: blur(8px);
+    text-decoration: none;
 }
 
 .action-button:hover {
-    transform: scale(1.08);
     background: #303547;
 }
 
@@ -229,7 +226,7 @@ body {
     color: #ff4164;
 }
 
-/* CUSTOM PLAY/PAUSE BUTTON */
+/* PLAY/PAUSE */
 .play-button {
     position: absolute;
     z-index: 6;
@@ -239,7 +236,7 @@ body {
     height: 45px;
     border: 1px solid rgba(255,255,255,.3);
     border-radius: 50%;
-    background: rgba(0,0,0,.65);
+    background: rgba(0,0,0,.75);
     color: white;
     font-size: 19px;
     cursor: pointer;
@@ -251,7 +248,7 @@ body {
     background: var(--accent);
 }
 
-/* LOADING STATUS */
+/* STATUS MESSAGE */
 .player-status {
     position: absolute;
     inset: 0;
@@ -259,8 +256,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    padding: 20px;
     color: #ddd;
     font-size: 13px;
+    line-height: 1.6;
     background: #000;
     pointer-events: none;
 }
@@ -277,7 +277,7 @@ body {
     border-top: 1px solid #242838;
 }
 
-/* MOBILE */
+/* RESPONSIVE */
 @media (max-width: 850px) {
     .page-layout {
         display: block;
@@ -297,7 +297,6 @@ body {
 
     .shorts-list {
         height: calc(100dvh - 60px);
-        scroll-padding-top: 0;
     }
 
     .short-card {
@@ -308,22 +307,21 @@ body {
     .video-frame {
         max-width: 100%;
     }
-
-    .side-actions {
-        right: 12px;
-    }
-}
-
-@media (min-width: 851px) {
-    .shorts-sidebar {
-        max-width: 480px;
-    }
 }
 </style>
 </head>
 
 <body>
 
+<div class="page-layout">
+
+    <main class="main-content">
+        <h1>Welcome to VyaHotstar</h1>
+        <p>
+            Discover videos and enjoy Shorts in the video feed
+            on the right. Scroll down to watch the next video.
+        </p>
+    </main>
 
     <aside class="shorts-sidebar">
 
@@ -340,17 +338,15 @@ body {
         <div class="shorts-list" id="shortsList"></div>
 
         <div class="api-message" id="apiMessage" aria-live="polite">
-            Loading video players…
+            Loading YouTube Shorts...
         </div>
 
     </aside>
 
 </div>
 
-<!-- YouTube IFrame Player API -->
-<script src="https://www.youtube.com/iframe_api"></script>
-
 <script>
+/* ALL VIDEO IDS */
 const videoIds = [
     "gkHKxnaPSC0",
     "3NxmfLkBd1E",
@@ -371,15 +367,16 @@ const videoIds = [
 
 const shortsList = document.getElementById("shortsList");
 const apiMessage = document.getElementById("apiMessage");
+const shuffleBtn = document.getElementById("shuffleBtn");
 
 let cards = [];
 let players = new Map();
 let activeCard = null;
+let observer = null;
 let apiReady = false;
-let scrollTimer = null;
-let scrollVersion = 0;
+const likedVideos = new Set();
 
-/* Shuffle videos */
+/* RANDOM VIDEO ORDER */
 function shuffleVideos(array) {
     const result = [...array];
 
@@ -391,7 +388,7 @@ function shuffleVideos(array) {
     return result;
 }
 
-/* Build all reel cards */
+/* CREATE ALL SHORTS CARDS */
 function renderShorts() {
     const orderedIds = shuffleVideos(videoIds);
 
@@ -399,10 +396,11 @@ function renderShorts() {
         <article class="short-card" data-id="${id}">
 
             <div class="video-frame">
+
                 <div class="player-slot" id="player-${id}"></div>
 
                 <div class="player-status" id="status-${id}">
-                    Preparing video…
+                    Connecting to YouTube...
                 </div>
 
                 <div class="video-overlay">
@@ -429,11 +427,11 @@ function renderShorts() {
                 </button>
 
                 <div class="side-actions">
+
                     <button
                         class="action-button like-button"
                         data-action="like"
                         data-id="${id}"
-                        aria-label="Like video"
                         aria-pressed="false">
                         <span class="symbol">♥</span>
                         <span class="count" id="likes-${id}">Like</span>
@@ -442,8 +440,7 @@ function renderShorts() {
                     <button
                         class="action-button"
                         data-action="share"
-                        data-id="${id}"
-                        aria-label="Share video">
+                        data-id="${id}">
                         <span class="symbol">↗</span>
                         <span class="count">Share</span>
                     </button>
@@ -452,12 +449,11 @@ function renderShorts() {
                         class="action-button"
                         href="https://www.youtube.com/shorts/${id}"
                         target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Open on YouTube"
-                        style="text-decoration:none">
+                        rel="noopener noreferrer">
                         <span class="symbol">⤢</span>
                         <span class="count">Open</span>
                     </a>
+
                 </div>
             </div>
         </article>
@@ -465,12 +461,18 @@ function renderShorts() {
 
     cards = [...shortsList.querySelectorAll(".short-card")];
 
-    /* Only the visible and nearby videos are initialized.
-       This avoids starting 15 players simultaneously. */
-    observeCards();
+    if (apiReady) {
+        initializePlayers();
+    }
 }
 
-/* Load a YouTube player for a card */
+/* INITIALIZE ALL PLAYERS */
+function initializePlayers() {
+    cards.forEach(card => createPlayer(card));
+    setupObserver();
+}
+
+/* CREATE YOUTUBE PLAYER */
 function createPlayer(card) {
     const id = card.dataset.id;
 
@@ -482,31 +484,32 @@ function createPlayer(card) {
     const player = new YT.Player(slot, {
         width: "100%",
         height: "100%",
-
         videoId: id,
 
         playerVars: {
             autoplay: 0,
-            controls: 0,
+            controls: 1,
             playsinline: 1,
             rel: 0,
-            modestbranding: 1,
-            iv_load_policy: 3,
             enablejsapi: 1,
             origin: location.origin
         },
 
         events: {
-            onReady: event => {
+            onReady: function(event) {
                 const status = document.getElementById(`status-${id}`);
-                if (status) status.classList.add("hidden");
 
+                if (status) {
+                    status.classList.add("hidden");
+                }
+
+                /* Play only the visible video */
                 if (card === activeCard) {
                     playActiveVideo(card);
                 }
             },
 
-            onStateChange: event => {
+            onStateChange: function(event) {
                 updatePlayButton(id, event.data);
 
                 if (event.data === YT.PlayerState.ENDED) {
@@ -514,13 +517,16 @@ function createPlayer(card) {
                 }
             },
 
-            onError: () => {
+            onError: function(event) {
                 const status = document.getElementById(`status-${id}`);
+
                 if (status) {
                     status.classList.remove("hidden");
                     status.textContent =
-                        "This video cannot be embedded. Open it on YouTube.";
+                        "This video cannot play here. Try opening it on YouTube.";
                 }
+
+                console.warn("YouTube player error:", id, event.data);
             }
         }
     });
@@ -528,59 +534,57 @@ function createPlayer(card) {
     players.set(id, player);
 }
 
-/* YouTube API callback */
-window.onYouTubeIframeAPIReady = function () {
+/* YOUTUBE API READY CALLBACK */
+window.onYouTubeIframeAPIReady = function() {
     apiReady = true;
-
     apiMessage.textContent =
-        "Swipe or scroll to move between Shorts.";
+        "Scroll through the Shorts. Only the active video plays.";
 
-    observeCards();
+    initializePlayers();
 };
 
-/* Observe which video is visible */
-let observer;
+/* LOAD THE API AFTER REGISTERING ITS CALLBACK */
+const youtubeScript = document.createElement("script");
+youtubeScript.src = "https://www.youtube.com/iframe_api";
+youtubeScript.async = true;
+youtubeScript.onerror = function() {
+    apiMessage.textContent =
+        "YouTube could not load. Check your internet connection or browser settings.";
+};
+document.head.appendChild(youtubeScript);
 
-function observeCards() {
+/* WATCH WHICH CARD IS VISIBLE */
+function setupObserver() {
     if (observer) observer.disconnect();
 
     observer = new IntersectionObserver(entries => {
-        const visible = entries
+        const visibleCards = entries
             .filter(entry => entry.isIntersecting)
-            .sort((a, b) =>
-                b.intersectionRatio - a.intersectionRatio
-            );
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
 
-        if (!visible.length) return;
+        if (!visibleCards.length) return;
 
-        const card = visible[0].target;
+        const best = visibleCards[0];
 
-        if (visible[0].intersectionRatio >= 0.65) {
-            activateCard(card);
+        if (best.intersectionRatio >= 0.60) {
+            activateCard(best.target);
         }
-
-        /* Prepare the visible card and nearby cards */
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                createPlayer(entry.target);
-            }
-        });
     }, {
         root: shortsList,
-        threshold: [0.2, 0.65, 0.9]
+        threshold: [0.2, 0.6, 0.9]
     });
 
     cards.forEach(card => observer.observe(card));
 }
 
-/* Activate a new card */
+/* ACTIVATE VISIBLE SHORT */
 function activateCard(card) {
     if (activeCard === card) return;
 
     activeCard = card;
     const id = card.dataset.id;
 
-    /* Pause other players */
+    /* Pause all other Shorts */
     players.forEach((player, playerId) => {
         if (playerId !== id) {
             try {
@@ -589,55 +593,46 @@ function activateCard(card) {
         }
     });
 
-    createPlayer(card);
-
-    const player = players.get(id);
-
-    if (player && playerReady(player)) {
-        playActiveVideo(card);
-    }
+    playActiveVideo(card);
 }
 
-function playerReady(player) {
-    try {
-        return player.getPlayerState() !== -999;
-    } catch (error) {
-        return false;
-    }
-}
-
-/* Autoplay visible video, muted for browser compatibility */
+/* PLAY VISIBLE VIDEO */
 function playActiveVideo(card) {
-    if (card !== activeCard) return;
+    if (!card || card !== activeCard) return;
 
-    const id = card.dataset.id;
-    const player = players.get(id);
-
+    const player = players.get(card.dataset.id);
     if (!player) return;
 
     try {
         player.mute();
         player.playVideo();
     } catch (error) {
-        console.warn("Playback could not start:", error);
+        console.warn("Could not start video:", error);
     }
 }
 
-/* Custom play/pause */
+/* CUSTOM PLAY / PAUSE BUTTON */
 function togglePlayback(id) {
+    const card = cards.find(item => item.dataset.id === id);
     const player = players.get(id);
 
-    if (!player) {
-        const card = cards.find(item => item.dataset.id === id);
-        if (card) createPlayer(card);
+    if (!player || !card) {
+        apiMessage.textContent = "YouTube player is still loading.";
         return;
     }
 
+    if (activeCard !== card) {
+        activateCard(card);
+    }
+
     try {
-        if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+        const state = player.getPlayerState();
+
+        if (state === YT.PlayerState.PLAYING) {
             player.pauseVideo();
         } else {
-            activeCard = cards.find(item => item.dataset.id === id);
+            /* User clicked: allow sound if browser permits */
+            player.unMute();
             player.playVideo();
         }
     } catch (error) {
@@ -656,106 +651,37 @@ function updatePlayButton(id, state) {
         state === YT.PlayerState.PLAYING ? "Ⅱ" : "▶";
 }
 
-/* Scroll smoothly to the next video when playback ends */
+/* PLAY NEXT SHORT WHEN CURRENT ONE ENDS */
 function playNextVideo(card) {
     const index = cards.indexOf(card);
     const nextCard = cards[index + 1];
 
-    if (!nextCard) {
-        /* Stop at the end rather than unexpectedly looping */
-        return;
+    if (nextCard) {
+        nextCard.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     }
-
-    nextCard.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-    });
 }
 
-/* Backend-connected likes */
-const likedVideos = new Set();
+/* LIKE BUTTON — LOCAL DEMO ONLY */
+function toggleLike(id, button) {
+    const liked = !likedVideos.has(id);
 
-/*
-  BACKEND REQUIRED:
-  Implement POST /api/likes on your server.
-  Expected request: { videoId: "...", liked: true }
-  Expected JSON response: { likes: 123, liked: true }
-*/
-async function toggleLike(id, button) {
-    const wasLiked = likedVideos.has(id);
-    const nextLiked = !wasLiked;
-
-    /* Optimistic UI update */
-    if (nextLiked) {
+    if (liked) {
         likedVideos.add(id);
     } else {
         likedVideos.delete(id);
     }
 
-    button.classList.toggle("liked", nextLiked);
-    button.setAttribute("aria-pressed", String(nextLiked));
+    button.classList.toggle("liked", liked);
+    button.setAttribute("aria-pressed", String(liked));
 
     const count = document.getElementById(`likes-${id}`);
-    count.textContent = nextLiked ? "Liked" : "Like";
-
-    try {
-        const response = await fetch("/api/likes", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            credentials: "same-origin",
-            body: JSON.stringify({
-                videoId: id,
-                liked: nextLiked
-            })
-        });
-
-        if (!response.ok) {
-            throw new Error("Like request failed");
-        }
-
-        const data = await response.json();
-
-        if (typeof data.likes === "number") {
-            count.textContent = formatCount(data.likes);
-        }
-
-        if (typeof data.liked === "boolean") {
-            if (data.liked) {
-                likedVideos.add(id);
-            } else {
-                likedVideos.delete(id);
-            }
-
-            button.classList.toggle("liked", data.liked);
-            button.setAttribute("aria-pressed", String(data.liked));
-        }
-
-    } catch (error) {
-        /* Roll back if the backend request fails */
-        if (wasLiked) {
-            likedVideos.add(id);
-        } else {
-            likedVideos.delete(id);
-        }
-
-        button.classList.toggle("liked", wasLiked);
-        button.setAttribute("aria-pressed", String(wasLiked));
-        count.textContent = wasLiked ? "Liked" : "Like";
-
-        apiMessage.textContent =
-            "Likes need a working /api/likes backend endpoint.";
-    }
+    if (count) count.textContent = liked ? "Liked" : "Like";
 }
 
-function formatCount(number) {
-    if (number >= 1000000) return (number / 1000000).toFixed(1) + "M";
-    if (number >= 1000) return (number / 1000).toFixed(1) + "K";
-    return String(number);
-}
-
-/* Share */
+/* SHARE VIDEO */
 async function shareVideo(id) {
     const url = `https://www.youtube.com/shorts/${id}`;
 
@@ -763,20 +689,20 @@ async function shareVideo(id) {
         if (navigator.share) {
             await navigator.share({
                 title: "Watch this Short",
-                url
+                url: url
             });
         } else if (navigator.clipboard) {
             await navigator.clipboard.writeText(url);
-            apiMessage.textContent = "Video link copied.";
+            apiMessage.textContent = "Video link copied!";
         } else {
             window.open(url, "_blank", "noopener");
         }
     } catch (error) {
-        /* The user may cancel the share dialog. */
+        /* Sharing may be cancelled by the user */
     }
 }
 
-/* Event delegation */
+/* HANDLE BUTTON CLICKS */
 shortsList.addEventListener("click", event => {
     const button = event.target.closest("[data-action]");
     if (!button) return;
@@ -797,26 +723,28 @@ shortsList.addEventListener("click", event => {
     }
 });
 
-/* Shuffle the cards */
-document.getElementById("shuffleBtn").addEventListener("click", () => {
+/* SHUFFLE AND REBUILD THE FEED */
+shuffleBtn.addEventListener("click", () => {
+    if (observer) observer.disconnect();
+
     players.forEach(player => {
         try {
-            player.pauseVideo();
             player.destroy();
         } catch (error) {}
     });
 
     players.clear();
     activeCard = null;
+
     renderShorts();
 
     shortsList.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: "instant"
     });
 });
 
-/* Pause playback when the tab is hidden */
+/* PAUSE VIDEOS WHEN TAB IS HIDDEN */
 document.addEventListener("visibilitychange", () => {
     if (document.hidden) {
         players.forEach(player => {
@@ -829,7 +757,7 @@ document.addEventListener("visibilitychange", () => {
     }
 });
 
-/* Create every card immediately */
+/* RENDER THE COMPLETE FEED */
 renderShorts();
 </script>
 
