@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>VyaHotstar - Shorts</title>
+<title>VyaHotstar Shorts</title>
 
 <style>
 * {
@@ -13,177 +12,311 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #080b14;
-    color: #fff;
+:root {
+    --bg: #080a10;
+    --panel: #141722;
+    --accent: #ff3155;
 }
 
-/* MAIN PAGE LAYOUT */
+body {
+    background: var(--bg);
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* PAGE LAYOUT */
 .page-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 310px;
-    gap: 24px;
-    padding: 24px;
-    max-width: 1600px;
+    max-width: 1500px;
+    min-height: 100vh;
     margin: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 480px;
+    gap: 25px;
     align-items: start;
 }
 
-/* MAIN CONTENT */
 .main-content {
-    min-width: 0;
-    min-height: 500px;
-    background: #111522;
-    border-radius: 14px;
-    padding: 24px;
+    background: var(--panel);
+    border-radius: 16px;
+    padding: 25px;
+    min-height: 300px;
 }
 
 .main-content h1 {
-    font-size: 28px;
     margin-bottom: 12px;
 }
 
 .main-content p {
-    color: #aeb6c8;
+    color: #aeb5c5;
     line-height: 1.7;
 }
 
-/* SHORTS SIDEBAR */
+/* REELS SECTION */
 .shorts-sidebar {
     width: 100%;
-    background: #111522;
-    border: 1px solid #252b3b;
-    border-radius: 16px;
-    padding: 15px;
     position: sticky;
-    top: 20px;
-    max-height: calc(100vh - 40px);
-    overflow-y: auto;
-    scrollbar-width: thin;
-    scrollbar-color: #414a60 #111522;
+    top: 15px;
+    background: #0c0e15;
+    border: 1px solid #242838;
+    border-radius: 18px;
+    overflow: hidden;
 }
 
-/* SIDEBAR HEADER */
 .shorts-header {
+    height: 60px;
+    padding: 0 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
+    border-bottom: 1px solid #262a38;
 }
 
 .shorts-title {
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    font-size: 20px;
-    font-weight: 700;
-}
-
-.shorts-icon {
-    color: #ff3155;
-    font-size: 25px;
+    font-size: 19px;
+    font-weight: bold;
 }
 
 .shuffle-btn {
-    background: #252b3b;
+    background: #252a39;
     color: white;
-    border: none;
-    padding: 9px 11px;
+    border: 0;
     border-radius: 8px;
+    padding: 9px 12px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
-.shuffle-btn:hover {
-    background: #ff3155;
-}
-
-/* VIDEO LIST */
+/* VERTICAL SCROLL CONTAINER */
 .shorts-list {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 16px;
+    height: min(820px, calc(100vh - 95px));
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #42485b transparent;
 }
 
-/* VIDEO CARD */
+/* EACH REEL */
 .short-card {
-    background: #191f2e;
-    border: 1px solid #292f40;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s;
-}
-
-.short-card:hover {
-    transform: translateY(-3px);
-    border-color: #ff3155;
-}
-
-/* VERTICAL VIDEO */
-.video-frame {
-    position: relative;
+    height: min(820px, calc(100vh - 95px));
+    min-height: 450px;
     width: 100%;
-    aspect-ratio: 9 / 16;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    overflow: hidden;
+}
+
+/* BIG, CENTERED PLAYER */
+.video-frame {
+    width: 100%;
+    height: 100%;
+    max-width: 460px;
+    position: relative;
     background: #000;
     overflow: hidden;
 }
 
-.video-frame iframe {
+.player-slot {
     position: absolute;
     inset: 0;
+}
+
+.player-slot iframe {
     width: 100%;
     height: 100%;
     border: 0;
 }
 
-/* VIDEO INFORMATION */
-.video-info {
-    padding: 12px;
+/* PLAYER OVERLAY */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px 12px;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,.30),
+        transparent 22%,
+        transparent 65%,
+        rgba(0,0,0,.58)
+    );
 }
 
-.video-info h3 {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 7px;
+.video-top,
+.video-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
 }
 
-.video-info a {
-    color: #ff526d;
+.video-label {
+    font-size: 13px;
+    font-weight: bold;
+    text-shadow: 0 1px 5px #000;
+}
+
+.video-number {
+    background: rgba(0,0,0,.6);
+    padding: 6px 9px;
+    border-radius: 20px;
     font-size: 12px;
-    text-decoration: none;
 }
 
-.video-info a:hover {
-    text-decoration: underline;
+.video-bottom {
+    justify-content: flex-start;
 }
 
-/* MOBILE RESPONSIVE */
-@media (max-width: 900px) {
+.video-caption {
+    font-size: 13px;
+    color: white;
+    text-shadow: 0 1px 5px black;
+}
+
+/* RIGHT-SIDE ACTION BUTTONS */
+.side-actions {
+    position: absolute;
+    z-index: 5;
+    right: 12px;
+    bottom: 90px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.action-button {
+    width: 48px;
+    min-height: 53px;
+    border: 0;
+    border-radius: 25px;
+    background: rgba(20, 23, 34, .88);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    transition: transform .2s, background .2s;
+    backdrop-filter: blur(8px);
+}
+
+.action-button:hover {
+    transform: scale(1.08);
+    background: #303547;
+}
+
+.action-button .symbol {
+    font-size: 23px;
+    line-height: 1;
+}
+
+.action-button .count {
+    font-size: 10px;
+}
+
+.like-button.liked {
+    color: #ff4164;
+}
+
+/* CUSTOM PLAY/PAUSE BUTTON */
+.play-button {
+    position: absolute;
+    z-index: 6;
+    left: 12px;
+    bottom: 83px;
+    width: 45px;
+    height: 45px;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    background: rgba(0,0,0,.65);
+    color: white;
+    font-size: 19px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.play-button:hover {
+    background: var(--accent);
+}
+
+/* LOADING STATUS */
+.player-status {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ddd;
+    font-size: 13px;
+    background: #000;
+    pointer-events: none;
+}
+
+.player-status.hidden {
+    display: none;
+}
+
+.api-message {
+    padding: 12px;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #aeb5c5;
+    border-top: 1px solid #242838;
+}
+
+/* MOBILE */
+@media (max-width: 850px) {
     .page-layout {
-        grid-template-columns: 1fr;
-        padding: 14px;
+        display: block;
+        padding: 0;
+    }
+
+    .main-content {
+        margin: 15px;
     }
 
     .shorts-sidebar {
         position: static;
-        max-height: none;
-        overflow: visible;
+        border-radius: 0;
+        border-left: 0;
+        border-right: 0;
     }
 
     .shorts-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        height: calc(100dvh - 60px);
+        scroll-padding-top: 0;
+    }
+
+    .short-card {
+        height: calc(100dvh - 60px);
+        min-height: 450px;
+    }
+
+    .video-frame {
+        max-width: 100%;
+    }
+
+    .side-actions {
+        right: 12px;
     }
 }
 
-@media (max-width: 480px) {
-    .shorts-list {
-        grid-template-columns: 1fr;
-    }
-
-    .main-content {
-        padding: 18px;
+@media (min-width: 851px) {
+    .shorts-sidebar {
+        max-width: 480px;
     }
 }
 </style>
@@ -193,40 +326,38 @@ body {
 
 <div class="page-layout">
 
-    <!-- YOUR MAIN WEBSITE CONTENT -->
     <main class="main-content">
         <h1>Welcome to VyaHotstar</h1>
         <p>
-            Add your movies, TV shows, homepage sections,
-            or other website content here.
+            Your website content goes here. Watch vertical videos
+            in the Shorts reel on the right.
         </p>
     </main>
 
-    <!-- YOUTUBE SHORTS SIDEBAR -->
     <aside class="shorts-sidebar">
 
-        <div class="shorts-header">
+        <header class="shorts-header">
             <div class="shorts-title">
-                <span class="shorts-icon">▶</span>
-                <span>Shorts</span>
+                <span style="color:#ff3155">▶</span> Shorts
             </div>
 
-            <button
-                class="shuffle-btn"
-                id="shuffleBtn"
-                type="button"
-                title="Shuffle videos"
-            >
+            <button class="shuffle-btn" id="shuffleBtn">
                 🔀 Shuffle
             </button>
-        </div>
+        </header>
 
-        <!-- All videos are inserted here -->
         <div class="shorts-list" id="shortsList"></div>
+
+        <div class="api-message" id="apiMessage" aria-live="polite">
+            Loading video players…
+        </div>
 
     </aside>
 
 </div>
+
+<!-- YouTube IFrame Player API -->
+<script src="https://www.youtube.com/iframe_api"></script>
 
 <script>
 const videoIds = [
@@ -248,59 +379,467 @@ const videoIds = [
 ];
 
 const shortsList = document.getElementById("shortsList");
-const shuffleBtn = document.getElementById("shuffleBtn");
+const apiMessage = document.getElementById("apiMessage");
 
-/* Randomize video order */
-function shuffleVideos(videos) {
-    const shuffled = [...videos];
+let cards = [];
+let players = new Map();
+let activeCard = null;
+let apiReady = false;
+let scrollTimer = null;
+let scrollVersion = 0;
 
-    for (let i = shuffled.length - 1; i > 0; i--) {
+/* Shuffle videos */
+function shuffleVideos(array) {
+    const result = [...array];
+
+    for (let i = result.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-
-        [shuffled[i], shuffled[j]] =
-        [shuffled[j], shuffled[i]];
+        [result[i], result[j]] = [result[j], result[i]];
     }
 
-    return shuffled;
+    return result;
 }
 
-/* Create every video card at once */
-function loadShorts() {
-    const shuffledVideos = shuffleVideos(videoIds);
+/* Build all reel cards */
+function renderShorts() {
+    const orderedIds = shuffleVideos(videoIds);
 
-    shortsList.innerHTML = shuffledVideos.map((id, index) => `
-        <article class="short-card">
+    shortsList.innerHTML = orderedIds.map((id, index) => `
+        <article class="short-card" data-id="${id}">
+
             <div class="video-frame">
-                <iframe
-                    src="https://www.youtube-nocookie.com/embed/${id}"
-                    title="YouTube Short ${index + 1}"
-                    loading="eager"
-                    allow="accelerometer; autoplay; clipboard-write;
-                           encrypted-media; gyroscope; picture-in-picture;
-                           web-share"
-                    referrerpolicy="strict-origin-when-cross-origin"
-                    allowfullscreen>
-                </iframe>
-            </div>
+                <div class="player-slot" id="player-${id}"></div>
 
-            <div class="video-info">
-                <h3>YouTube Short #${index + 1}</h3>
-                <a
-                    href="https://www.youtube.com/shorts/${id}"
-                    target="_blank"
-                    rel="noopener noreferrer">
-                    Watch on YouTube ↗
-                </a>
+                <div class="player-status" id="status-${id}">
+                    Preparing video…
+                </div>
+
+                <div class="video-overlay">
+                    <div class="video-top">
+                        <span class="video-label">▶ VyaHotstar</span>
+                        <span class="video-number">
+                            ${index + 1} / ${orderedIds.length}
+                        </span>
+                    </div>
+
+                    <div class="video-bottom">
+                        <span class="video-caption">
+                            Shorts · ${index + 1}
+                        </span>
+                    </div>
+                </div>
+
+                <button
+                    class="play-button"
+                    data-action="play"
+                    data-id="${id}"
+                    aria-label="Play or pause video">
+                    ▶
+                </button>
+
+                <div class="side-actions">
+                    <button
+                        class="action-button like-button"
+                        data-action="like"
+                        data-id="${id}"
+                        aria-label="Like video"
+                        aria-pressed="false">
+                        <span class="symbol">♥</span>
+                        <span class="count" id="likes-${id}">Like</span>
+                    </button>
+
+                    <button
+                        class="action-button"
+                        data-action="share"
+                        data-id="${id}"
+                        aria-label="Share video">
+                        <span class="symbol">↗</span>
+                        <span class="count">Share</span>
+                    </button>
+
+                    <a
+                        class="action-button"
+                        href="https://www.youtube.com/shorts/${id}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open on YouTube"
+                        style="text-decoration:none">
+                        <span class="symbol">⤢</span>
+                        <span class="count">Open</span>
+                    </a>
+                </div>
             </div>
         </article>
     `).join("");
+
+    cards = [...shortsList.querySelectorAll(".short-card")];
+
+    /* Only the visible and nearby videos are initialized.
+       This avoids starting 15 players simultaneously. */
+    observeCards();
 }
 
-/* Shuffle without reloading the page */
-shuffleBtn.addEventListener("click", loadShorts);
+/* Load a YouTube player for a card */
+function createPlayer(card) {
+    const id = card.dataset.id;
 
-/* Load all 15 videos in random order on page load */
-loadShorts();
+    if (!apiReady || players.has(id)) return;
+
+    const slot = document.getElementById(`player-${id}`);
+    if (!slot) return;
+
+    const player = new YT.Player(slot, {
+        width: "100%",
+        height: "100%",
+
+        videoId: id,
+
+        playerVars: {
+            autoplay: 0,
+            controls: 0,
+            playsinline: 1,
+            rel: 0,
+            modestbranding: 1,
+            iv_load_policy: 3,
+            enablejsapi: 1,
+            origin: location.origin
+        },
+
+        events: {
+            onReady: event => {
+                const status = document.getElementById(`status-${id}`);
+                if (status) status.classList.add("hidden");
+
+                if (card === activeCard) {
+                    playActiveVideo(card);
+                }
+            },
+
+            onStateChange: event => {
+                updatePlayButton(id, event.data);
+
+                if (event.data === YT.PlayerState.ENDED) {
+                    playNextVideo(card);
+                }
+            },
+
+            onError: () => {
+                const status = document.getElementById(`status-${id}`);
+                if (status) {
+                    status.classList.remove("hidden");
+                    status.textContent =
+                        "This video cannot be embedded. Open it on YouTube.";
+                }
+            }
+        }
+    });
+
+    players.set(id, player);
+}
+
+/* YouTube API callback */
+window.onYouTubeIframeAPIReady = function () {
+    apiReady = true;
+
+    apiMessage.textContent =
+        "Swipe or scroll to move between Shorts.";
+
+    observeCards();
+};
+
+/* Observe which video is visible */
+let observer;
+
+function observeCards() {
+    if (observer) observer.disconnect();
+
+    observer = new IntersectionObserver(entries => {
+        const visible = entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) =>
+                b.intersectionRatio - a.intersectionRatio
+            );
+
+        if (!visible.length) return;
+
+        const card = visible[0].target;
+
+        if (visible[0].intersectionRatio >= 0.65) {
+            activateCard(card);
+        }
+
+        /* Prepare the visible card and nearby cards */
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                createPlayer(entry.target);
+            }
+        });
+    }, {
+        root: shortsList,
+        threshold: [0.2, 0.65, 0.9]
+    });
+
+    cards.forEach(card => observer.observe(card));
+}
+
+/* Activate a new card */
+function activateCard(card) {
+    if (activeCard === card) return;
+
+    activeCard = card;
+    const id = card.dataset.id;
+
+    /* Pause other players */
+    players.forEach((player, playerId) => {
+        if (playerId !== id) {
+            try {
+                player.pauseVideo();
+            } catch (error) {}
+        }
+    });
+
+    createPlayer(card);
+
+    const player = players.get(id);
+
+    if (player && playerReady(player)) {
+        playActiveVideo(card);
+    }
+}
+
+function playerReady(player) {
+    try {
+        return player.getPlayerState() !== -999;
+    } catch (error) {
+        return false;
+    }
+}
+
+/* Autoplay visible video, muted for browser compatibility */
+function playActiveVideo(card) {
+    if (card !== activeCard) return;
+
+    const id = card.dataset.id;
+    const player = players.get(id);
+
+    if (!player) return;
+
+    try {
+        player.mute();
+        player.playVideo();
+    } catch (error) {
+        console.warn("Playback could not start:", error);
+    }
+}
+
+/* Custom play/pause */
+function togglePlayback(id) {
+    const player = players.get(id);
+
+    if (!player) {
+        const card = cards.find(item => item.dataset.id === id);
+        if (card) createPlayer(card);
+        return;
+    }
+
+    try {
+        if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+            player.pauseVideo();
+        } else {
+            activeCard = cards.find(item => item.dataset.id === id);
+            player.playVideo();
+        }
+    } catch (error) {
+        console.warn(error);
+    }
+}
+
+function updatePlayButton(id, state) {
+    const button = document.querySelector(
+        `.play-button[data-id="${id}"]`
+    );
+
+    if (!button) return;
+
+    button.textContent =
+        state === YT.PlayerState.PLAYING ? "Ⅱ" : "▶";
+}
+
+/* Scroll smoothly to the next video when playback ends */
+function playNextVideo(card) {
+    const index = cards.indexOf(card);
+    const nextCard = cards[index + 1];
+
+    if (!nextCard) {
+        /* Stop at the end rather than unexpectedly looping */
+        return;
+    }
+
+    nextCard.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+}
+
+/* Backend-connected likes */
+const likedVideos = new Set();
+
+/*
+  BACKEND REQUIRED:
+  Implement POST /api/likes on your server.
+  Expected request: { videoId: "...", liked: true }
+  Expected JSON response: { likes: 123, liked: true }
+*/
+async function toggleLike(id, button) {
+    const wasLiked = likedVideos.has(id);
+    const nextLiked = !wasLiked;
+
+    /* Optimistic UI update */
+    if (nextLiked) {
+        likedVideos.add(id);
+    } else {
+        likedVideos.delete(id);
+    }
+
+    button.classList.toggle("liked", nextLiked);
+    button.setAttribute("aria-pressed", String(nextLiked));
+
+    const count = document.getElementById(`likes-${id}`);
+    count.textContent = nextLiked ? "Liked" : "Like";
+
+    try {
+        const response = await fetch("/api/likes", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            credentials: "same-origin",
+            body: JSON.stringify({
+                videoId: id,
+                liked: nextLiked
+            })
+        });
+
+        if (!response.ok) {
+            throw new Error("Like request failed");
+        }
+
+        const data = await response.json();
+
+        if (typeof data.likes === "number") {
+            count.textContent = formatCount(data.likes);
+        }
+
+        if (typeof data.liked === "boolean") {
+            if (data.liked) {
+                likedVideos.add(id);
+            } else {
+                likedVideos.delete(id);
+            }
+
+            button.classList.toggle("liked", data.liked);
+            button.setAttribute("aria-pressed", String(data.liked));
+        }
+
+    } catch (error) {
+        /* Roll back if the backend request fails */
+        if (wasLiked) {
+            likedVideos.add(id);
+        } else {
+            likedVideos.delete(id);
+        }
+
+        button.classList.toggle("liked", wasLiked);
+        button.setAttribute("aria-pressed", String(wasLiked));
+        count.textContent = wasLiked ? "Liked" : "Like";
+
+        apiMessage.textContent =
+            "Likes need a working /api/likes backend endpoint.";
+    }
+}
+
+function formatCount(number) {
+    if (number >= 1000000) return (number / 1000000).toFixed(1) + "M";
+    if (number >= 1000) return (number / 1000).toFixed(1) + "K";
+    return String(number);
+}
+
+/* Share */
+async function shareVideo(id) {
+    const url = `https://www.youtube.com/shorts/${id}`;
+
+    try {
+        if (navigator.share) {
+            await navigator.share({
+                title: "Watch this Short",
+                url
+            });
+        } else if (navigator.clipboard) {
+            await navigator.clipboard.writeText(url);
+            apiMessage.textContent = "Video link copied.";
+        } else {
+            window.open(url, "_blank", "noopener");
+        }
+    } catch (error) {
+        /* The user may cancel the share dialog. */
+    }
+}
+
+/* Event delegation */
+shortsList.addEventListener("click", event => {
+    const button = event.target.closest("[data-action]");
+    if (!button) return;
+
+    const id = button.dataset.id;
+    const action = button.dataset.action;
+
+    if (action === "play") {
+        togglePlayback(id);
+    }
+
+    if (action === "like") {
+        toggleLike(id, button);
+    }
+
+    if (action === "share") {
+        shareVideo(id);
+    }
+});
+
+/* Shuffle the cards */
+document.getElementById("shuffleBtn").addEventListener("click", () => {
+    players.forEach(player => {
+        try {
+            player.pauseVideo();
+            player.destroy();
+        } catch (error) {}
+    });
+
+    players.clear();
+    activeCard = null;
+    renderShorts();
+
+    shortsList.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+/* Pause playback when the tab is hidden */
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        players.forEach(player => {
+            try {
+                player.pauseVideo();
+            } catch (error) {}
+        });
+    } else if (activeCard) {
+        playActiveVideo(activeCard);
+    }
+});
+
+/* Create every card immediately */
+renderShorts();
 </script>
 
 </body>
